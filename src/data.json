@@ -1,0 +1,20 @@
+[
+    {"queid": "Q1", "question": "How old is the patient?", "options": {"Under 18": "Q2", "18-50": "Q3", "Over 50": "Q4"}, "level": 1}
+    ,
+    {"queid": "Q2", "question": "Does the headache occur after physical activity or crying?", "options": {"Yes": "Q5", "No": "Q6"}, "level": 2}
+    ,
+    {"queid": "Q3", "question": "Is the headache chronic (15 or more days per month for 3 months or longer)?", "options": {"Yes": "Q7", "No": "Q8"}, "level": 2}
+    ,
+    {"queid": "Q4", "question": "Has there been any recent head trauma?", "options": {"Yes": "Q9", "No": "Q10"}, "level": 2}
+    ,
+    {"queid": "Q5", "question": "Is the headache accompanied by vomiting or double vision?", "options": {"Yes": "Q11", "No": "Q12"}, "level": 3}
+    ,
+    {"queid": "Q6", "question": "Is the headache occurring in one particular area?", "options": {"Yes": "Q13", "No": "Q14"}, "level": 3}
+    ,
+    {"queid": "Q7", "question": "Is the headache usually accompanied by other symptoms like nausea or light sensitivity?", "options": {"Yes": "Q15", "No": "Q16"}, "level": 3}
+    ,
+    {"queid": "Q8", "question": "Is the headache often accompanied by a stiff neck?", "options": {"Yes": "Q17", "No": "Q18"}, "level": 3}
+    ,
+    {"queid": "Q9", "question": "Is there a change in behavior or cognitive functions?", "options": {"Yes": "Q19", "No": "Q20"}, "level": 3}
+    ,
+    {"queid": "Q10", "question": "Has there been a sudden change in the pattern of headaches?", "options": {"Yes": "Q21", "No": "Q22"}, "level": 3}]
