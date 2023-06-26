@@ -19,88 +19,8 @@ function DecisionTree({ data }) {
   const [removingEdge, setRemovingEdge] = useState(false);
   const [cy, setCy] = useState(null);
 
-  const [, setDfsStartingNode] = useState(null);
-
-
  
-  const onDFS = () => {
-    const startId = prompt("Enter the start node id:");
-    const dfsResults = cy.elements().depthFirstSearch({
-      root: `#${startId}`,
-      visit: function(v, e, u, i, depth) {
-        console.log(`Visited node ${v.id()}`);
-        if (e) {
-          setTimeout(() => {
-            e.animate({
-              style: {
-                'line-color': '#c17d11',
-                'color': 'blue' // highlight edge text
-              },
-              duration: 2000 // transition duration
-            });
-          }, i * 500);
-        }
-      },
-      directed: false
-    });
-    const pathNodes = dfsResults.path.nodes();
-    pathNodes.forEach((node, i) => {
-      setTimeout(() => {
-        node.animate({
-          style: {
-            'background-color': '#c17d11',
-            'color': 'blue' // highlight node text
-          },
-          duration: 2000 // transition duration
-        });
-        // Adjust view to current node
-        cy.fit(node, 50); // fit view to current node with 50px padding
-        cy.zoom({ level: 1.5 }); // zoom in
-        cy.center(node); // center view to current node
-      }, i * 500); // Change color and view every 500ms
-    });
-  };
 
-  const onBFS = () => {
-    const startId = prompt("Enter the start node id:");
-    const bfsResults = cy.elements().breadthFirstSearch({
-      root: `#${startId}`,
-      visit: function(v, e, u, i, depth) {
-        console.log(`Visited node ${v.id()}`);
-        if (e) {
-          setTimeout(() => {
-            e.animate({
-              style: {
-                'line-color': '#c17d11',
-                'color': 'blue' // highlight edge text
-              },
-              duration: 2000 // transition duration
-            });
-          }, i * 500);
-        }
-      },
-      directed: false
-    });
-    const pathNodes = bfsResults.path.nodes();
-    pathNodes.forEach((node, i) => {
-      setTimeout(() => {
-        node.animate({
-          style: {
-            'background-color': '#c17d11',
-            'color': 'blue' // highlight node text
-          },
-          duration: 2000 // transition duration
-        });
-        // Adjust view to current node
-        cy.fit(node, 50); // fit view to current node with 50px padding
-        cy.zoom({ level: 1.5 }); // zoom in
-        cy.center(node); // center view to current node
-      }, i * 500); // Change color and view every 500ms
-    });
-  };
-
-
-  
   const saveGraphState = async () => {
     const cytoscapeData = cy.json().elements;  // Get the current state of the graph
     try {
@@ -178,14 +98,6 @@ function DecisionTree({ data }) {
         duration: transitionDuration
       });
       node.data('collapsed', false);
-      // Create new layout
-    //   const layout = node.cy().layout({
-    //     name: 'dagre',
-    //     roots: node,
-    //     spacingFactor: 1.0, // Adjust as necessary to set the overall layout size
-    //     nodeSpacing: 50, // Increase to add more spacing between nodes
-    //   });
-    //   layout.run(); // Run the layout
     } else { // If the node is expanded, collapse all descendants
       const descendants = getDescendants(node);
       descendants.nodes.forEach(node => node.animate({
@@ -198,9 +110,10 @@ function DecisionTree({ data }) {
       }));
       node.data('collapsed', true);
     }
-  }, []);
-  
+  }, []); 
    
+   
+  
  // Helper function to get all descendants of a node
 const getDescendants = (node) => {
     const descendants = {
@@ -234,10 +147,9 @@ const getDescendants = (node) => {
           selector: "node",
           style: {
             "background-color": "#8eecf5",
-            "border-width": 1,
-            "border-color": "yellow",
+            "border-width": 2,
+            "border-color": "#ED2B2A",
             shape: "rectangle",
-            "shape-polygon-points":"none",
             "text-wrap": "wrap",
             "text-valign": "center",
             content: "data(label)",
@@ -268,12 +180,6 @@ const getDescendants = (node) => {
         "font-color":"#241E92"
           },
         },
-        {
-            selector: 'node[id = "root"]', // assuming 'root' is the id of root node
-            style: {
-              "background-color": "green", // set your desired color here
-            },
-          },
       ],
       layout: {
         name: "dagre",
@@ -304,7 +210,6 @@ const getDescendants = (node) => {
     cyInstance.on('select', 'node', function(evt){
         const node = evt.target;
         setRemovingNode(node);
-        setDfsStartingNode(node);
       });
   
       cyInstance.on('select', 'edge', function(evt){
@@ -362,9 +267,7 @@ const getDescendants = (node) => {
   )}
     <button onClick={onRemoveSelectedNode}>Remove Selected Node</button>
         <button onClick={onRemoveSelectedEdge}>Remove Selected Edge</button>
-        <h1 className="heading">HEADACHE</h1>
-        <button className="dfs" onClick={onDFS}>D-F-S</button>
-        <button className="bfs" onClick={onBFS}>B-F-S</button>
+        <h1 className="heading">Chief Complaint</h1>
 </div>
 
 

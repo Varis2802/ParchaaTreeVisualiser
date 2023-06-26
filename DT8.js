@@ -34,9 +34,9 @@ function DecisionTree({ data }) {
             e.animate({
               style: {
                 'line-color': '#c17d11',
-                'color': 'blue' // highlight edge text
+                'color': '#c17d11' // highlight edge text
               },
-              duration: 2000 // transition duration
+              duration: 500 // transition duration
             });
           }, i * 500);
         }
@@ -49,9 +49,9 @@ function DecisionTree({ data }) {
         node.animate({
           style: {
             'background-color': '#c17d11',
-            'color': 'blue' // highlight node text
+            'color': '#c17d11' // highlight node text
           },
-          duration: 2000 // transition duration
+          duration: 500 // transition duration
         });
         // Adjust view to current node
         cy.fit(node, 50); // fit view to current node with 50px padding
@@ -72,9 +72,9 @@ function DecisionTree({ data }) {
             e.animate({
               style: {
                 'line-color': '#c17d11',
-                'color': 'blue' // highlight edge text
+                'color': '#c17d11' // highlight edge text
               },
-              duration: 2000 // transition duration
+              duration: 500 // transition duration
             });
           }, i * 500);
         }
@@ -87,9 +87,9 @@ function DecisionTree({ data }) {
         node.animate({
           style: {
             'background-color': '#c17d11',
-            'color': 'blue' // highlight node text
+            'color': '#c17d11' // highlight node text
           },
-          duration: 2000 // transition duration
+          duration: 500 // transition duration
         });
         // Adjust view to current node
         cy.fit(node, 50); // fit view to current node with 50px padding
@@ -234,10 +234,9 @@ const getDescendants = (node) => {
           selector: "node",
           style: {
             "background-color": "#8eecf5",
-            "border-width": 1,
-            "border-color": "yellow",
+            "border-width": 2,
+            "border-color": "#ED2B2A",
             shape: "rectangle",
-            "shape-polygon-points":"none",
             "text-wrap": "wrap",
             "text-valign": "center",
             content: "data(label)",
@@ -268,12 +267,6 @@ const getDescendants = (node) => {
         "font-color":"#241E92"
           },
         },
-        {
-            selector: 'node[id = "root"]', // assuming 'root' is the id of root node
-            style: {
-              "background-color": "green", // set your desired color here
-            },
-          },
       ],
       layout: {
         name: "dagre",
