@@ -98,4 +98,12 @@
   text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
 }
 
-  
+#tooltip {
+  position: absolute;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  pointer-events: none;
+  display: none;
+}
