@@ -1,44 +1,49 @@
 /* Add a new CSS file or add these styles to an existing one */
 
-
+.main-container{
+  display: flex;
+  background: linear-gradient(-25deg, #E3FDF5 0%, #FFE6FA 100%);
+}
 .button-container {
   height: 55px;
-  width: 380px;
+  width: 450px;
   display: flex;
   align-items: flex-start;
   gap: 15px;
-  margin-top: 5px;
   margin-bottom: auto;
   padding-top: 5px;
   padding-left: 5px;
-  border: 2px solid black;
-  background-color: #8d99ae;
+  padding-right: 5px;
+  background: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%);
 }
 
 .button-container button {
   border: none;
-  border-radius: 50%; /* Set border-radius to 50% for round buttons */
+  border-radius: 8%; /* Set border-radius to 50% for round buttons */
   border-style: 1px solid;
-  background-color: #ff006e;
-   color: #ffffff;
-  font-size: 10px;
+  font-weight: bold !important;
+  background-image: linear-gradient( 135deg, #5EFCE8 10%, #736EFE 100%);
+   color: black;
+  font-size: 12px;
   cursor: pointer;
   transition: background-color 0.3s;
   height: 47px; /* Adjust the height to your desired value */
-  width: 50px;
+  width: auto;
 }
 
 .button-container button:hover {
-  background-color: #efff4a;
-  color: #000000; /* Add the desired text color when hovering */
-  font-style: italic;
+  background-image: linear-gradient( 135deg, #F761A1 10%, #8C1BAB 100%);
+  color: #ffffff; /* Add the desired text color when hovering */
+  font-style:italic;
+  font-family:monospace;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 14px;
+  transition-delay: 2s;
 }
 
 .heading {
   font-size: 24px; /* Adjust the font size to your desired value */
-  font-weight: bold;
+  font-weight: bold !important;
   color: #333333; /* Adjust the text color to your desired value */
   text-align: center;
   border: 2px solid #ff0909; /* Adjust the border styles to your desired appearance */
@@ -46,33 +51,34 @@
   border-radius: 5px; /* Adjust the border radius to your desired value */
   position: absolute;
   top: 30%; /* Position from the top */
-  left: 240%; /* Position from the left */
+  left: 200%; /* Position from the left */
   transform: translate(-50%, -50%); /* Center the element */
   white-space: nowrap; /* Prevent the text from wrapping to multiple lines */
   overflow: hidden; /* Hide any overflowing text */
   text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
 }
-.heading:hover{
+/* .heading:hover{
   background-image: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
   color: #ffffff; /* Add the desired text color when hovering */
-  font-style: italic;
+  /* font-style: italic;
   font-weight: bold;
-  font-size: 15px;
-}
+  font-size: 15px; */
 
 .dfs {
-  font-size: 11px !important; /* Adjust the font size to your desired value */
+  font-size: 13px !important; /* Adjust the font size to your desired value */
   font-weight: bold !important;
-  color: #ffffff !important; /* Adjust the text color to your desired value */
-  border-radius: 10px !important;
-  background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%) !important;
+  height: 40px !important;
+  width: auto !important;
+  color: #000000 !important; /* Adjust the text color to your desired value */
+  border-radius: 50% !important;
+  background-image: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%) !important;
   text-align: center;
-  border: 2px solid #000000 !important; /* Adjust the border styles to your desired appearance */
+  border: 2px solid palevioletred !important; /* Adjust the border styles to your desired appearance */
   padding: 5px; /* Adjust the padding to provide spacing within the border */
   border-radius: 5px; /* Adjust the border radius to your desired value */
   position: absolute;
-  top: 30%; /* Position from the top */
-  left: 410%; /* Position from the left */
+  top: 50%; /* Position from the top */
+  left: 340%; /* Position from the left */
   transform: translate(-50%, -50%); /* Center the element */
   white-space: nowrap; /* Prevent the text from wrapping to multiple lines */
   overflow: hidden; /* Hide any overflowing text */
@@ -80,18 +86,20 @@
 }
 
 .bfs {
-  font-size: 11px !important; /* Adjust the font size to your desired value */
+  font-size: 13px !important; /* Adjust the font size to your desired value */
   font-weight: bold !important; 
-  color: #ffffff !important; /* Adjust the text color to your desired value */
-  border-radius: 10px !important;
-  background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%) !important;
+  height: 40px !important;
+  width: auto !important;
+  color: #000000 !important; /* Adjust the text color to your desired value */
+  border-radius: 50% !important;
+  background-image: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%) !important;
   text-align: center;
-  border: 2px solid #000000 !important; /* Adjust the border styles to your desired appearance */
+  border: 2px solid palevioletred !important; /* Adjust the border styles to your desired appearance */
   padding: 5px; /* Adjust the padding to provide spacing within the border */
   border-radius: 5px; /* Adjust the border radius to your desired value */
   position: absolute;
-  top: 30%; /* Position from the top */
-  left: 425%; /* Position from the left */
+  top: 50%; /* Position from the top */
+  left: 352%; /* Position from the left */
   transform: translate(-50%, -50%); /* Center the element */
   white-space: nowrap; /* Prevent the text from wrapping to multiple lines */
   overflow: hidden; /* Hide any overflowing text */
@@ -106,4 +114,57 @@
   border-radius: 4px;
   pointer-events: none;
   display: none;
+}
+
+.logo-container {
+  height: 60px; /* Adjust according to the size of your logo */
+  width: 70px; /* Adjust according to the size of your logo */
+  padding: 0px;
+}
+
+.logo-container img {
+  max-height: 100%;
+  max-width: 110%;
+  object-fit:cover; /* Keep aspect ratio */
+}
+
+.undo{
+  font-size: 13px !important; /* Adjust the font size to your desired value */
+  font-weight: bold !important; 
+  height: 40px !important;
+  width: auto !important;
+  color: #000000 !important; /* Adjust the text color to your desired value */
+  border-radius: 50% !important;
+  background-image: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%) !important;
+  text-align: center;
+  border: 2px solid palevioletred !important; /* Adjust the border styles to your desired appearance */
+  padding: 5px; /* Adjust the padding to provide spacing within the border */
+  border-radius: 5px; /* Adjust the border radius to your desired value */
+  position: absolute;
+  top: 50%; /* Position from the top */
+  left: 364%; /* Position from the left */
+  transform: translate(-50%, -50%); /* Center the element */
+  white-space: nowrap; /* Prevent the text from wrapping to multiple lines */
+  overflow: hidden; /* Hide any overflowing text */
+  text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
+}
+.redo{
+  font-size: 13px !important; /* Adjust the font size to your desired value */
+  font-weight: bold !important; 
+  height: 40px !important;
+  width: auto !important;
+  color: #000000 !important; /* Adjust the text color to your desired value */
+  border-radius: 50% !important;
+  background-image: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%) !important;
+  text-align: center;
+  border: 2px solid palevioletred !important; /* Adjust the border styles to your desired appearance */
+  padding: 5px; /* Adjust the padding to provide spacing within the border */
+  border-radius: 5px; /* Adjust the border radius to your desired value */
+  position: absolute;
+  top: 50%; /* Position from the top */
+  left: 376%; /* Position from the left */
+  transform: translate(-50%, -50%); /* Center the element */
+  white-space: nowrap; /* Prevent the text from wrapping to multiple lines */
+  overflow: hidden; /* Hide any overflowing text */
+  text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
 }

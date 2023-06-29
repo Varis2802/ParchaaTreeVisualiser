@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import "./DecisionTree.css";
 import cytoscape from "cytoscape";
 import dagre from "cytoscape-dagre";
-import undoRedo from "cytoscape-undo-redo";
 import axios from "axios";
-import "./DecisionTree.css";
 import logo from './logo.png'; // Adjust path as needed
+import undoRedo from "cytoscape-undo-redo";
 
 cytoscape.use(dagre);
-cytoscape.use(undoRedo); // Register undoRedo extension
 
 function DecisionTree({ data }) {
-  const [ur, setUr] = useState(null);
   const cyRef = useRef(null);
   const [editingNode, setEditingNode] = useState(null);
   const [editingEdge, setEditingEdge] = useState(null);
@@ -183,8 +181,7 @@ function DecisionTree({ data }) {
   const onAddNode = async () => {
     const id = prompt("Enter node id:");
     const label = prompt("Enter node label:");
-    // Use ur.do() to perform an undoable action
-    ur.do("add", {
+    cy.add({
       group: "nodes",
       data: { id, label },
     });
@@ -194,8 +191,7 @@ function DecisionTree({ data }) {
   const onRemoveNode = async () => {
     const id = prompt("Enter node id to remove:");
     const nodeToRemove = cy.$id(id);
-    // Use ur.do() to perform an undoable action
-    ur.do("remove", nodeToRemove);
+    cy.remove(nodeToRemove);
     await saveGraphState();
   };
 
@@ -203,17 +199,15 @@ function DecisionTree({ data }) {
     const sourceId = prompt("Enter source node id:");
     const targetId = prompt("Enter target node id:");
     const label = prompt("Enter edge label:");
-    
-    ur.do('add', {
-        group: "edges",
-        data: {
-          id: `${sourceId}-${targetId}`,
-          source: sourceId,
-          target: targetId,
-          label,
-        },
+    cy.add({
+      group: "edges",
+      data: {
+        id: `${sourceId}-${targetId}`,
+        source: sourceId,
+        target: targetId,
+        label,
+      },
     });
-    
     await saveGraphState();
   };
 
@@ -223,14 +217,13 @@ function DecisionTree({ data }) {
     const edgeToRemove = cy.edges(
       `[source = "${sourceId}"][target = "${targetId}"]`
     );
-    
-    ur.do('remove', edgeToRemove);
+    cy.remove(edgeToRemove);
     await saveGraphState();
   };
 
   const onRemoveSelectedNode = async () => {
     if (removingNode) {
-      ur.do('remove', removingNode);
+      cy.remove(removingNode);
       setRemovingNode(null);
       await saveGraphState();
     }
@@ -238,12 +231,11 @@ function DecisionTree({ data }) {
 
   const onRemoveSelectedEdge = async () => {
     if (removingEdge) {
-      ur.do('remove', removingEdge);
+      cy.remove(removingEdge);
       setRemovingEdge(null);
       await saveGraphState();
     }
   };
-
   const handleNodeClick = useCallback((evt) => {
     const node = evt.target;
     const transitionDuration = 500; // 500ms transition duration, you can adjust this value
@@ -320,7 +312,7 @@ function DecisionTree({ data }) {
           style: {
             "background-color": "#A7ECEE",
             "border-width": 2,
-            "padding-left":10,
+            "padding-left":5,
             "border-color": "#820000",
             shape: "round-rectangle",
             "shape-polygon-points": "none",
@@ -379,9 +371,7 @@ function DecisionTree({ data }) {
       userPanningEnabled: true, // enable user panning
     });
     // After registering event handlers and other setup, add the following lines:
-    // Initialize undoRedo extension
-    const urInstance = cyInstance.undoRedo();
-    setUr(urInstance);
+    
     // Assuming your root node has id 'root'
     const rootNode = cyInstance.$id("Q1");
     if (rootNode) {
@@ -479,9 +469,7 @@ function DecisionTree({ data }) {
       console.error("Error sending data:", error);
     }
   };
-// Add undo and redo methods
-const onUndo = () => ur.undo();
-const onRedo = () => ur.redo();
+
   return (
     <div>
       <div className="main-container">
@@ -516,13 +504,11 @@ const onRedo = () => ur.redo();
         <button onClick={onRemoveSelectedEdge}>Remove Selected Edge</button>
         <h1 className="heading">HEADACHE</h1>
         <button className="dfs" onClick={onDFS}>
-          D-F-S
+          DFS Start
         </button>
         <button className="bfs" onClick={onBFS}>
-          B-F-S
+          BFS Start
         </button>
-        <button className="undo" onClick={onUndo}>Undo</button>
-        <button className="redo" onClick={onRedo}>Redo</button>
       </div>
       </div>
 
