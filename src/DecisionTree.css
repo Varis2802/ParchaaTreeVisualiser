@@ -168,3 +168,15 @@
   overflow: hidden; /* Hide any overflowing text */
   text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
 }
+.cy-panzoom {
+  position: absolute;
+  bottom: 70px;
+  right: -80px;
+  width: 150px !important; /* adjust this value to change the size */
+  height: 150px !important; /* adjust this value to change the size */
+  size: 100% !important;
+}
+
+
+
+

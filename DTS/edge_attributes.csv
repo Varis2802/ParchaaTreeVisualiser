@@ -1,0 +1,397 @@
+source,target,interaction,question,option
+Q1,Q2,Around the eyes or forehead,Where is the pain localized on your face?,Around the eyes or forehead
+Q1,Q3,Jaw or teeth,Where is the pain localized on your face?,Jaw or teeth
+Q1,Q4,Generalized or cannot specify,Where is the pain localized on your face?,Generalized or cannot specify
+Q2,Q5,Yes,"Is the pain accompanied by any of the following symptoms: nasal congestion, runny nose, reduced sense of smell, cough, or fever?",Yes
+Q2,Q6,No,"Is the pain accompanied by any of the following symptoms: nasal congestion, runny nose, reduced sense of smell, cough, or fever?",No
+Q3,Q7,Yes,"Is the pain sharp and severe, often described as a shooting pain?",Yes
+Q3,Q8,No,"Is the pain sharp and severe, often described as a shooting pain?",No
+Q4,Q9,Yes,Have you been experiencing stress or anxiety lately?,Yes
+Q4,Q10,No,Have you been experiencing stress or anxiety lately?,No
+Q5,Q11,Yes,"Have you recently had a cold, allergies, or been exposed to environmental irritants like smoke or dust?",Yes
+Q5,Q12,No,"Have you recently had a cold, allergies, or been exposed to environmental irritants like smoke or dust?",No
+Q6,Q13,Yes,Is the pain accompanied by visual disturbances or sensitivity to light?,Yes
+Q6,Q14,No,Is the pain accompanied by visual disturbances or sensitivity to light?,No
+Q7,Q15,Yes,Does the pain come and go in sudden bursts?,Yes
+Q7,Q16,No,Does the pain come and go in sudden bursts?,No
+Q8,Q17,Yes,Do you feel pain when you open your mouth or chew?,Yes
+Q8,Q18,No,Do you feel pain when you open your mouth or chew?,No
+Q9,Q19,Yes,Have you recently had any changes in your life that may have caused stress or anxiety?,Yes
+Q9,Q20,No,Have you recently had any changes in your life that may have caused stress or anxiety?,No
+Q10,Q21,Yes,Do you have any history of head injury or trauma?,Yes
+Q10,Q22,No,Do you have any history of head injury or trauma?,No
+Q11,Q23,Yes,Did these symptoms start after a cold or exposure to the irritant?,Yes
+Q11,Q24,No,Did these symptoms start after a cold or exposure to the irritant?,No
+Q12,Q25,Yes,Does the pain increase with exposure to light or sound?,Yes
+Q12,Q26,No,Does the pain increase with exposure to light or sound?,No
+Q13,Q27,Yes,Are these visual disturbances accompanied by nausea or vomiting?,Yes
+Q13,Q28,No,Are these visual disturbances accompanied by nausea or vomiting?,No
+Q14,Q29,Yes,"Does the pain come in episodes, possibly lasting from 15 minutes to three hours?",Yes
+Q14,Q30,No,"Does the pain come in episodes, possibly lasting from 15 minutes to three hours?",No
+Q15,Q31,Yes,Is the pain triggered by certain movements or activities such as speaking or eating?,Yes
+Q15,Q32,No,Is the pain triggered by certain movements or activities such as speaking or eating?,No
+Q16,Q33,Yes,"Have you noticed any swelling, lumps, or redness around the area of pain?",Yes
+Q16,Q34,No,"Have you noticed any swelling, lumps, or redness around the area of pain?",No
+Q17,Q35,Yes,Do you hear any clicking or popping sounds when you open your mouth?,Yes
+Q17,Q36,No,Do you hear any clicking or popping sounds when you open your mouth?,No
+Q18,Q37,Yes,Do you have a bad taste in your mouth or bad breath that doesn't go away with brushing?,Yes
+Q18,Q38,No,Do you have a bad taste in your mouth or bad breath that doesn't go away with brushing?,No
+Q19,Q39,Yes,Are your worries interfering with your daily life and unable to control?,Yes
+Q19,Q40,No,Are your worries interfering with your daily life and unable to control?,No
+Q20,Q41,Yes,Have you been recently diagnosed or treated for any neurological condition?,Yes
+Q20,Q42,No,Have you been recently diagnosed or treated for any neurological condition?,No
+Q21,Q43,Yes,Do you experience the pain immediately following a specific head movement or touch?,Yes
+Q21,Q44,No,Do you experience the pain immediately following a specific head movement or touch?,No
+Q22,Q45,Yes,"Have you experienced any unexplained weight loss, night sweats, or fevers?",Yes
+Q22,Q46,No,"Have you experienced any unexplained weight loss, night sweats, or fevers?",No
+Q23,Q47,Yes,Are your symptoms worse on one side of your face?,Yes
+Q23,Q48,No,Are your symptoms worse on one side of your face?,No
+Q24,Q49,Yes,Do you have any history of chronic headaches or migraines?,Yes
+Q24,Q50,No,Do you have any history of chronic headaches or migraines?,No
+Q25,Q51,Yes,"Does the pain occur in episodes, lasting for a few hours to several days?",Yes
+Q25,Q52,No,"Does the pain occur in episodes, lasting for a few hours to several days?",No
+Q26,Q53,Yes,"Do you feel the pain on one side of your face, often around the eye?",Yes
+Q26,Q54,No,"Do you feel the pain on one side of your face, often around the eye?",No
+Q27,Q55,Yes,Is the pain throbbing or pulsating?,Yes
+Q27,Q56,No,Is the pain throbbing or pulsating?,No
+Q28,Q57,Yes,Is the pain usually felt on one side of your head?,Yes
+Q28,Q58,No,Is the pain usually felt on one side of your head?,No
+Q29,Q59,Yes,"Do you have redness, swelling, or tearing in one or both of your eyes during these episodes?",Yes
+Q29,Q60,No,"Do you have redness, swelling, or tearing in one or both of your eyes during these episodes?",No
+Q30,Q61,Yes,Do you experience recurrent episodes of severe pain?,Yes
+Q30,Q62,No,Do you experience recurrent episodes of severe pain?,No
+Q31,Q63,Yes,Is the pain primarily in the lower part of your face?,Yes
+Q31,Q64,No,Is the pain primarily in the lower part of your face?,No
+Q32,Q65,Yes,Do you have a recent history of dental procedures or facial trauma?,Yes
+Q32,Q66,No,Do you have a recent history of dental procedures or facial trauma?,No
+Q33,Q67,Yes,"Is the swelling warm, red, or painful to touch?",Yes
+Q33,Q68,No,"Is the swelling warm, red, or painful to touch?",No
+Q34,Q69,Yes,Do you have a rash or skin changes in the area of the pain?,Yes
+Q34,Q70,No,Do you have a rash or skin changes in the area of the pain?,No
+Q35,Q71,Yes,Have you experienced any recent trauma to your jaw or teeth?,Yes
+Q35,Q72,No,Have you experienced any recent trauma to your jaw or teeth?,No
+Q36,Q73,Yes,Do you have difficulty in opening your mouth wide?,Yes
+Q36,Q74,No,Do you have difficulty in opening your mouth wide?,No
+Q37,Q75,Yes,"Are you experiencing fever, sensitivity to hot or cold foods, or swelling in the face or cheek?",Yes
+Q37,Q76,No,"Are you experiencing fever, sensitivity to hot or cold foods, or swelling in the face or cheek?",No
+Q38,Q77,Yes,Is the pain related to a specific tooth or area in your mouth?,Yes
+Q38,Q78,No,Is the pain related to a specific tooth or area in your mouth?,No
+Q39,Q79,Yes,"Are you feeling restless, wound-up, or on edge?",Yes
+Q39,Q80,No,"Are you feeling restless, wound-up, or on edge?",No
+Q40,Q81,Yes,Are there any triggers you've noticed that bring about your face pain?,Yes
+Q40,Q82,No,Are there any triggers you've noticed that bring about your face pain?,No
+Q41,Q83,Yes,"Is the pain occurring in episodes, with periods of remission in between?",Yes
+Q41,Q84,No,"Is the pain occurring in episodes, with periods of remission in between?",No
+Q42,Q85,Yes,Do you have a family history of neurological disorders or face pain?,Yes
+Q42,Q86,No,Do you have a family history of neurological disorders or face pain?,No
+Q43,Q87,Yes,Are you experiencing other neurological symptoms such as numbness or weakness in parts of your face?,Yes
+Q43,Q88,No,Are you experiencing other neurological symptoms such as numbness or weakness in parts of your face?,No
+Q44,Q89,Yes,Have you experienced any recent changes in your hearing or vision?,Yes
+Q44,Q90,No,Have you experienced any recent changes in your hearing or vision?,No
+Q45,Q91,Yes,Have you been feeling fatigued or generally unwell?,Yes
+Q45,Q92,No,Have you been feeling fatigued or generally unwell?,No
+Q46,Q93,Yes,Are there any other symptoms associated with your face pain?,Yes
+Q46,Q94,No,Are there any other symptoms associated with your face pain?,No
+Q47,Q95,Yes,"Do you have a fever, runny or stuffy nose?",Yes
+Q47,Q96,No,"Do you have a fever, runny or stuffy nose?",No
+Q48,Q97,Yes,Does the face pain occur simultaneously with the other symptoms?,Yes
+Q48,Q98,No,Does the face pain occur simultaneously with the other symptoms?,No
+Q49,Q99,Yes,"Have you noticed any patterns or triggers for your headaches, such as certain foods, stress, or changes in sleep?",Yes
+Q49,Q100,No,"Have you noticed any patterns or triggers for your headaches, such as certain foods, stress, or changes in sleep?",No
+Q50,Q101,Yes,Does the pain radiate to any other part of your head or body?,Yes
+Q50,Q102,No,Does the pain radiate to any other part of your head or body?,No
+Q51,Q103,Yes,Is the headache pain typically on one side?,Yes
+Q51,Q104,No,Is the headache pain typically on one side?,No
+Q52,Q105,Yes,Have you experienced any changes in your mood or behavior?,Yes
+Q52,Q106,No,Have you experienced any changes in your mood or behavior?,No
+Q53,Q107,Yes,Does the pain increase with physical activity?,Yes
+Q53,Q108,No,Does the pain increase with physical activity?,No
+Q54,Q109,Yes,Do you have any family history of cluster headaches?,Yes
+Q54,Q110,No,Do you have any family history of cluster headaches?,No
+Q55,Q111,Yes,Do you notice any visual disturbances or sensitivity to light?,Yes
+Q55,Q112,No,Do you notice any visual disturbances or sensitivity to light?,No
+Q56,Q113,Yes,Does the headache affect your ability to function normally?,Yes
+Q56,Q114,No,Does the headache affect your ability to function normally?,No
+Q57,Q115,Yes,Do the headaches often occur at the same time each day?,Yes
+Q57,Q116,No,Do the headaches often occur at the same time each day?,No
+Q58,Q117,Yes,Do the headaches come on suddenly?,Yes
+Q58,Q118,No,Do the headaches come on suddenly?,No
+Q59,Q119,Yes,Is the pain sharp and stabbing?,Yes
+Q59,Q120,No,Is the pain sharp and stabbing?,No
+Q60,Q121,Yes,Does the pain occur more frequently at night?,Yes
+Q60,Q122,No,Does the pain occur more frequently at night?,No
+Q61,Q123,Yes,Is the pain triggered by certain movements or activities such as speaking or eating?,Yes
+Q61,Q124,No,Is the pain triggered by certain movements or activities such as speaking or eating?,No
+Q62,Q125,Yes,Are you experiencing any numbness or tingling in your face?,Yes
+Q62,Q126,No,Are you experiencing any numbness or tingling in your face?,No
+Q63,Q127,Yes,Do you experience pain when chewing or opening your mouth wide?,Yes
+Q63,Q128,No,Do you experience pain when chewing or opening your mouth wide?,No
+Q64,Q129,Yes,Do you have any history of sinus problems?,Yes
+Q64,Q130,No,Do you have any history of sinus problems?,No
+Q65,Q131,Yes,Did the pain start after the procedure or trauma?,Yes
+Q65,Q132,No,Did the pain start after the procedure or trauma?,No
+Q66,Q133,Yes,Have you been experiencing difficulty swallowing or speaking?,Yes
+Q66,Q134,No,Have you been experiencing difficulty swallowing or speaking?,No
+Q67,Q135,Yes,Is there any discharge or pus from the area?,Yes
+Q67,Q136,No,Is there any discharge or pus from the area?,No
+Q68,Q137,Yes,Is there any discomfort or pain in your eyes?,Yes
+Q68,Q138,No,Is there any discomfort or pain in your eyes?,No
+Q69,Q139,Yes,Did the rash or skin changes occur before the face pain?,Yes
+Q69,Q140,No,Did the rash or skin changes occur before the face pain?,No
+Q70,Q141,Yes,Do you have a fever or feel generally unwell?,Yes
+Q70,Q142,No,Do you have a fever or feel generally unwell?,No
+Q71,Q143,Yes,Did the pain start after the trauma?,Yes
+Q71,Q144,No,Did the pain start after the trauma?,No
+Q72,Q145,Yes,Do you notice a clicking or popping sound when you open or close your mouth?,Yes
+Q72,Q146,No,Do you notice a clicking or popping sound when you open or close your mouth?,No
+Q73,Q147,Yes,Do you feel a grinding sensation in your jaw joint?,Yes
+Q73,Q148,No,Do you feel a grinding sensation in your jaw joint?,No
+Q74,Q149,Yes,Do you have a history of arthritis or other joint problems?,Yes
+Q74,Q150,No,Do you have a history of arthritis or other joint problems?,No
+Q75,Q151,Yes,Do you have a history of recent dental work?,Yes
+Q75,Q152,No,Do you have a history of recent dental work?,No
+Q76,Q153,Yes,Do you have a history of recent dental work?,Yes
+Q76,Q154,No,Do you have a history of recent dental work?,No
+Q77,Q155,Yes,Does the tooth feel loose or move when you touch it?,Yes
+Q77,Q156,No,Does the tooth feel loose or move when you touch it?,No
+Q78,Q157,Yes,Do you notice any pain or sensitivity when eating or drinking hot or cold foods and beverages?,Yes
+Q78,Q158,No,Do you notice any pain or sensitivity when eating or drinking hot or cold foods and beverages?,No
+Q79,Q159,Yes,Have you been experiencing sleep disturbances?,Yes
+Q79,Q160,No,Have you been experiencing sleep disturbances?,No
+Q80,Q161,Yes,Do you often worry excessively about different things?,Yes
+Q80,Q162,No,Do you often worry excessively about different things?,No
+Q81,Q163,Yes,Are these triggers related to certain activities or environments?,Yes
+Q81,Q164,No,Are these triggers related to certain activities or environments?,No
+Q82,Q165,Yes,Does the pain occur randomly without any identifiable triggers?,Yes
+Q82,Q166,No,Does the pain occur randomly without any identifiable triggers?,No
+Q83,Q167,Less than a few minutes,How long do these episodes typically last?,Less than a few minutes
+Q83,Q168,Few minutes to an hour,How long do these episodes typically last?,Few minutes to an hour
+Q83,Q169,Several hours,How long do these episodes typically last?,Several hours
+Q83,Q170,More than a day,How long do these episodes typically last?,More than a day
+Q84,Q171,Constant,Is the pain constant or does it fluctuate in intensity?,Constant
+Q84,Q172,Fluctuates,Is the pain constant or does it fluctuate in intensity?,Fluctuates
+Q85,Q173,"Neurodegenerative diseases (like Alzheimer’s, Parkinson’s, etc.)",What kind of neurological disorders are present in your family?,"Neurodegenerative diseases (like Alzheimer’s, Parkinson’s, etc.)"
+Q85,Q174,Migraines or other headache disorders,What kind of neurological disorders are present in your family?,Migraines or other headache disorders
+Q85,Q175,Seizure disorders (like epilepsy),What kind of neurological disorders are present in your family?,Seizure disorders (like epilepsy)
+Q85,Q176,Stroke or transient ischemic attacks,What kind of neurological disorders are present in your family?,Stroke or transient ischemic attacks
+Q85,Q177,None/Don't know,What kind of neurological disorders are present in your family?,None/Don't know
+Q86,Q178,Yes,Have you had any recent tests or imaging studies for your symptoms?,Yes
+Q86,Q179,No,Have you had any recent tests or imaging studies for your symptoms?,No
+Q87,Q180,Yes,Do these symptoms affect one side of your face more than the other?,Yes
+Q87,Q181,No,Do these symptoms affect one side of your face more than the other?,No
+Q88,Q182,Yes,Have you had any recent injuries or trauma to your face?,Yes
+Q88,Q183,No,Have you had any recent injuries or trauma to your face?,No
+Q89,Q184,Yes,"Do you have any eye redness, pain, or visual changes?",Yes
+Q89,Q185,No,"Do you have any eye redness, pain, or visual changes?",No
+Q90,Q186,Yes,Have you experienced any ringing in your ears or hearing loss?,Yes
+Q90,Q187,No,Have you experienced any ringing in your ears or hearing loss?,No
+Q91,Q188,Yes,Have you lost weight without trying?,Yes
+Q91,Q189,No,Have you lost weight without trying?,No
+Q92,Q190,Yes,Do you have a family history of kidney diseases?,Yes
+Q92,Q191,No,Do you have a family history of kidney diseases?,No
+Q93,Q192,Yes,Have you noticed any changes in the amount or color of your urine?,Yes
+Q93,Q193,No,Have you noticed any changes in the amount or color of your urine?,No
+Q94,Q194,Yes,Do you have high blood pressure?,Yes
+Q94,Q195,No,Do you have high blood pressure?,No
+Q95,ho1,Yes,Have you noticed any change in your bowel habits?,Yes
+Q95,hp1,No,Have you noticed any change in your bowel habits?,No
+Q96,hq1,Yes,Are you experiencing any abdominal pain or discomfort?,Yes
+Q96,hr1,No,Are you experiencing any abdominal pain or discomfort?,No
+Q97,hs1,Yes,Do you have a history of gastrointestinal disorders?,Yes
+Q97,ht1,No,Do you have a history of gastrointestinal disorders?,No
+Q98,hu1,Yes,Do you have a history of neurological disorders?,Yes
+Q98,hv1,No,Do you have a history of neurological disorders?,No
+Q99,hw1,Yes,Have you been diagnosed with diabetes?,Yes
+Q99,hx1,No,Have you been diagnosed with diabetes?,No
+Q100,hy1,Yes,Do you have a history of alcohol or drug abuse?,Yes
+Q100,hz1,No,Do you have a history of alcohol or drug abuse?,No
+Q101,ia1,Yes,Have you recently started any new medications or treatments?,Yes
+Q101,ib1,No,Have you recently started any new medications or treatments?,No
+Q102,ic1,Yes,Have you recently undergone any medical procedures or surgeries?,Yes
+Q102,id1,No,Have you recently undergone any medical procedures or surgeries?,No
+Q103,ie1,Yes,Have you recently experienced any stress or trauma?,Yes
+Q103,if1,No,Have you recently experienced any stress or trauma?,No
+Q104,ig1,Yes,Do you have a history of psychiatric disorders?,Yes
+Q104,ih1,No,Do you have a history of psychiatric disorders?,No
+Q105,ii1,Yes,Have you been feeling anxious or depressed?,Yes
+Q105,ij1,No,Have you been feeling anxious or depressed?,No
+Q106,ik1,Yes,"Do you frequently use any substances like tobacco, alcohol, or recreational drugs?",Yes
+Q106,il1,No,"Do you frequently use any substances like tobacco, alcohol, or recreational drugs?",No
+Q107,im1,Yes,Do you have any known allergies?,Yes
+Q107,in1,No,Do you have any known allergies?,No
+Q108,io1,Yes,Have you recently changed your diet or started any new medications?,Yes
+Q108,ip1,No,Have you recently changed your diet or started any new medications?,No
+Q109,iq1,Yes,Do you have a history of immunological disorders or autoimmune diseases?,Yes
+Q109,ir1,No,Do you have a history of immunological disorders or autoimmune diseases?,No
+Q110,is1,Yes,Have you recently traveled to any tropical regions or areas with poor sanitation?,Yes
+Q110,it1,No,Have you recently traveled to any tropical regions or areas with poor sanitation?,No
+Q111,iu1,Yes,Do you have a history of lung diseases?,Yes
+Q111,iv1,No,Do you have a history of lung diseases?,No
+Q112,iw1,Yes,Have you recently been exposed to any infectious diseases?,Yes
+Q112,ix1,No,Have you recently been exposed to any infectious diseases?,No
+Q113,iy1,Yes,Have you recently started any new medications or treatments?,Yes
+Q113,iz1,No,Have you recently started any new medications or treatments?,No
+Q114,ja1,Yes,Do you have a family history of skin diseases?,Yes
+Q114,jb1,No,Do you have a family history of skin diseases?,No
+Q115,jc1,Yes,Have you noticed any changes in your skin?,Yes
+Q115,jd1,No,Have you noticed any changes in your skin?,No
+Q116,je1,Yes,Do you have a history of skin diseases or conditions?,Yes
+Q116,jf1,No,Do you have a history of skin diseases or conditions?,No
+Q117,jg1,Yes,Have you been diagnosed with any neurological disorders?,Yes
+Q117,jh1,No,Have you been diagnosed with any neurological disorders?,No
+Q118,ji1,Yes,Do you have a history of Parkinson’s disease or other movement disorders?,Yes
+Q118,jj1,No,Do you have a history of Parkinson’s disease or other movement disorders?,No
+Q119,jk1,Yes,Have you been experiencing any muscle weakness or tremors?,Yes
+Q119,jl1,No,Have you been experiencing any muscle weakness or tremors?,No
+Q120,jm1,Yes,Have you recently started any new medications or treatments?,Yes
+Q120,jn1,No,Have you recently started any new medications or treatments?,No
+Q121,jo1,Yes,Do you have a history of autoimmune diseases?,Yes
+Q121,jp1,No,Do you have a history of autoimmune diseases?,No
+Q122,jq1,Yes,Do you have a family history of neurological disorders?,Yes
+Q122,jr1,No,Do you have a family history of neurological disorders?,No
+Q123,js1,Yes,Have you been feeling fatigued or lethargic?,Yes
+Q123,jt1,No,Have you been feeling fatigued or lethargic?,No
+Q124,ju1,Yes,Do you have a history of kidney diseases?,Yes
+Q124,jv1,No,Do you have a history of kidney diseases?,No
+Q125,jw1,Yes,Have you noticed any blood in your urine?,Yes
+Q125,jx1,No,Have you noticed any blood in your urine?,No
+Q126,jy1,Yes,Do you have a history of urinary tract infections or bladder problems?,Yes
+Q126,jz1,No,Do you have a history of urinary tract infections or bladder problems?,No
+Q127,ka1,Yes,Have you been diagnosed with any cardiovascular diseases?,Yes
+Q127,kb1,No,Have you been diagnosed with any cardiovascular diseases?,No
+Q128,kc1,Yes,Do you have a history of high blood pressure?,Yes
+Q128,kd1,No,Do you have a history of high blood pressure?,No
+Q129,ke1,Yes,Do you experience any unusual heartbeat patterns?,Yes
+Q129,kf1,No,Do you experience any unusual heartbeat patterns?,No
+Q130,kg1,Yes,Do you have a family history of heart diseases?,Yes
+Q130,kh1,No,Do you have a family history of heart diseases?,No
+Q131,ki1,Yes,Have you recently started any new medications or treatments?,Yes
+Q131,kj1,No,Have you recently started any new medications or treatments?,No
+Q132,kk1,Yes,Do you have a history of heart diseases?,Yes
+Q132,kl1,No,Do you have a history of heart diseases?,No
+Q133,km1,Yes,Have you been feeling dizzy or lightheaded?,Yes
+Q133,kn1,No,Have you been feeling dizzy or lightheaded?,No
+Q134,ko1,Yes,Do you have a history of vascular diseases or conditions?,Yes
+Q134,kp1,No,Do you have a history of vascular diseases or conditions?,No
+Q135,kq1,Yes,Have you recently experienced any trauma or injury?,Yes
+Q135,kr1,No,Have you recently experienced any trauma or injury?,No
+Q136,ks1,Yes,Do you have a history of clotting disorders?,Yes
+Q136,kt1,No,Do you have a history of clotting disorders?,No
+Q137,ku1,Yes,Have you recently undergone any surgeries or procedures?,Yes
+Q137,kv1,No,Have you recently undergone any surgeries or procedures?,No
+Q138,kw1,Yes,Do you have a history of cancer?,Yes
+Q138,kx1,No,Do you have a history of cancer?,No
+Q139,ky1,Yes,Have you noticed any abnormal growths or changes in your skin?,Yes
+Q139,kz1,No,Have you noticed any abnormal growths or changes in your skin?,No
+Q140,la1,Yes,Do you have a family history of cancer?,Yes
+Q140,lb1,No,Do you have a family history of cancer?,No
+Q141,lc1,Yes,Do you have a history of gastrointestinal disorders?,Yes
+Q141,ld1,No,Do you have a history of gastrointestinal disorders?,No
+Q142,le1,Yes,Have you noticed any changes in your bowel habits?,Yes
+Q142,lf1,No,Have you noticed any changes in your bowel habits?,No
+Q143,lg1,Yes,Do you have a history of throat disorders or conditions?,Yes
+Q143,lh1,No,Do you have a history of throat disorders or conditions?,No
+Q144,li1,Yes,Have you recently started any new medications or treatments?,Yes
+Q144,lj1,No,Have you recently started any new medications or treatments?,No
+Q145,lk1,Yes,Do you have a history of eye diseases or conditions?,Yes
+Q145,ll1,No,Do you have a history of eye diseases or conditions?,No
+Q146,lm1,Yes,Have you been diagnosed with any autoimmune diseases?,Yes
+Q146,ln1,No,Have you been diagnosed with any autoimmune diseases?,No
+Q147,lo1,Yes,Do you have a history of sinusitis?,Yes
+Q147,lp1,No,Do you have a history of sinusitis?,No
+Q148,lq1,Yes,Have you recently started any new medications or treatments?,Yes
+Q148,lr1,No,Have you recently started any new medications or treatments?,No
+Q149,ls1,Yes,Do you have a history of skin diseases or conditions?,Yes
+Q149,lt1,No,Do you have a history of skin diseases or conditions?,No
+Q150,lu1,Yes,Have you noticed any changes in your skin?,Yes
+Q150,lv1,No,Have you noticed any changes in your skin?,No
+Q151,lw1,Yes,Have you recently undergone any surgeries or procedures?,Yes
+Q151,lx1,No,Have you recently undergone any surgeries or procedures?,No
+Q152,ly1,Yes,Do you have a history of infections?,Yes
+Q152,lz1,No,Do you have a history of infections?,No
+Q153,ma1,Yes,Have you been diagnosed with any autoimmune diseases?,Yes
+Q153,mb1,No,Have you been diagnosed with any autoimmune diseases?,No
+Q154,mc1,Yes,Do you have a history of ear diseases or conditions?,Yes
+Q154,md1,No,Do you have a history of ear diseases or conditions?,No
+Q155,me1,Yes,Have you recently started any new medications or treatments?,Yes
+Q155,mf1,No,Have you recently started any new medications or treatments?,No
+Q156,mg1,Yes,Do you have a history of sinusitis?,Yes
+Q156,mh1,No,Do you have a history of sinusitis?,No
+Q157,mi1,Yes,Do you have a history of throat disorders or conditions?,Yes
+Q157,mj1,No,Do you have a history of throat disorders or conditions?,No
+Q158,mk1,Yes,Have you recently started any new medications or treatments?,Yes
+Q158,ml1,No,Have you recently started any new medications or treatments?,No
+Q159,mm1,Yes,Do you have a history of neck or spine disorders?,Yes
+Q159,mn1,No,Do you have a history of neck or spine disorders?,No
+Q160,mo1,Yes,Have you recently experienced any trauma or injury?,Yes
+Q160,mp1,No,Have you recently experienced any trauma or injury?,No
+Q161,mq1,Yes,Do you have a history of throat disorders or conditions?,Yes
+Q161,mr1,No,Do you have a history of throat disorders or conditions?,No
+Q162,ms1,Yes,Have you recently started any new medications or treatments?,Yes
+Q162,mt1,No,Have you recently started any new medications or treatments?,No
+Q163,mu1,Yes,Do you have a history of sinusitis?,Yes
+Q163,mv1,No,Do you have a history of sinusitis?,No
+Q164,mw1,Yes,Do you have a history of infections?,Yes
+Q164,mx1,No,Do you have a history of infections?,No
+Q165,my1,Yes,Have you been diagnosed with any autoimmune diseases?,Yes
+Q165,mz1,No,Have you been diagnosed with any autoimmune diseases?,No
+Q166,na1,Yes,Do you have a history of eye diseases or conditions?,Yes
+Q166,nb1,No,Do you have a history of eye diseases or conditions?,No
+Q167,nc1,Yes,Have you recently started any new medications or treatments?,Yes
+Q167,nd1,No,Have you recently started any new medications or treatments?,No
+Q168,ne1,Yes,Do you have a history of ear diseases or conditions?,Yes
+Q168,nf1,No,Do you have a history of ear diseases or conditions?,No
+Q169,ng1,Yes,Do you have a history of neck or spine disorders?,Yes
+Q169,nh1,No,Do you have a history of neck or spine disorders?,No
+Q170,ni1,Yes,Have you recently experienced any trauma or injury?,Yes
+Q170,nj1,No,Have you recently experienced any trauma or injury?,No
+Q171,nk1,Yes,Do you have a history of throat disorders or conditions?,Yes
+Q171,nl1,No,Do you have a history of throat disorders or conditions?,No
+Q172,nm1,Yes,Have you recently started any new medications or treatments?,Yes
+Q172,nn1,No,Have you recently started any new medications or treatments?,No
+Q173,no1,Yes,Do you have a history of sinusitis?,Yes
+Q173,np1,No,Do you have a history of sinusitis?,No
+Q174,nq1,Yes,Do you have a history of infections?,Yes
+Q174,nr1,No,Do you have a history of infections?,No
+Q175,ns1,Yes,Have you been diagnosed with any autoimmune diseases?,Yes
+Q175,nt1,No,Have you been diagnosed with any autoimmune diseases?,No
+Q176,nu1,Yes,Do you have a history of eye diseases or conditions?,Yes
+Q176,nv1,No,Do you have a history of eye diseases or conditions?,No
+Q177,nw1,Yes,Have you recently started any new medications or treatments?,Yes
+Q177,nx1,No,Have you recently started any new medications or treatments?,No
+Q178,ny1,Yes,Do you have a history of ear diseases or conditions?,Yes
+Q178,nz1,No,Do you have a history of ear diseases or conditions?,No
+Q179,oa1,Yes,Do you have a history of neck or spine disorders?,Yes
+Q179,ob1,No,Do you have a history of neck or spine disorders?,No
+Q180,oc1,Yes,Have you recently experienced any trauma or injury?,Yes
+Q180,od1,No,Have you recently experienced any trauma or injury?,No
+Q181,oe1,Yes,Do you have a history of throat disorders or conditions?,Yes
+Q181,of1,No,Do you have a history of throat disorders or conditions?,No
+Q182,og1,Yes,Have you recently started any new medications or treatments?,Yes
+Q182,oh1,No,Have you recently started any new medications or treatments?,No
+Q183,oi1,Yes,Do you have a history of sinusitis?,Yes
+Q183,oj1,No,Do you have a history of sinusitis?,No
+Q184,ok1,Yes,Do you have a history of infections?,Yes
+Q184,ol1,No,Do you have a history of infections?,No
+Q185,om1,Yes,Have you been diagnosed with any autoimmune diseases?,Yes
+Q185,on1,No,Have you been diagnosed with any autoimmune diseases?,No
+Q186,oo1,Yes,Do you have a history of eye diseases or conditions?,Yes
+Q186,op1,No,Do you have a history of eye diseases or conditions?,No
+Q187,oq1,Yes,Have you recently started any new medications or treatments?,Yes
+Q187,or1,No,Have you recently started any new medications or treatments?,No
+Q188,os1,Yes,Do you have a history of ear diseases or conditions?,Yes
+Q188,ot1,No,Do you have a history of ear diseases or conditions?,No
+Q189,ou1,Yes,Do you have a history of neck or spine disorders?,Yes
+Q189,ov1,No,Do you have a history of neck or spine disorders?,No
+Q190,ow1,Yes,Have you recently experienced any trauma or injury?,Yes
+Q190,ox1,No,Have you recently experienced any trauma or injury?,No
+Q191,oy1,Yes,Do you have a history of throat disorders or conditions?,Yes
+Q191,oz1,No,Do you have a history of throat disorders or conditions?,No
+Q192,pa1,Yes,Have you recently started any new medications or treatments?,Yes
+Q192,pb1,No,Have you recently started any new medications or treatments?,No
+Q193,pc1,Yes,Do you have a history of sinusitis?,Yes
+Q193,pd1,No,Do you have a history of sinusitis?,No
+Q194,pe1,Yes,Do you have a history of infections?,Yes
+Q194,pf1,No,Do you have a history of infections?,No
+Q195,pg1,Yes,Have you been diagnosed with any autoimmune diseases?,Yes
+Q195,ph1,No,Have you been diagnosed with any autoimmune diseases?,No
