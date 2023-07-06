@@ -1,110 +1,3 @@
-/* Add a new CSS file or add these styles to an existing one */
-
-.main-container{
-  display: flex;
-  background: linear-gradient(-25deg, #E3FDF5 0%, #FFE6FA 100%);
-}
-.button-container {
-  height: 55px;
-  width: 450px;
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  margin-bottom: auto;
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  background: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%);
-}
-
-.button-container button {
-  border: none;
-  border-radius: 8%; /* Set border-radius to 50% for round buttons */
-  border-style: 1px solid;
-  font-weight: bold !important;
-  background-image: linear-gradient( 135deg, #5EFCE8 10%, #736EFE 100%);
-   color: black;
-  font-size: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  height: 47px; /* Adjust the height to your desired value */
-  width: auto;
-}
-
-.button-container button:hover {
-  background-image: linear-gradient( 135deg, #F761A1 10%, #8C1BAB 100%);
-  color: #ffffff; /* Add the desired text color when hovering */
-  font-style:italic;
-  font-family:monospace;
-  font-weight: bold;
-  font-size: 14px;
-  transition-delay: 2s;
-}
-
-.heading {
-  font-size: 24px; /* Adjust the font size to your desired value */
-  font-weight: bold !important;
-  color: #333333; /* Adjust the text color to your desired value */
-  text-align: center;
-  border: 2px solid #ff0909; /* Adjust the border styles to your desired appearance */
-  padding: 5px; /* Adjust the padding to provide spacing within the border */
-  border-radius: 5px; /* Adjust the border radius to your desired value */
-  position: absolute;
-  top: 30%; /* Position from the top */
-  left: 200%; /* Position from the left */
-  transform: translate(-50%, -50%); /* Center the element */
-  white-space: nowrap; /* Prevent the text from wrapping to multiple lines */
-  overflow: hidden; /* Hide any overflowing text */
-  text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
-}
-/* .heading:hover{
-  background-image: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
-  color: #ffffff; /* Add the desired text color when hovering */
-  /* font-style: italic;
-  font-weight: bold;
-  font-size: 15px; */
-
-.dfs {
-  font-size: 13px !important; /* Adjust the font size to your desired value */
-  font-weight: bold !important;
-  height: 40px !important;
-  width: auto !important;
-  color: #000000 !important; /* Adjust the text color to your desired value */
-  border-radius: 50% !important;
-  background-image: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%) !important;
-  text-align: center;
-  border: 2px solid palevioletred !important; /* Adjust the border styles to your desired appearance */
-  padding: 5px; /* Adjust the padding to provide spacing within the border */
-  border-radius: 5px; /* Adjust the border radius to your desired value */
-  position: absolute;
-  top: 50%; /* Position from the top */
-  left: 340%; /* Position from the left */
-  transform: translate(-50%, -50%); /* Center the element */
-  white-space: nowrap; /* Prevent the text from wrapping to multiple lines */
-  overflow: hidden; /* Hide any overflowing text */
-  text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
-}
-
-.bfs {
-  font-size: 13px !important; /* Adjust the font size to your desired value */
-  font-weight: bold !important; 
-  height: 40px !important;
-  width: auto !important;
-  color: #000000 !important; /* Adjust the text color to your desired value */
-  border-radius: 50% !important;
-  background-image: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%) !important;
-  text-align: center;
-  border: 2px solid palevioletred !important; /* Adjust the border styles to your desired appearance */
-  padding: 5px; /* Adjust the padding to provide spacing within the border */
-  border-radius: 5px; /* Adjust the border radius to your desired value */
-  position: absolute;
-  top: 50%; /* Position from the top */
-  left: 352%; /* Position from the left */
-  transform: translate(-50%, -50%); /* Center the element */
-  white-space: nowrap; /* Prevent the text from wrapping to multiple lines */
-  overflow: hidden; /* Hide any overflowing text */
-  text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
-}
 
 #tooltip {
   position: absolute;
@@ -117,66 +10,192 @@
 }
 
 .logo-container {
-  height: 60px; /* Adjust according to the size of your logo */
-  width: 70px; /* Adjust according to the size of your logo */
-  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* space between the elements */
+  padding: 20px; /* space around the container */
 }
 
 .logo-container img {
-  max-height: 100%;
-  max-width: 110%;
-  object-fit:cover; /* Keep aspect ratio */
+  /* max-height: 1200px; */
+  width: 200px;
+  object-fit: cover; /* Keep aspect ratio */
+  border-radius: 10%; /* rounded corners */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* shadow effect */
 }
 
-.undo{
-  font-size: 13px !important; /* Adjust the font size to your desired value */
-  font-weight: bold !important; 
-  height: 40px !important;
-  width: auto !important;
-  color: #000000 !important; /* Adjust the text color to your desired value */
-  border-radius: 50% !important;
-  background-image: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%) !important;
-  text-align: center;
-  border: 2px solid palevioletred !important; /* Adjust the border styles to your desired appearance */
-  padding: 5px; /* Adjust the padding to provide spacing within the border */
-  border-radius: 5px; /* Adjust the border radius to your desired value */
-  position: absolute;
-  top: 50%; /* Position from the top */
-  left: 364%; /* Position from the left */
-  transform: translate(-50%, -50%); /* Center the element */
-  white-space: nowrap; /* Prevent the text from wrapping to multiple lines */
-  overflow: hidden; /* Hide any overflowing text */
-  text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
-}
-.redo{
-  font-size: 13px !important; /* Adjust the font size to your desired value */
-  font-weight: bold !important; 
-  height: 40px !important;
-  width: auto !important;
-  color: #000000 !important; /* Adjust the text color to your desired value */
-  border-radius: 50% !important;
-  background-image: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%) !important;
-  text-align: center;
-  border: 2px solid palevioletred !important; /* Adjust the border styles to your desired appearance */
-  padding: 5px; /* Adjust the padding to provide spacing within the border */
-  border-radius: 5px; /* Adjust the border radius to your desired value */
-  position: absolute;
-  top: 50%; /* Position from the top */
-  left: 376%; /* Position from the left */
-  transform: translate(-50%, -50%); /* Center the element */
-  white-space: nowrap; /* Prevent the text from wrapping to multiple lines */
-  overflow: hidden; /* Hide any overflowing text */
-  text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
-}
-.cy-panzoom {
-  position: absolute;
-  bottom: 70px;
-  right: -80px;
-  width: 150px !important; /* adjust this value to change the size */
-  height: 150px !important; /* adjust this value to change the size */
-  size: 100% !important;
+.drop-down {
+  width: 251px;
+  height: 43px;
+  border-radius: 8px;
+  border: 1px solid rgba(75, 106, 245, 0.33);
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.chief-complaint{
+  width:"100%";
+  height: "100%";
+}
+
+
+
+.search-box {
+  width: 251px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid rgba(75, 106, 245, 0.33);
+  background: #FFF;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-box input {
+  /* Add any additional styles for the input element if needed */
+  width: 241px;
+  height: 35px;
+  color: #4A68F1;
+  border: none;
+  text-align: center;
+   
+}
+.search-box ::placeholder{
+  color: #4A68F1;
+  font-size: 16px;
+}
+
+.search-button {
+  width: 115px;
+  height: 47px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #4A68F1;
+  box-shadow: -2px 0px 3px 0px rgba(0, 0, 0, 0.24);
+  margin-bottom: 35px;
+}
+
+.search-button button {
+  /* Add any additional styles for the button element if needed */
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+  background: none;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.line1 {
+  width: 205px;
+  height: 0px;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.26);
+  place-items: center;
+  margin-top: 10px;
+}
+
+.section1-button-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 16px;
+  place-items: center;
+  margin-top: 10px;
+}
+
+.section1-button-container button {
+  width: 116px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1.3px solid #9FAFF8;
+  background: #F1F3FF;
+  color: #4A68F1;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Publica Play", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.section1-button-container button:nth-child(3n+1),
+.section1-button-container button:nth-child(3n+2),
+.section1-button-container button:nth-child(3n+3) {
+  display: block;
+}
+
+.line2 {
+  width: 205px;
+  height: 0px;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.26);
+  align-self: center;
+  margin-top: 10px;
+}
+
+.section2-button-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 16px;
+  place-items: center;
+  margin-top: 10px;
+}
+
+.section2-button-container button {
+  width: 116px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1.3px solid #9FAFF8;
+  background: #F1F3FF;
+  color: #4A68F1;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Publica Play", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 5px;
+}
+
+.save-button {
+  width: 123px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #53B88B;
+  box-shadow: -2px 0px 3px 0px rgba(0, 0, 0, 0.24);
+}
+
+.save-button .save {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.doctor-profile{
+  display: flex;
+  position: absolute;
+  justify-content: end;
+  right:0;
+}
+
+.daddu img{
+  width:70px;
+  height: 70px;
+}
 
 
 

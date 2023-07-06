@@ -4,9 +4,11 @@ import dagre from "cytoscape-dagre";
 import undoRedo from "cytoscape-undo-redo";
 import axios from "axios";
 import "./DecisionTree.css";
-import logo from "./logo.png"; // Adjust path as needed
+import logo from "./data.png"; // Adjust path as needed
 import panzoom from "cytoscape-panzoom";
 import "cytoscape-panzoom/cytoscape.js-panzoom.css";
+import Select from "react-select";
+import daddu from "./daddu.png";
 
 cytoscape.use(dagre);
 cytoscape.use(undoRedo); // Register undoRedo extension
@@ -26,11 +28,44 @@ function DecisionTree({ data }) {
   const [removingEdge, setRemovingEdge] = useState(false);
   const [cy, setCy] = useState(null);
   const [, setDfsStartingNode] = useState(null);
+  const [searchText, setSearchText] = useState("");
 
   let highlightedNodes = []; // Keep track of previously highlighted nodes
   let highlightedEdges = []; // Keep track of previously highlighted edges
 
-  const highlightPathToRoot = (node) => {
+  const onSearch = () => {
+    // Hide all nodes
+    cy.elements().hide();
+
+    // Find nodes that contain the search text
+    const matchingNodes = cy.nodes().filter((node) => {
+      const label = node.data("label");
+      return label && label.includes(searchText);
+    });
+
+    // Show the matching nodes
+    matchingNodes.show();
+
+    // Show and highlight the path to the root for each matching node
+    matchingNodes.forEach((node) => {
+      const predecessors = node.predecessors();
+      predecessors.show(); // Show predecessors of matching nodes
+      highlightPathToRoot1(node);
+    });
+
+    // Adjust positions of visible nodes using hierarchical layout
+    const layout = cy.layout({
+      name: "dagre",
+      rankDir: "TD",
+      rankSep: 80, // increase this value for more vertical space between nodes
+      nodeSep: 10, // increase this value for more horizontal space between nodes
+      edgeSep: 30, // distance between nodes and their edges
+    });
+
+    layout.run();
+  };
+
+  const highlightPathToRoot1 = (node) => {
     // Remove highlight from previous path
     highlightedNodes.forEach((highlightedNode) => {
       highlightedNode.animate({
@@ -64,7 +99,8 @@ function DecisionTree({ data }) {
       setTimeout(() => {
         node.animate({
           style: {
-            "background-color": "#F1FFAB",
+            "background-color":
+              node.successors().length === 0 ? "#FF3E6D" : "#F1FFAB", // Highlight leaf nodes with a different color
             color: "black", // highlight node text
           },
           duration: 2000, // transition duration
@@ -92,6 +128,101 @@ function DecisionTree({ data }) {
         highlightedEdges.push(edge); // Add edge to highlightedEdges array
       }, i * 500); // Change color every 500ms
     });
+
+    // Highlight the leaf node (target of the search) with a different color
+    node.animate({
+      style: {
+        "background-color": "red", // change to the color you want for the leaf node
+        color: "white", // change text color as needed
+      },
+      duration: 2000, // transition duration
+    });
+  };
+  const highlightPathToRoot = (node) => {
+    // Remove highlight from previous path
+    highlightedNodes.forEach((highlightedNode) => {
+      highlightedNode.animate({
+        style: {
+          "background-color": "#A7ECEE",
+          color: "black", // revert to original node text color
+        },
+        duration: 2000, // transition duration
+      });
+    });
+
+    highlightedEdges.forEach((highlightedEdge) => {
+      highlightedEdge.animate({
+        style: {
+          "line-color": "#9BA4B4",
+          color: "black", // revert to original edge text color
+        },
+        duration: 2000, // transition duration
+      });
+    });
+
+    highlightedNodes = [];
+    highlightedEdges = [];
+
+    // Hide all elements
+    cy.elements().style("display", "none");
+
+    // Highlight new path
+    const predecessors = node.predecessors();
+    const nodes = predecessors.nodes();
+    const edges = predecessors.edges();
+
+    nodes.forEach((node, i) => {
+      setTimeout(() => {
+        node.animate({
+          style: {
+            "background-color": "#F1FFAB",
+            color: "black", // highlight node text
+          },
+          duration: 2000, // transition duration
+        });
+
+        highlightedNodes.push(node); // Add node to highlightedNodes array
+
+        // Show the highlighted node
+        node.style("display", "element");
+
+        // Adjust view to current node
+        cy.fit(node, 5000000); // fit view to current node with 50px padding
+        cy.zoom({ level: 1.9 }); // zoom in
+        cy.center(node); // center view to current node
+      }, i * 500); // Change color and view every 500ms
+    });
+
+    edges.forEach((edge, i) => {
+      setTimeout(() => {
+        edge.animate({
+          style: {
+            "line-color": "#FF3E6D",
+            color: "#4C0027", // highlight edge text
+          },
+          duration: 2000, // transition duration
+        });
+
+        highlightedEdges.push(edge); // Add edge to highlightedEdges array
+
+        // Show the highlighted edge
+        edge.style("display", "element");
+      }, i * 500); // Change color every 500ms
+    });
+
+    // Highlight the leaf node (target of the search) with a different color
+    node.animate({
+      style: {
+        "background-color": "#FF0000", // change to the color you want for the leaf node
+        color: "white", // change text color as needed
+      },
+      duration: 2000, // transition duration
+    });
+
+    highlightedNodes.push(node); // Add node to highlightedNodes array
+
+    // Show the highlighted leaf node
+    node.style("display", "element");
   };
 
   const onDFS = () => {
@@ -322,16 +453,16 @@ function DecisionTree({ data }) {
         {
           selector: "node",
           style: {
-            "background-color": "#A7ECEE",
+            "background-color": "#4A68F1",
             "border-width": 2,
             "padding-left": 10,
-            "border-color": "#820000",
+            "border-color": "#4A68F1",
             shape: "round-rectangle",
             "shape-polygon-points": "none",
             "text-wrap": "wrap",
             "text-valign": "center",
             content: "data(label)",
-            color: "#321E1E",
+            color: "white",
             "font-size": "12px",
             "font-weight": "bold",
             "text-width-padding": "10px",
@@ -345,10 +476,10 @@ function DecisionTree({ data }) {
           selector: "edge",
           style: {
             width: 3,
-            "line-color": "#9BA4B4",
+            "line-color": "black",
             "curve-style": "taxi",
-            "target-arrow-color": "#820000",
-            "target-arrow-shape": "triangle-backcurve",
+            "target-arrow-color": "black",
+            "target-arrow-shape": "vee",
             "arrow-scale": 2,
             label: "data(label)",
             "text-rotation": "outline",
@@ -363,8 +494,9 @@ function DecisionTree({ data }) {
         {
           selector: 'node[id = "Q1"]', // assuming 'root' is the id of root node
           style: {
-            "background-color": "#FFB9B9", // set your desired color here
-            color: "#3B3486",
+            "background-color": "#53B88B", // set your desired color here
+            "border-color": "#53B88B",
+            color: "white",
           },
         },
       ],
@@ -496,65 +628,164 @@ function DecisionTree({ data }) {
   // Add undo and redo methods
   const onUndo = () => ur.undo();
   const onRedo = () => ur.redo();
+  const options = [
+    { value: "Headache", label: "Headache" },
+    { value: "Fever", label: "Fever" },
+    { value: "Cough", label: "Cough" },
+    { value: "Cold", label: "Cold" },
+    { value: "Back Pain", label: "Back Pain" },
+    { value: "Stomach Ache", label: "Stomach Ache" },
+  ];
+
+  const customStyles = {
+    option: (defaultStyles, state) => ({
+      ...defaultStyles,
+      color: state.isSelected ? "#4A68F1" : "#4A68F1",
+      backgroundColor: state.isSelected ? "#EFF1FF" : "#EFF1FF",
+    }),
+
+    control: (defaultStyles) => ({
+      ...defaultStyles,
+      width: " 100%",
+      height: "100%",
+      border: "none",
+      boxShadow: "none",
+    }),
+    singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#4A68F1" }),
+
+    placeholder: (defaultStyles) => {
+      return {
+        ...defaultStyles,
+        color: "#4A68F1", // Add the color you want for placeholder here.
+      };
+    },
+    indicatorSeparator: (defaultStyles) => ({
+      ...defaultStyles,
+      backgroundColor: "red", // Change color here
+      display: "none",
+    }),
+    dropdownIndicator: (defaultStyles) => ({
+      ...defaultStyles,
+      color: "#4A68F1",
+    }),
+  };
+
   return (
     <div>
-      <div className="main-container">
-        <div className="logo-container">
-          <img src={logo} alt="Company Logo" className="logo" />
-        </div>
+      <div class="main-container">
         <div
-          className="button-container"
-          style={{ position: "relative", zIndex: 2 }}
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "20%",
+            right: "80%",
+            background: "#FFFFFF",
+            display: "flex",
+            gap: "16px",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
         >
-          {addingNode ? (
-            <button onClick={onAddNode}>Submit Node</button>
-          ) : (
-            <button onClick={() => setAddingNode(true)}>Add Node</button>
-          )}
-          {removingNode ? (
-            <button onClick={onRemoveNode}>Submit Remove Node</button>
-          ) : (
-            <button onClick={() => setRemovingNode(true)}>Remove Node</button>
-          )}
-          {addingEdge ? (
-            <button onClick={onAddEdge}>Submit Edge</button>
-          ) : (
-            <button onClick={() => setAddingEdge(true)}>Add Edge</button>
-          )}
-          {removingEdge ? (
-            <button onClick={onRemoveEdge}>Submit Remove Edge</button>
-          ) : (
-            <button onClick={() => setRemovingEdge(true)}>Remove Edge</button>
-          )}
-          <button onClick={onRemoveSelectedNode}>Remove Selected Node</button>
-          <button onClick={onRemoveSelectedEdge}>Remove Selected Edge</button>
-          <h1 className="heading">HEADACHE</h1>
-          <button className="dfs" onClick={onDFS}>
-            D-F-S
-          </button>
-          <button className="bfs" onClick={onBFS}>
-            B-F-S
-          </button>
-          <button className="undo" onClick={onUndo}>
-            Undo
-          </button>
-          <button className="redo" onClick={onRedo}>
-            Redo
-          </button>
+          <div className="logo-container">
+            <img src={logo} alt="Company Logo" className="logo" />
+          </div>
+
+          <div className="drop-down">
+            <Select
+              className="chief-complaint"
+              options={options}
+              styles={customStyles}
+              placeholder="Search Chief Complaint"
+            />
+          </div>
+
+          <div className="search-box">
+            <input
+              type="text"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              placeholder="Search Diagnosis..."
+            />
+          </div>
+          <div className="search-button">
+            <button onClick={onSearch}>Search</button>
+          </div>
+          <div className="line1"></div>
+
+          <div
+            className="section1-button-container"
+            style={{ position: "relative", zIndex: 2 }}
+          >
+            {addingNode ? (
+              <button onClick={onAddNode}>Submit Node</button>
+            ) : (
+              <button onClick={() => setAddingNode(true)}>Add Node</button>
+            )}
+            {removingNode ? (
+              <button onClick={onRemoveNode}>Submit Remove Node</button>
+            ) : (
+              <button onClick={() => setRemovingNode(true)}>Remove Node</button>
+            )}
+            {addingEdge ? (
+              <button onClick={onAddEdge}>Submit Edge</button>
+            ) : (
+              <button onClick={() => setAddingEdge(true)}>Add Edge</button>
+            )}
+            {removingEdge ? (
+              <button onClick={onRemoveEdge}>Submit Remove Edge</button>
+            ) : (
+              <button onClick={() => setRemovingEdge(true)}>Remove Edge</button>
+            )}
+            <button onClick={onRemoveSelectedNode} style={{height:"76px", lineHeight:"19px"}}>Remove Selected <br></br>Node</button>
+            <button onClick={onRemoveSelectedEdge} style={{height:"76px", lineHeight:"19px"}}>Remove Selected<br></br> Edge</button>
+          </div>
+          <div className="line2"></div>
+          <div
+            className="section2-button-container"
+            style={{ position: "relative", zIndex: 2 }}
+          >
+            <button className="dfs" onClick={onDFS}>
+              D-F-S
+            </button>
+            <button className="bfs" onClick={onBFS}>
+              B-F-S
+            </button>
+            <button className="undo" onClick={onUndo}>
+              Undo
+            </button>
+            <button className="redo" onClick={onRedo}>
+              Redo
+            </button>
+          </div>
+
+          <div className="save-button">
+            {" "}
+            <button className="save" type="submit">
+              Save
+            </button>{" "}
+          </div>
         </div>
       </div>
-
+      {/* Left-Side-End */}
       <div
         style={{
           position: "absolute",
           height: "100%",
-          width: "65%",
-          left: "35%",
-          background: "linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)",
-          border: "1px solid ",
+          width: "80%",
+          left: "20%",
+          background: "#EFF1FF",
+          // border: "1px solid ",
         }}
       >
-        <div ref={cyRef} style={{ width: "100%", height: "90vh" }} />
+        <div className="doctor-profile">
+          <div className="user-profile">
+            <h3>Dr. Varis1807</h3>
+          </div>
+          <div className="daddu">
+            <img src={daddu}></img>
+          </div>
+        </div>
+        <div ref={cyRef} style={{ width: "100%", height: "97vh" }} />
         {(editingNode || editingEdge) && (
           <form
             style={{
