@@ -1,0 +1,4595 @@
+[{
+  "queid": "Q1",
+  "question": "How long have you had the cough?",
+  "options": {
+    "Less than 3 weeks": "Q2",
+    "3 to 8 weeks": "Q3",
+    "More than 8 weeks": "Q4"
+  },
+  "level": "1"
+},
+{
+  "queid": "Q2",
+  "question": "Do you have a fever?",
+  "options": {
+    "Yes": "Q5",
+    "No": "Q6"
+  },
+  "level": "2"
+},
+{
+  "queid": "Q3",
+  "question": "Do you have a fever?",
+  "options": {
+    "Yes": "Q5",
+    "No": "Q7"
+  },
+  "level": "2"
+},
+{
+  "queid": "Q4",
+  "question": "Do you have a fever?",
+  "options": {
+    "Yes": "Q5",
+    "No": "Q8"
+  },
+  "level": "2"
+},
+{
+  "queid": "Q5",
+  "question": "Are you experiencing shortness of breath?",
+  "options": {
+    "Yes": "Q9",
+    "No": "Q10"
+  },
+  "level": "3"
+},
+{
+  "queid": "Q6",
+  "question": "Are you experiencing shortness of breath?",
+  "options": {
+    "Yes": "Q9",
+    "No": "Q11"
+  },
+  "level": "3"
+},
+{
+  "queid": "Q7",
+  "question": "Are you experiencing shortness of breath?",
+  "options": {
+    "Yes": "Q9",
+    "No": "Q12"
+  },
+  "level": "3"
+},
+{
+  "queid": "Q8",
+  "question": "Are you experiencing shortness of breath?",
+  "options": {
+    "Yes": "Q9",
+    "No": "Q13"
+  },
+  "level": "3"
+},
+{
+  "queid": "Q9",
+  "question": "Do you have any chest pain?",
+  "options": {
+    "Yes": "Q14",
+    "No": "Q15"
+  },
+  "level": "4"
+},
+{
+  "queid": "Q10",
+  "question": "Do you have any chest pain?",
+  "options": {
+    "Yes": "Q14",
+    "No": "Q16"
+  },
+  "level": "4"
+},
+{
+  "queid": "Q11",
+  "question": "Do you have any chest pain?",
+  "options": {
+    "Yes": "Q14",
+    "No": "Q17"
+  },
+  "level": "4"
+},
+{
+  "queid": "Q12",
+  "question": "Do you have any chest pain?",
+  "options": {
+    "Yes": "Q14",
+    "No": "Q18"
+  },
+  "level": "4"
+},
+{
+  "queid": "Q13",
+  "question": "Do you have any chest pain?",
+  "options": {
+    "Yes": "Q14",
+    "No": "Q19"
+  },
+  "level": "4"
+},
+{
+  "queid": "Q14",
+  "question": "Do you have a history of heart or lung disease?",
+  "options": {
+    "Yes": "Q20",
+    "No": "Q21"
+  },
+  "level": "5"
+},
+{
+  "queid": "Q15",
+  "question": "Do you have a history of heart or lung disease?",
+  "options": {
+    "Yes": "Q20",
+    "No": "Q22"
+  },
+  "level": "5"
+},
+{
+  "queid": "Q16",
+  "question": "Do you have a history of heart or lung disease?",
+  "options": {
+    "Yes": "Q20",
+    "No": "Q23"
+  },
+  "level": "5"
+},
+{
+  "queid": "Q17",
+  "question": "Do you have a history of heart or lung disease?",
+  "options": {
+    "Yes": "Q20",
+    "No": "Q24"
+  },
+  "level": "5"
+},
+{
+  "queid": "Q18",
+  "question": "Do you have a history of heart or lung disease?",
+  "options": {
+    "Yes": "Q20",
+    "No": "Q25"
+  },
+  "level": "5"
+},
+{
+  "queid": "Q19",
+  "question": "Do you have a history of heart or lung disease?",
+  "options": {
+    "Yes": "Q20",
+    "No": "Q26"
+  },
+  "level": "5"
+},
+{
+  "queid": "Q20",
+  "question": "Are you currently taking any medications for heart or lung disease?",
+  "options": {
+    "Yes": "Q27",
+    "No": "Q28"
+  },
+  "level": "6"
+},
+{
+  "queid": "Q21",
+  "question": "Do you smoke or have a history of smoking?",
+  "options": {
+    "Yes": "Q29",
+    "No": "Q30"
+  },
+  "level": "6"
+},
+{
+  "queid": "Q22",
+  "question": "Do you smoke or have a history of smoking?",
+  "options": {
+    "Yes": "Q29",
+    "No": "Q31"
+  },
+  "level": "6"
+},
+{
+  "queid": "Q23",
+  "question": "Do you smoke or have a history of smoking?",
+  "options": {
+    "Yes": "Q29",
+    "No": "Q32"
+  },
+  "level": "6"
+},
+{
+  "queid": "Q24",
+  "question": "Do you smoke or have a history of smoking?",
+  "options": {
+    "Yes": "Q29",
+    "No": "Q33"
+  },
+  "level": "6"
+},
+{
+  "queid": "Q25",
+  "question": "Do you smoke or have a history of smoking?",
+  "options": {
+    "Yes": "Q29",
+    "No": "Q34"
+  },
+  "level": "6"
+},
+{
+  "queid": "Q26",
+  "question": "Do you smoke or have a history of smoking?",
+  "options": {
+    "Yes": "Q29",
+    "No": "Q35"
+  },
+  "level": "6"
+},
+{
+  "queid": "Q27",
+  "question": "Has there been any recent change in your medication?",
+  "options": {
+    "Yes": "fc39",
+    "No": "b37"
+  },
+  "level": "7"
+},
+{
+  "queid": "Q28",
+  "question": "Has there been any recent change in your living or work environment?",
+  "options": {
+    "Yes": "d39",
+    "No": "fo48"
+  },
+  "level": "7"
+},
+{
+  "queid": "Q29",
+  "question": "Are you exposed to secondhand smoke or air pollution?",
+  "options": {
+    "Yes": "f41",
+    "No": "g42"
+  },
+  "level": "7"
+},
+{
+  "queid": "Q30",
+  "question": "Are you experiencing nasal congestion or a runny nose?",
+  "options": {
+    "Yes": "h43",
+    "No": "fm41"
+  },
+  "level": "7"
+},
+{
+  "queid": "Q31",
+  "question": "Are you experiencing nasal congestion or a runny nose?",
+  "options": {
+    "Yes": "v41",
+    "No": "fk39"
+  },
+  "level": "7"
+},
+{
+  "queid": "Q32",
+  "question": "Are you experiencing nasal congestion or a runny nose?",
+  "options": {
+    "Yes": "E43",
+    "No": "F45"
+  },
+  "level": "7"
+},
+{
+  "queid": "Q33",
+  "question": "Are you experiencing nasal congestion or a runny nose?",
+  "options": {
+    "Yes": "M42",
+    "No": "P37"
+  },
+  "level": "7"
+},
+{
+  "queid": "Q34",
+  "question": "Are you experiencing nasal congestion or a runny nose?",
+  "options": {
+    "Yes": "fg43",
+    "No": "V44"
+  },
+  "level": "7"
+},
+{
+  "queid": "Q35",
+  "question": "Are you experiencing nasal congestion or a runny nose?",
+  "options": {
+    "Yes": "ak42",
+    "No": "R39"
+  },
+  "level": "7"
+},
+ {
+    "queid":"fc39",
+    "question":"Do you smoke or have a history of smoking?",
+    "options":{
+       "Yes":"fc40",
+       "No":"fc41"
+    },
+    "level":"8"
+ },
+ {
+    "queid":"fc40",
+    "question":"Do you experience frequent coughing with mucus?",
+    "options":{
+       "Yes":"fc42",
+       "No":"fc43"
+    },
+    "level":"9"
+ },
+ {
+    "queid":"fc41",
+    "question":"Do you have allergies or asthma?",
+    "options":{
+       "Yes":"fc44",
+       "No":"fc45"
+    },
+    "level":"9"
+ },
+ {
+    "queid":"fc42",
+    "question":"Are you experiencing weight loss without trying?",
+    "options":{
+       "Yes":"fc46",
+       "No":"fc47"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fc43",
+    "question":"Do you have a sore throat or hoarse voice?",
+    "options":{
+       "Yes":"fc48",
+       "No":"fc49"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fc44",
+    "question":"Are your allergy or asthma symptoms well-controlled?",
+    "options":{
+       "Yes":"fc50",
+       "No":"fc51"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fc45",
+    "question":"Do you experience heartburn or acid reflux?",
+    "options":{
+       "Yes":"fc52",
+       "No":"fc53"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fc46",
+    "question":"Have you been exposed to polluted air, dust or harmful fumes?",
+    "options":{
+       "Often":[
+          "Chronic bronchitis, Chronic obstructive pulmonary disease (COPD)"
+       ],
+       "Rarely/never":[
+          "Lung cancer, Tuberculosis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fc47",
+    "question":"Do you experience wheezing?",
+    "options":{
+       "Yes":[
+          "Asthma exacerbation, Bronchitis"
+       ],
+       "No":[
+          "Viral respiratory infection"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fc48",
+    "question":"Is your sore throat accompanied by a runny or stuffy nose?",
+    "options":{
+       "Yes":[
+          "Common cold, Sinusitis"
+       ],
+       "No":[
+          "Laryngitis, Tonsillitis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fc49",
+    "question":"Do you have swelling in your legs or ankles?",
+    "options":{
+       "Yes":[
+          "Congestive heart failure"
+       ],
+       "No":[
+          "Deconditioning, Anxiety"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fc50",
+    "question":"Do you have a history of respiratory infections or pneumonia?",
+    "options":{
+       "Yes":[
+          "Bronchiectasis, Immunodeficiency"
+       ],
+       "No":[
+          "Well-controlled asthma, Allergic rhinitis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fc51",
+    "question":"Have you been around sick people or traveled recently?",
+    "options":{
+       "Yes":[
+          "Viral respiratory infection, Asthma exacerbation"
+       ],
+       "No":[
+          "Uncontrolled asthma, Allergic rhinitis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fc52",
+    "question":"Do you experience coughing after eating or lying down?",
+    "options":{
+       "Yes":[
+          "Gastroesophageal reflux disease (GERD)"
+       ],
+       "No":[
+          "Peptic ulcer, Gastritis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fc53",
+    "question":"Have you had a recent cold or upper respiratory infection?",
+    "options":{
+       "Yes":[
+          "Postnasal drip, Acute bronchitis"
+       ],
+       "No":[
+          "Irritant exposure, Anxiety"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },{
+  "queid":"b37",
+  "question":"Are you experiencing wheezing?",
+  "options":{
+     "Yes":"b38",
+     "No":"b39"
+  },
+  "level":"8"
+},
+{
+  "queid":"b38",
+  "question":"Do you have a runny or stuffy nose?",
+  "options":{
+     "Yes":"b40",
+     "No":"b41"
+  },
+  "level":"9"
+},
+{
+  "queid":"b39",
+  "question":"Do you have a sore throat?",
+  "options":{
+     "Yes":"b42",
+     "No":"b43"
+  },
+  "level":"9"
+},
+{
+  "queid":"b40",
+  "question":"Have you been exposed to any allergens or irritants recently?",
+  "options":{
+     "Yes":"b44",
+     "No":"b45"
+  },
+  "level":"10"
+},
+{
+  "queid":"b41",
+  "question":"Have you been exposed to smoke or air pollution recently?",
+  "options":{
+     "Yes":"b46",
+     "No":"b47"
+  },
+  "level":"10"
+},
+{
+  "queid":"b42",
+  "question":"Are you experiencing muscle aches?",
+  "options":{
+     "Yes":"b48",
+     "No":"b49"
+  },
+  "level":"10"
+},
+{
+  "queid":"b43",
+  "question":"Have you recently traveled or been in contact with someone who has traveled?",
+  "options":{
+     "Yes":"b50",
+     "No":"b51"
+  },
+  "level":"10"
+},
+{
+  "queid":"b44",
+  "question":"Do your symptoms improve with antihistamines?",
+  "options":{
+     "Yes":[
+        "Allergic Rhinitis, Asthma trigger"
+     ],
+     "No":[
+        "Upper Respiratory Infection, Asthma"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"b45",
+  "question":"Do your symptoms worsen in cold air or during exercise?",
+  "options":{
+     "Yes":[
+        "Asthma, Cold-Induced Bronchoconstriction"
+     ],
+     "No":[
+        "Bronchitis, Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"b46",
+  "question":"Do your symptoms improve with the use of an inhaler?",
+  "options":{
+     "Yes":[
+        "Asthma, COPD"
+     ],
+     "No":[
+        "Bronchitis, Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"b47",
+  "question":"Do you have a productive cough with thick mucus?",
+  "options":{
+     "Yes":[
+        "Bronchitis, Pneumonia"
+     ],
+     "No":[
+        "Viral Respiratory Infection, GERD"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"b48",
+  "question":"Do you have a headache and chills?",
+  "options":{
+     "Yes":[
+        "Influenza, COVID-19"
+     ],
+     "No":[
+        "Common Cold, Viral Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"b49",
+  "question":"Do your symptoms improve with rest and hydration?",
+  "options":{
+     "Yes":[
+        "Viral Respiratory Infection, Common Cold"
+     ],
+     "No":[
+        "Strep Throat, Bacterial Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"b50",
+  "question":"Have you been tested for COVID-19?",
+  "options":{
+     "Yes":[
+        "COVID-19, Pneumonia"
+     ],
+     "No":[
+        "Tuberculosis, Bacterial Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"b51",
+  "question":"Do you have a history of GERD or acid reflux?",
+  "options":{
+     "Yes":[
+        "GERD, Acid Reflux"
+     ],
+     "No":[
+        "Viral Respiratory Infection, Unspecified Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d39",
+  "question":"Have you been recently sick with a viral illness?",
+  "options":{
+     "Yes":"d40",
+     "No":"d41"
+  },
+  "level":"7"
+},
+{
+  "queid":"d40",
+  "question":"Did your cough start during the viral illness?",
+  "options":{
+     "Yes":"d42",
+     "No":"d43"
+  },
+  "level":"8"
+},
+{
+  "queid":"d41",
+  "question":"Are you exposed to any irritants or allergens?",
+  "options":{
+     "Yes":"d44",
+     "No":"d45"
+  },
+  "level":"8"
+},
+{
+  "queid":"d42",
+  "question":"Is your cough productive?",
+  "options":{
+     "Yes":"d46",
+     "No":"d47"
+  },
+  "level":"9"
+},
+{
+  "queid":"d43",
+  "question":"Do you have a history of allergies?",
+  "options":{
+     "Yes":"d48",
+     "No":"d49"
+  },
+  "level":"9"
+},
+{
+  "queid":"d44",
+  "question":"Do you experience sneezing or itching?",
+  "options":{
+     "Yes":"d50",
+     "No":"d51"
+  },
+  "level":"9"
+},
+{
+  "queid":"d45",
+  "question":"Do you smoke or have exposure to secondhand smoke?",
+  "options":{
+     "Yes":"d52",
+     "No":"d53"
+  },
+  "level":"9"
+},
+{
+  "queid":"d46",
+  "question":"What is the color of the mucus?",
+  "options":{
+     "Clear":"d54",
+     "Yellow or Green":"d55",
+     "Other":"d56"
+  },
+  "level":"10"
+},
+{
+  "queid":"d47",
+  "question":"Does the cough worsen at night?",
+  "options":{
+     "Yes":"d57",
+     "No":"d58"
+  },
+  "level":"10"
+},
+{
+  "queid":"d48",
+  "question":"Does the cough improve with antihistamines?",
+  "options":{
+     "Yes":"d59",
+     "No":"d60"
+  },
+  "level":"10"
+},
+{
+  "queid":"d49",
+  "question":"Are you experiencing weight loss, night sweats, or fever?",
+  "options":{
+     "Yes":"d61",
+     "No":"d62"
+  },
+  "level":"10"
+},
+{
+  "queid":"d50",
+  "question":"Have you tried antihistamines?",
+  "options":{
+     "Yes":"d63",
+     "No":"d64"
+  },
+  "level":"10"
+},
+{
+  "queid":"d51",
+  "question":"Are you experiencing weight loss, night sweats, or fever?",
+  "options":{
+     "Yes":"d65",
+     "No":"d66"
+  },
+  "level":"10"
+},
+{
+  "queid":"d52",
+  "question":"Have you tried duitting smoking?",
+  "options":{
+     "Yes":"d67",
+     "No":"d68"
+  },
+  "level":"10"
+},
+{
+  "queid":"d53",
+  "question":"Are you experiencing weight loss, night sweats, or fever?",
+  "options":{
+     "Yes":"d69",
+     "No":"d70"
+  },
+  "level":"10"
+},
+{
+  "queid":"d54",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Post-viral Cough"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d55",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Bacterial Infection, Sinusitis, Bronchitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d56",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Pneumonia, Chronic Obstructive Pulmonary Disease, Non-infectious cause"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d57",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Asthma, Gastroesophageal Reflux Disease (GERD), Postnasal Drip"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d58",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Non-specific Cough, Consider other causes"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d59",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Allergic Rhinitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d60",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Non-allergic Rhinitis, Consider other causes"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d61",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Tuberculosis, Lung Cancer"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d62",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Cough of Unknown Origin, Consider further evaluation"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d63",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Allergic Reaction"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d64",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Possible Allergic Reaction, Consider trying antihistamines"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d65",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Tuberculosis, Lung Cancer"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d66",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Irritant-induced Cough, Consider other causes"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d67",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Cigarette Smoke-induced Cough, Consider further evaluation"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d68",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Cigarette Smoke-induced Cough, Consider quitting smoking"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d69",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Tuberculosis, Lung Cancer"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"d70",
+  "question":"Options",
+  "options":{
+     "Confirm":[
+        "Cough of Unknown Origin, Consider further evaluation"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"f41",
+  "question":"Is your cough dry or productive?",
+  "options":{
+     "Dry":"f42",
+     "Productive":"f43"
+  },
+  "level":"8"
+},
+{
+  "queid":"f42",
+  "question":"Do you experience heart palpitations or dizziness?",
+  "options":{
+     "Yes":"f44",
+     "No":"f45"
+  },
+  "level":"9"
+},
+{
+  "queid":"f43",
+  "question":"Do you cough up blood or yellow/green phlegm?",
+  "options":{
+     "Yes":"f46",
+     "No":"f47"
+  },
+  "level":"9"
+},
+{
+  "queid":"f44",
+  "question":"Have you recently experienced unintentional weight loss?",
+  "options":{
+     "Yes":"f48",
+     "No":"f49"
+  },
+  "level":"10"
+},
+{
+  "queid":"f45",
+  "question":"Do you have any nasal congestion or sinus issues?",
+  "options":{
+     "Yes":"f50",
+     "No":"f51"
+  },
+  "level":"10"
+},
+{
+  "queid":"f46",
+  "question":"Do you have a high-stress lifestyle?",
+  "options":{
+     "Yes":"f52",
+     "No":"f53"
+  },
+  "level":"10"
+},
+{
+  "queid":"f47",
+  "question":"Have you recently changed environment or been around new allergens?",
+  "options":{
+     "Yes":"f54",
+     "No":"f55"
+  },
+  "level":"10"
+},
+{
+  "queid":"f48",
+  "question":"Do you frequently experience fatigue or irritability?",
+  "options":{
+     "Yes":"f56",
+     "No":"f57"
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"f49",
+  "question":"Did the cough start suddenly?",
+  "options":{
+     "Yes":[
+        "Viral infection, Bronchitis, or Upper Respiratory Infection"
+     ],
+     "No":[
+        "Chronic Obstructive Pulmonary Disease, Asthma"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"f50",
+  "question":"Do you have a sore throat or postnasal drip?",
+  "options":{
+     "Yes":[
+        "Sinusitis, Allergic Rhinitis, or Viral infection"
+     ],
+     "No":[
+        "Gastroesophageal Reflux Disease, Vocal Cord Dysfunction"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"f51",
+  "question":"Are you experiencing any wheezing?",
+  "options":{
+     "Yes":[
+        "Asthma, Bronchospasm"
+     ],
+     "No":[
+        "Foreign Body Aspiration, Anxiety"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"f52",
+  "question":"Do you have a persistently dry mouth?",
+  "options":{
+     "Yes":[
+        "Sjogren's Syndrome or Dehydration"
+     ],
+     "No":[
+        "Tuberculosis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"f53",
+  "question":"Have you been in contact with someone who has tuberculosis?",
+  "options":{
+     "Yes":[
+        "Tuberculosis"
+     ],
+     "No":[
+        "Bacterial Pneumonia, Bronchitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"f54",
+  "question":"Have your symptoms improved with any treatments?",
+  "options":{
+     "Yes":[
+        "Allergy or Environmental-related Cough"
+     ],
+     "No":[
+        "Unidentified Allergy, Chronic Idiopathic Cough"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"f55",
+  "question":"Do you have any pets?",
+  "options":{
+     "Yes":[
+        "Pet Allergy or Exposure to Pet-related Irritants"
+     ],
+     "No":[
+        "Unidentified Allergy, Post-Infectious Cough"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"f56",
+  "question":"Are you able to sleep well at night?",
+  "options":{
+     "Yes":[
+        "Chronic Fatigue Syndrome, Nervous System Disorder"
+     ],
+     "No":[
+        "Sleep Apnea, Insomnia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"f57",
+  "question":"Have you noticed any sudden changes in appetite or thirst?",
+  "options":{
+     "Yes":[
+        "Diabetes, Hyperthyroidism"
+     ],
+     "No":[
+        "Anxiety-related Cough, Gastroesophageal Reflux Disease"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"g42",
+  "question":"Do you have a sore throat?",
+  "options":{
+     "Yes":"g43",
+     "No":"g48"
+  },
+  "level":"7"
+},{
+  "queid":"g43",
+  "question":"Do you have swollen glands in the neck?",
+  "options":{
+     "Yes":"g44",
+     "No":"g45"
+  },
+  "level":"8"
+},{
+  "queid":"g44",
+  "question":"Are there white patches in your throat or pus on your tonsils?",
+  "options":{
+     "Yes":"g46",
+     "No":"g47"
+  },
+  "level":"9"
+},{
+  "queid":"g45",
+  "question":"Have you recently been exposed to an allergen?",
+  "options":{
+     "Yes":"g49",
+     "No":"g50"
+  },
+  "level":"9"
+},{
+  "queid":"g46",
+  "question":"Have you experienced sudden severe pain?",
+  "options":{
+     "Yes":"g51",
+     "No":"g52"
+  },
+  "level":"10"
+},{
+  "queid":"g47",
+  "question":"Do you have a headache?",
+  "options":{
+     "Yes":"g53",
+     "No":"g54"
+  },
+  "level":"10"
+},{
+  "queid":"g48",
+  "question":"Are you experiencing fatigue?",
+  "options":{
+     "Yes":"g55",
+     "No":"g56"
+  },
+  "level":"8"
+},{
+  "queid":"g49",
+  "question":"Are you having difficulty swallowing?",
+  "options":{
+     "Yes":[
+        "Strep throat, Tonsillitis"
+     ],
+     "No":[
+        "Viral infection, Allergic rhinitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"g50",
+  "question":"Are you experiencing muscle or joint pain?",
+  "options":{
+     "Yes":[
+        "Influenza, Common cold"
+     ],
+     "No":[
+        "Viral infection, Environmental irritant"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"g51",
+  "question":"Did the pain occur after an injury?",
+  "options":{
+     "Yes":[
+        "Cervical spine injury, Neck sprain/strain"
+     ],
+     "No":[
+        "Muscle spasm, Fibromyalgia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"g52",
+  "question":"Do you have difficulty opening your mouth?",
+  "options":{
+     "Yes":[
+        "Temporomandibular joint dysfunction, Dental infection"
+     ],
+     "No":[
+        "Migraine, Sinus headache"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"g53",
+  "question":"Are you feeling light-headed or dizzy?",
+  "options":{
+     "Yes":[
+        "Dehydration, Vasovagal syncope"
+     ],
+     "No":[
+        "Tension-type headache, Migraine"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"g54",
+  "question":"Do you have difficulty sleeping?",
+  "options":{
+     "Yes":[
+        "Insomnia, Sleep apnea"
+     ],
+     "No":[
+        "Restless legs syndrome, Periodic limb movement disorder"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"g55",
+  "question":"Are you experiencing unusual weight loss?",
+  "options":{
+     "Yes":"g57",
+     "No":"g58"
+  },
+  "level":"9"
+},{
+  "queid":"g56",
+  "question":"Do you have a significant change in appetite?",
+  "options":{
+     "Yes":"g59",
+     "No":"g60"
+  },
+  "level":"9"
+},{
+  "queid":"g57",
+  "question":"Do you have night sweats?",
+  "options":{
+     "Yes":[
+        "Lymphoma, Tuberculosis"
+     ],
+     "No":[
+        "Chronic fatigue syndrome, Depression"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"g58",
+  "question":"Are you experiencing constant thirst?",
+  "options":{
+     "Yes":[
+        "Diabetes, Dehydration"
+     ],
+     "No":[
+        "Hypothyroidism, Anemia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"g59",
+  "question":"Do you have a history of substance abuse?",
+  "options":{
+     "Yes":[
+        "Alcohol abuse, Drug abuse"
+     ],
+     "No":[
+        "Eating disorder, Medication side effect"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"g60",
+  "question":"Do you have feelings of worry or anxiety?",
+  "options":{
+     "Yes":[
+        "Generalized anxiety disorder, Panic disorder"
+     ],
+     "No":[
+        "Adjustment disorder, Major depressive disorder"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"h43",
+  "question":"Have you recently been in contact with someone sick or traveled to an area with high COVID-19 cases?",
+  "options":{
+     "Yes":"h44",
+     "No":"h45"
+  },
+  "level":"8"
+},{
+  "queid":"h44",
+  "question":"Have you been vaccinated for COVID-19?",
+  "options":{
+     "Yes":"h46",
+     "No":"h47"
+  },
+  "level":"9"
+},{
+  "queid":"h45",
+  "question":"Are you experiencing fatigue or body aches?",
+  "options":{
+     "Yes":"h48",
+     "No":"h49"
+  },
+  "level":"9"
+},{
+  "queid":"h46",
+  "question":"Did you experience any side effects after the vaccination?",
+  "options":{
+     "Yes":"h50",
+     "No":"h51"
+  },
+  "level":"10"
+},{
+  "queid":"h47",
+  "question":"Have you been tested for COVID-19 recently?",
+  "options":{
+     "Yes":"h52",
+     "No":"h53"
+  },
+  "level":"10"
+},{
+  "queid":"h48",
+  "question":"Do you have a sore throat or difficulty in swallowing?",
+  "options":{
+     "Yes":"h54",
+     "No":"h55"
+  },
+  "level":"10"
+},{
+  "queid":"h49",
+  "question":"Do you have any environmental allergies?",
+  "options":{
+     "Yes":"h56",
+     "No":"h57"
+  },
+  "level":"10"
+},{
+  "queid":"h50",
+  "question":"",
+  "options":{
+     "Mild side effects":[
+        "COVID-19 vaccine side effects"
+     ],
+     "Severe side effects":[
+        "COVID-19 vaccine side effects, Consult a doctor"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"h51",
+  "question":"",
+  "options":{
+     "Continue":[
+        "COVID-19 infection unlikely, Possible mild viral infection"
+     ],
+     "Seek Medical Advice":[
+        "Consult a doctor to rule out COVID-19 or other causes"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"h52",
+  "question":"",
+  "options":{
+     "Positive":[
+        "COVID-19"
+     ],
+     "Negative":[
+        "Possible flu"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"h53",
+  "question":"",
+  "options":{
+     "Get Tested":[
+        "Consider getting tested for COVID-19"
+     ],
+     "Consult a Doctor":[
+        "Consult a doctor to determine the cause of your cough and symptoms"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"h54",
+  "question":"",
+  "options":{
+     "Yes":[
+        "Possible flu or strep throat"
+     ],
+     "No":[
+        "Infection or inflammation"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"h55",
+  "question":"",
+  "options":{
+     "Persistent symptoms":[
+        "Viral infection or other conditions"
+     ],
+     "Symptoms improve":[
+        "Viral infection, self-care and rest"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"h56",
+  "question":"",
+  "options":{
+     "Allergy-induced":[
+        "Allergy-induced cough, consider allergy medication"
+     ],
+     "Exacerbating factors":[
+        "Allergy with possible infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},{
+  "queid":"h57",
+  "question":"",
+  "options":{
+     "No known allergies":[
+        "Environmental factors, possible viral infection"
+     ],
+     "Non-allergic triggers":[
+        "Irritation from pollution, smoke, or dust, consider wearing a mask"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"v41",
+  "question":"Do you have a high-stress job or environment?",
+  "options":{
+     "Yes":"v42",
+     "No":"v43"
+  },
+  "level":"8"
+},
+{
+  "queid":"v42",
+  "question":"Are you experiencing more fatigue than usual?",
+  "options":{
+     "Yes":"v44",
+     "No":"v45"
+  },
+  "level":"9"
+},
+{
+  "queid":"v43",
+  "question":"Are you experiencing symptoms like sneezing or runny nose?",
+  "options":{
+     "Yes":"v46",
+     "No":"v47"
+  },
+  "level":"9"
+},
+{
+  "queid":"v44",
+  "question":"Are you sleeping less or having sleep disturbances?",
+  "options":{
+     "Yes":"v48",
+     "No":"v49"
+  },
+  "level":"10"
+},
+{
+  "queid":"v45",
+  "question":"Do you have a weakened immune system?",
+  "options":{
+     "Yes":"v50",
+     "No":"v51"
+  },
+  "level":"10"
+},
+{
+  "queid":"v46",
+  "question":"Do you have a history of allergies?",
+  "options":{
+     "Yes":"v52",
+     "No":"v53"
+  },
+  "level":"10"
+},
+{
+  "queid":"v47",
+  "question":"Do you have any other unusual symptoms?",
+  "options":{
+     "Yes":"v54",
+     "No":"v55"
+  },
+  "level":"10"
+},
+{
+  "queid":"v48",
+  "question":"Do you use any medication to help you sleep?",
+  "options":{
+     "MedicationYes":[
+        "SleepApnea, GastroesophagealRefluxDisease, Anxiety"
+     ],
+     "MedicationNo":[
+        "Stress, Insomnia, ChronicFatigueSyndrome"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"v49",
+  "question":"Do you experience mood swings or irritability?",
+  "options":{
+     "MoodYes":[
+        "Anxiety, Depression, Burnout"
+     ],
+     "MoodNo":[
+        "PhysicalExhaustion, GastroesophagealRefluxDisease, OccupationalAsthma"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"v50",
+  "question":"Do you have any autoimmune disorders?",
+  "options":{
+     "AutoimmuneYes":[
+        "Bronchitis, Pneumonia, Influenza"
+     ],
+     "AutoimmuneNo":[
+        "CommonCold, AcuteRespiratoryInfection, Bronchitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"v51",
+  "question":"Do you engage in regular physical exercise?",
+  "options":{
+     "ExerciseYes":[
+        "Costochondritis, MuscleStrain, ExerciseInducedAsthma"
+     ],
+     "ExerciseNo":[
+        "SedentaryLifestyle, PoorPosture, MusculoskeletalPain"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"v52",
+  "question":"Do you take any allergy medications?",
+  "options":{
+     "AllergyMedsYes":[
+        "AllergicRhinitis, HayFever, Sinusitis"
+     ],
+     "AllergyMedsNo":[
+        "UpperRespiratoryInfection, CommonCold, AllergenExposure"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"v53",
+  "question":"Have you recently been exposed to any new environments or substances?",
+  "options":{
+     "ExposureYes":[
+        "EnvironmentalIrritant, ChemicalExposure, NewAllergen"
+     ],
+     "ExposureNo":[
+        "UpperRespiratoryInfection, Sinusitis, CommonCold"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"v54",
+  "question":"Are you experiencing any weight loss or night sweats?",
+  "options":{
+     "WLYes":[
+        "Tuberculosis, Lymphoma, Endocarditis"
+     ],
+     "WLNo":[
+        "AcidReflux, PostnasalDrip, Bronchitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"v55",
+  "question":"Do you experience any heartburn or acid reflux?",
+  "options":{
+     "HeartburnYes":[
+        "GastroesophagealRefluxDisease, Esophagitis, PepticUlcer"
+     ],
+     "HeartburnNo":[
+        "AcuteBronchitis, RespiratoryInfection, Asthma"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E43",
+  "question":"Do you have any allergies?",
+  "options":{
+     "Yes":"E44",
+     "No":"E45"
+  },
+  "level":"8"
+},
+{
+  "queid":"E44",
+  "question":"Do you have a history of asthma?",
+  "options":{
+     "Yes":"E46",
+     "No":"E47"
+  },
+  "level":"8"
+},
+{
+  "queid":"E45",
+  "question":"Have you recently been exposed to dust, smoke, or strong odors?",
+  "options":{
+     "Yes":"E48",
+     "No":"E49"
+  },
+  "level":"8"
+},
+{
+  "queid":"E46",
+  "question":"Have you been exposed to an allergen?",
+  "options":{
+     "Yes":"E50",
+     "No":"E51"
+  },
+  "level":"9"
+},
+{
+  "queid":"E47",
+  "question":"Were you recently sick with a cold or flu?",
+  "options":{
+     "Yes":"E52",
+     "No":"E53"
+  },
+  "level":"9"
+},
+{
+  "queid":"E48",
+  "question":"Did the cough start after the exposure?",
+  "options":{
+     "Yes":"E54",
+     "No":"E55"
+  },
+  "level":"9"
+},
+{
+  "queid":"E49",
+  "question":"Are you experiencing postnasal drip?",
+  "options":{
+     "Yes":"E56",
+     "No":"E57"
+  },
+  "level":"9"
+},
+{
+  "queid":"E50",
+  "question":"Are you using any allergy medications?",
+  "options":{
+     "Yes":"E58",
+     "No":"E59"
+  },
+  "level":"10"
+},
+{
+  "queid":"E51",
+  "question":"Have you tried using an inhaler?",
+  "options":{
+     "Yes":"E60",
+     "No":"E61"
+  },
+  "level":"10"
+},
+{
+  "queid":"E52",
+  "question":"Have you been around others who are sick?",
+  "options":{
+     "Yes":"E62",
+     "No":"E63"
+  },
+  "level":"10"
+},
+{
+  "queid":"E53",
+  "question":"Have you traveled recently?",
+  "options":{
+     "Yes":"E64",
+     "No":"E65"
+  },
+  "level":"10"
+},
+{
+  "queid":"E54",
+  "question":"Do you have a persistent dry cough?",
+  "options":{
+     "Yes":"E66",
+     "No":"E67"
+  },
+  "level":"10"
+},
+{
+  "queid":"E55",
+  "question":"Are you experiencing excessive throat clearing?",
+  "options":{
+     "Yes":"E68",
+     "No":"E69"
+  },
+  "level":"10"
+},
+{
+  "queid":"E56",
+  "question":"Are you using any over-the-counter cold medications?",
+  "options":{
+     "Yes":"E70",
+     "No":"E71"
+  },
+  "level":"10"
+},
+{
+  "queid":"E57",
+  "question":"Do you have a weak immune system?",
+  "options":{
+     "Yes":"E72",
+     "No":"E73"
+  },
+  "level":"10"
+},
+{
+  "queid":"E58",
+  "question":"Did the medication help?",
+  "options":{
+     "Yes":[
+        "Allergic rhinitis"
+     ],
+     "No":[
+        "Non-allergic rhinitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E59",
+  "question":"Try using an allergy medication",
+  "options":{
+     "Yes":[
+        "Allergic rhinitis"
+     ],
+     "No":[
+        "Non-allergic rhinitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E60",
+  "question":"Did the inhaler help?",
+  "options":{
+     "Yes":[
+        "Asthma"
+     ],
+     "No":[
+        "Non-asthmatic cough"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E61",
+  "question":"Consider trying an inhaler",
+  "options":{
+     "Yes":[
+        "Asthma"
+     ],
+     "No":[
+        "Non-asthmatic cough"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E62",
+  "question":"Might be a contagious respiratory illness",
+  "options":{
+     "Yes":[
+        "Flu, cold, or bronchitis"
+     ],
+     "No":[
+        "Other Respiratory infections"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E63",
+  "question":"Likely recovering from cold or flu",
+  "options":{
+     "Yes":[
+        "Post-viral cough"
+     ],
+     "No":[
+        "Other etiologies"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E64",
+  "question":"Could be a travel-related illness",
+  "options":{
+     "Yes":[
+        "Pneumonia, bronchitis"
+     ],
+     "No":[
+        "Systemic infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E65",
+  "question":"See a doctor for further evaluation",
+  "options":{
+     "Yes":[
+        "Unidentified cause"
+     ],
+     "No":[
+        "Differential diagnosis required"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E66",
+  "question":"Possible smoke or dust irritation",
+  "options":{
+     "Yes":[
+        "Irritant-induced cough"
+     ],
+     "No":[
+        "Other etiologies"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E67",
+  "question":"Unclear cause",
+  "options":{
+     "Yes":[
+        "Further evaluation required"
+     ],
+     "No":[
+        "Differential diagnosis required"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E68",
+  "question":"Possible postnasal drip",
+  "options":{
+     "Yes":[
+        "Postnasal drip syndrome"
+     ],
+     "No":[
+        "Other causes"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E69",
+  "question":"Unclear cause",
+  "options":{
+     "Yes":[
+        "Further evaluation required"
+     ],
+     "No":[
+        "Differential diagnosis required"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E70",
+  "question":"Efficacy of cold medications?",
+  "options":{
+     "Yes":[
+        "Common cold"
+     ],
+     "No":[
+        "Sinus infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E71",
+  "question":"Try using over-the-counter cold medications",
+  "options":{
+     "Yes":[
+        "Common cold"
+     ],
+     "No":[
+        "Sinus infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E72",
+  "question":"Possible weakened immune system",
+  "options":{
+     "Yes":[
+        "Immunodeficiency"
+     ],
+     "No":[
+        "Other causes"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"E73",
+  "question":"Unclear cause",
+  "options":{
+     "Yes":[
+        "Further evaluation required"
+     ],
+     "No":[
+        "Differential diagnosis required"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"F45",
+  "question":"Are you experiencing any flu-like symptoms?",
+  "options":{
+     "Yes":"F46",
+     "No":"F47"
+  },
+  "level":"8"
+},
+{
+  "queid":"F46",
+  "question":"Do you have a sore throat?",
+  "options":{
+     "Yes":"F48",
+     "No":"F49"
+  },
+  "level":"9"
+},
+{
+  "queid":"F47",
+  "question":"Do you have any allergies?",
+  "options":{
+     "Yes":"F50",
+     "No":"F51"
+  },
+  "level":"9"
+},
+{
+  "queid":"F48",
+  "question":"Do you have swollen glands?",
+  "options":{
+     "Yes":"F52",
+     "No":"F53"
+  },
+  "level":"10"
+},
+{
+  "queid":"F49",
+  "question":"Do you have any gastrointestinal symptoms?",
+  "options":{
+     "Yes":"F54",
+     "No":"F55"
+  },
+  "level":"10"
+},
+{
+  "queid":"F50",
+  "question":"Is this a typical allergy season for you?",
+  "options":{
+     "Yes":"F56",
+     "No":"F57"
+  },
+  "level":"10"
+},
+{
+  "queid":"F51",
+  "question":"Have you recently been exposed to any irritants or pollutants?",
+  "options":{
+     "Yes":"F58",
+     "No":"F59"
+  },
+  "level":"10"
+},
+{
+  "queid":"F52",
+  "question":"Do you have any pre-existing health conditions?",
+  "options":{
+     "Yes":[
+        "Potential case of a flu or viral infection with complications"
+     ],
+     "No":[
+        "Likely a flu or viral infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"F53",
+  "question":"Do you have any pre-existing health conditions?",
+  "options":{
+     "Yes":[
+        "Viral infection with complications"
+     ],
+     "No":[
+        "Simple viral infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"F54",
+  "question":"Have you recently traveled?",
+  "options":{
+     "Yes":[
+        "Possible travel-related bacterial or viral infection"
+     ],
+     "No":[
+        "Viral or bacterial infection, GERD"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"F55",
+  "question":"Do you have any pre-existing health conditions?",
+  "options":{
+     "Yes":[
+        "Bronchitis or respiratory infection with complications"
+     ],
+     "No":[
+        "Bronchitis or respiratory infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"F56",
+  "question":"Do you have any pre-existing respiratory conditions?",
+  "options":{
+     "Yes":[
+        "Potential allergy-related asthma exacerbation"
+     ],
+     "No":[
+        "Allergy-related cough"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"F57",
+  "question":"Have you recently been exposed to any irritants or pollutants?",
+  "options":{
+     "Yes":[
+        "Possible irritation-induced cough from allergens"
+     ],
+     "No":[
+        "Unknown origin of cough, further evaluation needed"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"F58",
+  "question":"Have you had any respiratory issues in the past?",
+  "options":{
+     "Yes":[
+        "Potential irritant-induced respiratory issues"
+     ],
+     "No":[
+        "Temporary cough due to irritant exposure"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"F59",
+  "question":"Do you have any pre-existing health conditions?",
+  "options":{
+     "Yes":[
+        "Possible pre-existing condition exacerbation"
+     ],
+     "No":[
+        "Unknown origin of cough, further evaluation needed"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"M42",
+  "question":"Have you recently been exposed to allergens such as pollen, pet dander, dust, or mold?",
+  "options":{
+     "Yes":"M43",
+     "No":"M44"
+  },
+  "level":"8"
+},
+{
+  "queid":"M43",
+  "question":"Have you tried any over-the-counter allergy medications?",
+  "options":{
+     "Yes":"M45",
+     "No":"M46"
+  },
+  "level":"9"
+},
+{
+  "queid":"M44",
+  "question":"Are you experiencing any wheezing?",
+  "options":{
+     "Yes":"M47",
+     "No":"M48"
+  },
+  "level":"9"
+},
+{
+  "queid":"M45",
+  "question":"Did the allergy medications improve your symptoms?",
+  "options":{
+     "Yes":"M49",
+     "No":"M50"
+  },
+  "level":"10"
+},
+{
+  "queid":"M46",
+  "question":"Are your symptoms worsening over time?",
+  "options":{
+     "Yes":"M51",
+     "No":"M52"
+  },
+  "level":"10"
+},
+{
+  "queid":"M47",
+  "question":"Do you have a history of asthma?",
+  "options":{
+     "Yes":"M53",
+     "No":"M54"
+  },
+  "level":"10"
+},
+{
+  "queid":"M48",
+  "question":"Is your cough dry or productive?",
+  "options":{
+     "Dry":"M55",
+     "Productive":"M56"
+  },
+  "level":"10"
+},
+{
+  "queid":"M49",
+  "question":"Are you still experiencing cough?",
+  "options":{
+     "Yes":[
+        "Allergic rhinitis (not fully controlled)",
+        "Consider consulting a doctor"
+     ],
+     "No":[
+        "Allergic rhinitis (controlled)",
+        "Resolved with medication"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"M50",
+  "question":"Are you experiencing any other symptoms?",
+  "options":{
+     "Yes":[
+        "Allergic rhinitis (medication not effective)",
+        "Consider consulting a doctor for alternative treatment"
+     ],
+     "No":[
+        "Allergic rhinitis (persistent)",
+        "Consider consulting a doctor"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"M51",
+  "question":"Do you have a family history of allergies?",
+  "options":{
+     "Yes":[
+        "Potential undiagnosed allergy",
+        "Consider consulting a doctor for allergy testing"
+     ],
+     "No":[
+        "Unidentified cause",
+        "Consider consulting a doctor"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"M52",
+  "question":"Is the cough causing significant discomfort?",
+  "options":{
+     "Yes":[
+        "Unidentified cause (Bothersome)",
+        "Consider consulting a doctor"
+     ],
+     "No":[
+        "Unidentified cause (Mild)",
+        "Monitor symptoms and consult a doctor if they worsen"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"M53",
+  "question":"Is your asthma well-controlled?",
+  "options":{
+     "Yes":[
+        "Asthma (controlled, potential trigger)",
+        "Consider consulting a doctor"
+     ],
+     "No":[
+        "Asthma (poorly controlled)",
+        "Consult a doctor for better asthma management"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"M54",
+  "question":"Is the wheezing accompanied by other symptoms?",
+  "options":{
+     "Yes":[
+        "Respiratory infection or inflammation",
+        "Consult a doctor"
+     ],
+     "No":[
+        "Unidentified wheezing cause",
+        "Monitor symptoms and consult a doctor if they worsen"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"M55",
+  "question":"Is the cough persistent and worsening?",
+  "options":{
+     "Yes":[
+        "Possible bronchitis or pneumonia",
+        "Consult a doctor"
+     ],
+     "No":[
+        "Unidentified cause (persistent dry cough)",
+        "Monitor symptoms and consult a doctor if they worsen"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"M56",
+  "question":"Is the mucus green, yellow, or brown?",
+  "options":{
+     "Yes":[
+        "Possible bacterial infection",
+        "Consult a doctor"
+     ],
+     "No":[
+        "Unidentified cause (productive cough)",
+        "Monitor symptoms and consult a doctor if they worsen"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"P37",
+  "question":"Do you experience coughing after physical activity?",
+  "options":{
+     "Yes":"P38",
+     "No":"P39"
+  },
+  "level":"8"
+},
+{
+  "queid":"P38",
+  "question":"How would you describe the severity of your cough?",
+  "options":{
+     "Mild":"P40",
+     "Moderate":"P41",
+     "Severe":"P42"
+  },
+  "level":"9"
+},
+{
+  "queid":"P39",
+  "question":"Do you smoke or have you smoked in the past?",
+  "options":{
+     "Yes":"P43",
+     "No":"P44"
+  },
+  "level":"9"
+},
+{
+  "queid":"P40",
+  "question":"Do you have a runny or stuffy nose?",
+  "options":{
+     "Yes":"P45",
+     "No":"P46"
+  },
+  "level":"10"
+},
+{
+  "queid":"P41",
+  "question":"Do you have wheezing or a whistling sound when breathing?",
+  "options":{
+     "Yes":"P47",
+     "No":"P48"
+  },
+  "level":"10"
+},
+{
+  "queid":"P42",
+  "question":"Have you been exposed to dust, smoke, or fumes recently?",
+  "options":{
+     "Yes":"P49",
+     "No":"P50"
+  },
+  "level":"10"
+},
+{
+  "queid":"P43",
+  "question":"Do you have a history of asthma?",
+  "options":{
+     "Yes":"P47",
+     "No":"P51"
+  },
+  "level":"10"
+},
+{
+  "queid":"P44",
+  "question":"Do you have a sore throat or postnasal drip?",
+  "options":{
+     "Yes":"P52",
+     "No":"P53"
+  },
+  "level":"10"
+},
+{
+  "queid":"P45",
+  "question":"How often do you experience coughing after eating or drinking?",
+  "options":{
+     "Rarely":[
+        "Upper respiratory infection"
+     ],
+     "Sometimes":[
+        "Upper respiratory infection",
+        "Acid reflux"
+     ],
+     "Frequently":[
+        "Acid reflux"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"P46",
+  "question":"Have you recently traveled to another country?",
+  "options":{
+     "Yes":[
+        "Aspiration pneumonia"
+     ],
+     "No":[
+        "Bronchitis",
+        "Acute exacerbation of chronic obstructive pulmonary disease (COPD)"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"P47",
+  "question":"Has your cough worsened in the past few days?",
+  "options":{
+     "Yes":[
+        "Asthma exacerbation"
+     ],
+     "No":[
+        "Stable asthma"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"P48",
+  "question":"Have you had weight loss, night sweats, or fever?",
+  "options":{
+     "Yes":[
+        "Tuberculosis"
+     ],
+     "No":[
+        "Bronchitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"P49",
+  "question":"Do you have any skin rashes or joint pain?",
+  "options":{
+     "Yes":[
+        "Sarcoidosis"
+     ],
+     "No":[
+        "Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"P50",
+  "question":"Have you recently been around pets or animals?",
+  "options":{
+     "Yes":[
+        "Allergic bronchopulmonary aspergillosis (ABPA)"
+     ],
+     "No":[
+        "Chronic bronchitis",
+        "COPD exacerbation"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"P51",
+  "question":"Do you cough up mucus or blood?",
+  "options":{
+     "Yes":[
+        "Bronchiectasis"
+     ],
+     "No":[
+        "Chronic bronchitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"P52",
+  "question":"Have you taken antibiotics recently?",
+  "options":{
+     "Yes":[
+        "Sinus infection"
+     ],
+     "No":[
+        "Viral upper respiratory infection",
+        "Postnasal drip syndrome"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"P53",
+  "question":"Do you have frequent heartburn or reflux?",
+  "options":{
+     "Yes":[
+        "Gastroesophageal reflux disease (GERD)"
+     ],
+     "No":[
+        "Viral upper respiratory infection",
+        "Idiopathic chronic cough"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"V44",
+  "question":"Do you experience wheezing or a whistling sound while breathing?",
+  "options":{
+     "Yes":"V45",
+     "No":"V46"
+  },
+  "level":"8"
+},
+{
+  "queid":"V45",
+  "question":"Is the wheezing worse during a specific time of day?",
+  "options":{
+     "Yes":"V47",
+     "No":"V48"
+  },
+  "level":"9"
+},
+{
+  "queid":"V46",
+  "question":"Have you been exposed to any environmental allergens or irritants?",
+  "options":{
+     "Yes":"V49",
+     "No":"V50"
+  },
+  "level":"9"
+},
+{
+  "queid":"V47",
+  "question":"Does the wheezing improve with the use of an inhaler?",
+  "options":{
+     "Yes":"V51",
+     "No":"V52"
+  },
+  "level":"10"
+},
+{
+  "queid":"V48",
+  "question":"Do you have a history of asthma or allergies?",
+  "options":{
+     "Yes":"V53",
+     "No":"V54"
+  },
+  "level":"10"
+},
+{
+  "queid":"V49",
+  "question":"Have you recently experienced a change in your living or work environment?",
+  "options":{
+     "Yes":"V55",
+     "No":"V56"
+  },
+  "level":"10"
+},
+{
+  "queid":"V50",
+  "question":"Are you experiencing any other symptoms, such as fatigue, weight loss, or night sweats?",
+  "options":{
+     "Yes":"V57",
+     "No":"V58"
+  },
+  "level":"10"
+},
+{
+  "queid":"V51",
+  "question":"How often do you require the use of an inhaler?",
+  "options":{
+     "Rarely":[
+        "Asthma management under control"
+     ],
+     "Frequently":[
+        "Asthma management needs improvement"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"V52",
+  "question":"Do you experience shortness of breath or wheezing during exercise?",
+  "options":{
+     "Yes":[
+        "Exercise-induced bronchoconstriction"
+     ],
+     "No":[
+        "Possible non-asthma related respiratory issue"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"V53",
+  "question":"How well is your asthma or allergies managed?",
+  "options":{
+     "Well-controlled":[
+        "Continue current asthma/allergy management"
+     ],
+     "Poorly controlled":[
+        "Consider meeting with healthcare professional for better management options"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"V54",
+  "question":"Do you feel short of breath or fatigued after daily activities?",
+  "options":{
+     "Yes":[
+        "Possible chronic obstructive pulmonary disorder (COPD)"
+     ],
+     "No":[
+        "Likely non-respiratory issue, consult a healthcare professional for further evaluation"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"V55",
+  "question":"Have you noticed any improvements since the change?",
+  "options":{
+     "Yes":[
+        "Allergens in previous environment contributory factor"
+     ],
+     "No":[
+        "Further evaluation required for possible respiratory issue"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"V56",
+  "question":"Do you experience any symptoms in specific environments?",
+  "options":{
+     "Yes":[
+        "Possible environmental allergy, consider allergy testing"
+     ],
+     "No":[
+        "Likely non-allergy related respiratory issue, consult healthcare professional"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"V57",
+  "question":"Have you experienced any unintentional weight loss?",
+  "options":{
+     "Yes":[
+        "Possible infection or chronic condition, seek medical evaluation"
+     ],
+     "No":[
+        "Conduct comprehensive medical evaluation for proper diagnosis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"V58",
+  "question":"Have your symptoms persisted for more than a month?",
+  "options":{
+     "Yes":[
+        "Possible chronic respiratory condition, consult a healthcare professional"
+     ],
+     "No":[
+        "Monitor symptoms and seek medical evaluation if worsens or persists"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak42",
+  "question":"Do you have any allergies?",
+  "options":{
+     "Yes":"ak43",
+     "No":"ak44"
+  },
+  "level":"8"
+},
+{
+  "queid":"ak43",
+  "question":"Which allergen(s) cause your symptoms?",
+  "options":{
+     "Pollen":"ak47",
+     "Pet Dander":"ak48",
+     "Dust Mites":"ak49",
+     "Mold":"ak50",
+     "Others":"ak51"
+  },
+  "level":"9"
+},
+{
+  "queid":"ak44",
+  "question":"Do you have any other cold-like symptoms?",
+  "options":{
+     "Sneezing":"ak52",
+     "Sore Throat":"ak53",
+     "Headache":"ak54",
+     "Body Aches":"ak55"
+  },
+  "level":"9"
+},
+{
+  "queid":"ak47",
+  "question":"Have you been exposed to pollen recently?",
+  "options":{
+     "Yes":"ak56",
+     "No":"ak57"
+  },
+  "level":"10"
+},
+{
+  "queid":"ak48",
+  "question":"Have you been around pets or pet dander recently?",
+  "options":{
+     "Yes":"ak58",
+     "No":"ak59"
+  },
+  "level":"10"
+},
+{
+  "queid":"ak49",
+  "question":"Have you been exposed to dust mites recently?",
+  "options":{
+     "Yes":"ak60",
+     "No":"ak61"
+  },
+  "level":"10"
+},
+{
+  "queid":"ak50",
+  "question":"Have you been exposed to mold recently?",
+  "options":{
+     "Yes":"ak62",
+     "No":"ak63"
+  },
+  "level":"10"
+},
+{
+  "queid":"ak51",
+  "question":"Have you been exposed to any other allergens recently?",
+  "options":{
+     "Yes":"ak64",
+     "No":"ak65"
+  },
+  "level":"10"
+},
+{
+  "queid":"ak52",
+  "question":"How long have you been experiencing these additional symptoms?",
+  "options":{
+     "<24 hours":"ak66",
+     "1-3 days":"ak67",
+     "4-7 days":"ak68",
+     ">7 days":"ak69"
+  },
+  "level":"10"
+},
+{
+  "queid":"ak53",
+  "question":"How would you rate the severity of your sore throat?",
+  "options":{
+     "Mild":"ak70",
+     "Moderate":"ak71",
+     "Severe":"ak72"
+  },
+  "level":"10"
+},
+{
+  "queid":"ak54",
+  "question":"Have you taken any medications for your headache?",
+  "options":{
+     "Yes":"ak73",
+     "No":"ak74"
+  },
+  "level":"10"
+},
+{
+  "queid":"ak55",
+  "question":"Which part of your body is aching the most?",
+  "options":{
+     "Head":"ak75",
+     "Back":"ak76",
+     "Joints":"ak77",
+     "Generalized":"ak78"
+  },
+  "level":"10"
+},
+{
+  "queid":"ak56",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Allergic Rhinitis"
+     ],
+     "Cough Severity":[
+        "Allergic Rhinitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak57",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Viral Upper Respiratory Infection"
+     ],
+     "Cough Severity":[
+        "Viral Upper Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak58",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Allergic Rhinitis"
+     ],
+     "Cough Severity":[
+        "Allergic Rhinitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak59",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Viral Upper Respiratory Infection"
+     ],
+     "Cough Severity":[
+        "Viral Upper Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak60",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Allergic Rhinitis"
+     ],
+     "Cough Severity":[
+        "Allergic Rhinitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak61",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Viral Upper Respiratory Infection"
+     ],
+     "Cough Severity":[
+        "Viral Upper Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak62",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Allergic Rhinitis"
+     ],
+     "Cough Severity":[
+        "Allergic Rhinitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak63",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Viral Upper Respiratory Infection"
+     ],
+     "Cough Severity":[
+        "Viral Upper Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak64",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Allergic Rhinitis"
+     ],
+     "Cough Severity":[
+        "Allergic Rhinitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak65",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Viral Upper Respiratory Infection"
+     ],
+     "Cough Severity":[
+        "Viral Upper Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak66",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold"
+     ],
+     "Symptom Severity":[
+        "Common Cold"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak67",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold"
+     ],
+     "Symptom Severity":[
+        "Viral Upper Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak68",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold"
+     ],
+     "Symptom Severity":[
+        "Common Cold"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak69",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold"
+     ],
+     "Symptom Severity":[
+        "Viral Upper Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak70",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold"
+     ],
+     "Symptom Severity":[
+        "Viral Pharyngitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak71",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold"
+     ],
+     "Symptom Severity":[
+        "Common Cold",
+        "Sinus Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak72",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold"
+     ],
+     "Symptom Severity":[
+        "Viral Pharyngitis",
+        "Bacterial Pharyngitis"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak73",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold"
+     ],
+     "Medication Used":[
+        "Viral Upper Respiratory Infection",
+        "Tension Headache"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak74",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak75",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold",
+        "Viral Upper Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak76",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Musculoskeletal Pain"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak77",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold",
+        "Viral Upper Respiratory Infection"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"ak78",
+  "question":"What is your diagnosis based on?",
+  "options":{
+     "Symptom Duration":[
+        "Common Cold",
+        "Viral Upper Respiratory Infection",
+        "Influenza"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R39",
+  "question":"Have you been exposed to any irritants or chemicals?",
+  "options":{
+     "Yes":"R40",
+     "No":"R41"
+  },
+  "level":"8"
+},
+{
+  "queid":"R40",
+  "question":"What type of irritant or chemical were you exposed to?",
+  "options":{
+     "Smoke":"R42",
+     "Pollutants":"R43",
+     "Cleaning products":"R44",
+     "Pesticides":"R45"
+  },
+  "level":"9"
+},
+{
+  "queid":"R41",
+  "question":"Do you have a history of allergies or asthma?",
+  "options":{
+     "Yes":"R46",
+     "No":"R47"
+  },
+  "level":"9"
+},
+{
+  "queid":"R42",
+  "question":"How frequently are you exposed to smoke?",
+  "options":{
+     "Often":"R48",
+     "Rarely":"R49"
+  },
+  "level":"10"
+},
+{
+  "queid":"R43",
+  "question":"How long have you been exposed to the pollutants?",
+  "options":{
+     "Less than a week":"R50",
+     "Over a week":"R51"
+  },
+  "level":"10"
+},
+{
+  "queid":"R44",
+  "question":"Did your symptoms start after using the cleaning products?",
+  "options":{
+     "Yes":"R52",
+     "No":"R53"
+  },
+  "level":"10"
+},
+{
+  "queid":"R45",
+  "question":"Were you wearing protective gear during pesticide exposure?",
+  "options":{
+     "Yes":"R54",
+     "No":"R55"
+  },
+  "level":"10"
+},
+{
+  "queid":"R46",
+  "question":"Are your allergies or asthma well-managed?",
+  "options":{
+     "Yes":"R56",
+     "No":"R57"
+  },
+  "level":"10"
+},
+{
+  "queid":"R47",
+  "question":"Did your cough start suddenly?",
+  "options":{
+     "Yes":"R58",
+     "No":"R59"
+  },
+  "level":"10"
+},
+{
+  "queid":"R48",
+  "question":"Did your symptoms start after exposure to smoke?",
+  "options":{
+     "Yes":[
+        "Smoke irritation, COPD exacerbation"
+     ],
+     "No":[
+        "Bronchitis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R49",
+  "question":"Did your symptoms start after exposure to smoke?",
+  "options":{
+     "Yes":[
+        "Smoke irritation, Pneumonia"
+     ],
+     "No":[
+        "Bronchitis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R50",
+  "question":"Did your symptoms start after exposure to pollutants?",
+  "options":{
+     "Yes":[
+        "Air pollution irritation, COPD exacerbation"
+     ],
+     "No":[
+        "Bronchitis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R51",
+  "question":"Did your symptoms start after exposure to pollutants?",
+  "options":{
+     "Yes":[
+        "Air pollution irritation, Pneumonia"
+     ],
+     "No":[
+        "Bronchitis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R52",
+  "question":"Did your symptoms start after using the cleaning products?",
+  "options":{
+     "Yes":[
+        "Cleaning product irritation, COPD exacerbation"
+     ],
+     "No":[
+        "Bronchitis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R53",
+  "question":"Did your symptoms start after using the cleaning products?",
+  "options":{
+     "Yes":[
+        "Cleaning product irritation, Pneumonia"
+     ],
+     "No":[
+        "Bronchitis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R54",
+  "question":"Did your symptoms start after pesticide exposure?",
+  "options":{
+     "Yes":[
+        "Pesticide irritation, COPD exacerbation"
+     ],
+     "No":[
+        "Bronchitis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R55",
+  "question":"Did your symptoms start after pesticide exposure?",
+  "options":{
+     "Yes":[
+        "Pesticide irritation, Pneumonia"
+     ],
+     "No":[
+        "Bronchitis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R56",
+  "question":"Did your symptoms start during your allergy or asthma management?",
+  "options":{
+     "Yes":[
+        "Allergy-induced cough, Asthma exacerbation"
+     ],
+     "No":[
+        "Bronchitis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R57",
+  "question":"Did your symptoms start during your allergy or asthma management?",
+  "options":{
+     "Yes":[
+        "Poorly-managed allergy or asthma, Asthma exacerbation"
+     ],
+     "No":[
+        "Bronchitis, Pneumonia"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R58",
+  "question":"Did your cough start suddenly?",
+  "options":{
+     "Yes":[
+        "Viral infection, Acute bronchitis"
+     ],
+     "No":[
+        "Chronic bronchitis, COPD"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+{
+  "queid":"R59",
+  "question":"Did your cough start suddenly?",
+  "options":{
+     "Yes":[
+        "Viral infection, Acute bronchitis"
+     ],
+     "No":[
+        "Chronic bronchitis, COPD"
+     ]
+  },
+  "level": "11",
+"is_diagnoisis": "1"
+},
+
+ {
+    "queid":"fo48",
+    "question":"Do you have a history of allergies?",
+    "options":{
+       "Yes":"f901",
+       "No":"f902"
+    },
+    "level":"8"
+ },
+ {
+    "queid":"f901",
+    "question":"Are you currently exposed to allergens?",
+    "options":{
+       "Yes":"f1001",
+       "No":"f1002"
+    },
+    "level":"9"
+ },
+ {
+    "queid":"f902",
+    "question":"Have you recently had a cold or flu?",
+    "options":{
+       "Yes":"f1003",
+       "No":"f1004"
+    },
+    "level":"9"
+ },
+ {
+    "queid":"f1001",
+    "question":"Are you taking any antihistamines?",
+    "options":{
+       "Yes":"f1101",
+       "No":"f1102"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"f1002",
+    "question":"Have you tried allergy medication before?",
+    "options":{
+       "Yes":"f1103",
+       "No":"f1104"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"f1003",
+    "question":"How long ago did you recover from the cold or flu?",
+    "options":{
+       "Less than 2 weeks":"f1105",
+       "More than 2 weeks":"f1106"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"f1004",
+    "question":"Have you been around anyone with a respiratory infection?",
+    "options":{
+       "Yes":"f1107",
+       "No":"f1108"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"f1101",
+    "question":"Are the antihistamines effective in relieving your symptoms?",
+    "options":{
+       "Yes":[
+          "Postnasal drip causing cough",
+          "Allergic rhinitis"
+       ],
+       "No":[
+          "Uncontrolled allergies",
+          "Ineffective treatment"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"f1102",
+    "question":"Have you seen an allergist for testing?",
+    "options":{
+       "Yes":[
+          "Postnasal drip causing cough",
+          "Allergic rhinitis"
+       ],
+       "No":[
+          "Possible allergy-related cough",
+          "Need for allergy testing"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"f1103",
+    "question":"Did the allergy medication effectively relieve your symptoms?",
+    "options":{
+       "Yes":[
+          "Resolved allergy-related cough",
+          "Effective treatment"
+       ],
+       "No":[
+          "Persistent allergy-related cough",
+          "Consider alternative treatments"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"f1104",
+    "question":"Do you have any other symptoms, like sneezing, itching, or watery eyes?",
+    "options":{
+       "Yes":[
+          "Possible allergy-related cough",
+          "Need for allergy testing"
+       ],
+       "No":[
+          "Non-allergic cough",
+          "Consult a healthcare professional"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"f1105",
+    "question":"Are you experiencing any lingering cold or flu symptoms?",
+    "options":{
+       "Yes":[
+          "Post-viral cough",
+          "Symptoms should resolve soon"
+       ],
+       "No":[
+          "Recovering from post-viral cough",
+          "Consult a healthcare professional if symptoms persist"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"f1106",
+    "question":"Are there any environmental factors that could be irritating your throat?",
+    "options":{
+       "Yes":[
+          "Environmental irritant-induced cough",
+          "Address environmental factors"
+       ],
+       "No":[
+          "Unexplained chronic cough",
+          "Consult a healthcare professional"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"f1107",
+    "question":"Have you developed any new symptoms since exposure?",
+    "options":{
+       "Yes":[
+          "Possible respiratory infection",
+          "Consult a healthcare professional"
+       ],
+       "No":[
+          "Monitor for new symptoms",
+          "Consult a healthcare professional if symptoms develop"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"f1108",
+    "question":"Are there any environmental factors that could be irritating your throat?",
+    "options":{
+       "Yes":[
+          "Environmental irritant-induced cough",
+          "Address environmental factors"
+       ],
+       "No":[
+          "Unexplained chronic cough",
+          "Consult a healthcare professional"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+
+ {
+    "queid":"fm41",
+    "question":"Do you have any other symptoms?",
+    "options":{
+       "Yes":"fm42",
+       "No":"fm43"
+    },
+    "level":"8"
+ },
+ {
+    "queid":"fm42",
+    "question":"What other symptoms are you experiencing?",
+    "options":{
+       "Headache":"fm44",
+       "Fatigue":"fm45",
+       "Sore Throat":"fm46",
+       "Nasal Congestion":"fm47"
+    },
+    "level":"9"
+ },
+ {
+    "queid":"fm43",
+    "question":"How often do you smoke?",
+    "options":{
+       "Daily":"fm48",
+       "Occasionally":"fm49",
+       "I quit smoking":"fm50"
+    },
+    "level":"9"
+ },
+ {
+    "queid":"fm44",
+    "question":"Have you been exposed to allergens?",
+    "options":{
+       "Yes":"fm51",
+       "No":"fm52"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fm45",
+    "question":"Have you had any recent exposure to sick contacts?",
+    "options":{
+       "Yes":"fm53",
+       "No":"fm54"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fm46",
+    "question":"Are you experiencing any difficulty swallowing?",
+    "options":{
+       "Yes":"fm55",
+       "No":"fm56"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fm47",
+    "question":"Have you been taking any medication for your symptoms?",
+    "options":{
+       "Yes":"fm57",
+       "No":"fm58"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fm48",
+    "question":"Do you use any medications to control your smoking?",
+    "options":{
+       "Yes":"fm59",
+       "No":"fm60"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fm49",
+    "question":"Have you tried quitting smoking in the past?",
+    "options":{
+       "Yes":"fm61",
+       "No":"fm62"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fm50",
+    "question":"How long ago did you quit smoking?",
+    "options":{
+       "Less than 1 year":"fm63",
+       "1-5 years":"fm64",
+       "More than 5 years":"fm65"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fm51",
+    "question":"How long have you had the headache?",
+    "options":{
+       "Less than 1 week":[
+          "Sinus Infection, Allergic Rhinitis"
+       ],
+       "1-4 weeks":[
+          "Chronic Sinusitis, Allergic Rhinitis"
+       ],
+       "Over 4 weeks":[
+          "Migraine, Chronic Sinusitis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm52",
+    "question":"Did the headache occur suddenly or gradually?",
+    "options":{
+       "Suddenly":[
+          "Tension Headache, Cluster Headache"
+       ],
+       "Gradually":[
+          "Chronic Sinusitis, Migraine"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm53",
+    "question":"Have you received any medications from your sick contacts?",
+    "options":{
+       "Yes":[
+          "Viral Infection, Upper Respiratory Infection"
+       ],
+       "No":[
+          "Viral Infection, Common Cold"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm54",
+    "question":"Do you frequently experience fatigue?",
+    "options":{
+       "Yes":[
+          "Chronic Fatigue Syndrome, Sleep Apnea"
+       ],
+       "No":[
+          "Viral Infection, Stress"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm55",
+    "question":"Do you have a known history of acid reflux or GERD?",
+    "options":{
+       "Yes":[
+          "GERD, Esophagitis"
+       ],
+       "No":[
+          "Tonsillitis, Pharyngitis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm56",
+    "question":"Do you have a dry or wet cough?",
+    "options":{
+       "Dry":[
+          "Viral Infection, Allergies"
+       ],
+       "Wet":[
+          "Upper Respiratory Infection, Bronchitis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm57",
+    "question":"Are you taking over-the-counter or prescribed medications?",
+    "options":{
+       "Over-the-counter":[
+          "Medication-related side effects, Allergies"
+       ],
+       "Prescribed":[
+          "Medication-related side effects, Nasal Polyps"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm58",
+    "question":"Do you have a history of seasonal allergies?",
+    "options":{
+       "Yes":[
+          "Allergic Rhinitis, Seasonal Allergies"
+       ],
+       "No":[
+          "Nasal Polyps, Chronic Sinusitis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm59",
+    "question":"Which medication do you use?",
+    "options":{
+       "Nicotine Replacement":[
+          "Nicotine Withdrawal, Medication side effects"
+       ],
+       "Bupropion":[
+          "Medication side effects, Dry Cough"
+       ],
+       "Varenicline":[
+          "Medication side effects, Bronchitis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm60",
+    "question":"Do you have a plan to quit smoking?",
+    "options":{
+       "Yes":[
+          "Smoking Cessation, Chronic Bronchitis"
+       ],
+       "No":[
+          "Chronic Obstructive Pulmonary Disease, Emphysema"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm61",
+    "question":"How many times have you tried quitting?",
+    "options":{
+       "1-2 times":[
+          "Nicotine dependence, Smoking relapse"
+       ],
+       "3 or more times":[
+          "Nicotine dependence, Chronic Cough"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm62",
+    "question":"Do you have any triggers for smoking?",
+    "options":{
+       "Social situations":[
+          "Social Smoking, Temporary Cough"
+       ],
+       "Stress":[
+          "Stress-induced Smoking, Chronic Cough"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm63",
+    "question":"Have you experienced any withdrawal symptoms?",
+    "options":{
+       "Yes":[
+          "Smoking Withdrawal, Chronic Cough"
+       ],
+       "No":[
+          "Residual Effects, Temporary Cough"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm64",
+    "question":"Have you experienced any respiratory improvements since quitting?",
+    "options":{
+       "Yes":[
+          "Post-Smoking Recovery, Improved lung function"
+       ],
+       "No":[
+          "Chronic Obstructive Pulmonary Disease, Emphysema"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fm65",
+    "question":"Do you still experience coughing?",
+    "options":{
+       "Yes":[
+          "Chronic Cough, Lingering Effects"
+       ],
+       "No":[
+          "Recovered from Smoking Effects, Healthy Lungs"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+
+ {
+    "queid":"fk39",
+    "question":"Have you been exposed to any chemicals, dust, or smoke recently?",
+    "options":{
+       "Yes":"fk40",
+       "No":"fk41"
+    },
+    "level":"8"
+ },
+ {
+    "queid":"fk40",
+    "question":"Do you use protective equipment while being exposed?",
+    "options":{
+       "Yes":"fk42",
+       "No":"fk43"
+    },
+    "level":"9"
+ },
+ {
+    "queid":"fk41",
+    "question":"Do you smoke or have a history of smoking?",
+    "options":{
+       "Yes":"fk44",
+       "No":"fk45"
+    },
+    "level":"9"
+ },
+ {
+    "queid":"fk42",
+    "question":"Have you experienced any change in your sense of taste or smell?",
+    "options":{
+       "Yes":"fk46",
+       "No":"fk47"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fk43",
+    "question":"Do you have a persistent or productive cough?",
+    "options":{
+       "Persistent":"fk48",
+       "Productive":"fk49"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fk44",
+    "question":"How long have you been smoking or had smoked?",
+    "options":{
+       "Less than 10 years":"fk50",
+       "More than 10 years":"fk51"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fk45",
+    "question":"Are you exposed to secondhand smoke?",
+    "options":{
+       "Yes":"fk52",
+       "No":"fk53"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fk46",
+    "question":"Do you have any digestive issues?",
+    "options":{
+       "Yes":"11a",
+       "No":"11b"
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fk47",
+    "question":"Do you experience nasal congestion or runny nose?",
+    "options":{
+       "Yes":"11c",
+       "No":"11d"
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fk48",
+    "question":"Do you have any swelling in your ankles or legs?",
+    "options":{
+       "Yes":"11e",
+       "No":"11f"
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fk49",
+    "question":"Do you have any sinus issues?",
+    "options":{
+       "Yes":"11g",
+       "No":"11h"
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fk50",
+    "question":"Do you experience wheezing?",
+    "options":{
+       "Yes":"11i",
+       "No":"11j"
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fk51",
+    "question":"Do you have a family history of lung disease?",
+    "options":{
+       "Yes":"11k",
+       "No":"11l"
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fk52",
+    "question":"How frequently are you exposed to secondhand smoke?",
+    "options":{
+       "Occasionally":"11m",
+       "Frequently":"11n"
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fk53",
+    "question":"Do you have an allergy to any substance?",
+    "options":{
+       "Yes":"11o",
+       "No":"11p"
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11a",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Gastroesophageal reflux disease (GERD)",
+          "Acid reflux"
+       ],
+       "No":[
+          "Chronic sinusitis",
+          "Allergic rhinitis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11b",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Occupational lung disease",
+          "Bronchitis"
+       ],
+       "No":[
+          "Chronic sinusitis",
+          "Allergic rhinitis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11c",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Postnasal drip",
+          "Allergic rhinitis"
+       ],
+       "No":[
+          "Chronic sinusitis",
+          "Asthma"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11d",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Occupational lung disease",
+          "Pulmonary edema"
+       ],
+       "No":[
+          "Chronic bronchitis",
+          "Heart failure"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11e",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Heart failure",
+          "Pulmonary edema"
+       ],
+       "No":[
+          "Chronic obstructive pulmonary disease (COPD)",
+          "Bronchiectasis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11f",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Chronic bronchitis",
+          "COPD"
+       ],
+       "No":[
+          "Asthma",
+          "Bronchiectasis"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11g",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Chronic sinusitis",
+          "Allergic rhinitis"
+       ],
+       "No":[
+          "Asthma",
+          "Postnasal drip"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11h",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "COPD",
+          "Chronic bronchitis"
+       ],
+       "No":[
+          "Asthma",
+          "Lung cancer"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11i",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Asthma",
+          "Chronic bronchitis"
+       ],
+       "No":[
+          "COPD",
+          "Lung cancer"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11j",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Smoker's cough",
+          "Asthma"
+       ],
+       "No":[
+          "Lung cancer",
+          "Lung disease"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11k",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "COPD",
+          "Lung disease"
+       ],
+       "No":[
+          "Asthma",
+          "Lung cancer"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11l",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Smoker's cough",
+          "Lung disease"
+       ],
+       "No":[
+          "COPD",
+          "Lung cancer"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11m",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Secondhand smoke exposure",
+          "Asthma"
+       ],
+       "No":[
+          "Airway irritation",
+          "Asthma exacerbation"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11n",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Secondhand smoke exposure",
+          "Lung disease"
+       ],
+       "No":[
+          "COPD",
+          "Lung cancer"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11o",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Allergic rhinitis",
+          "Asthma"
+       ],
+       "No":[
+          "Chronic sinusitis",
+          "Postnasal drip"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"11p",
+    "question":"Diagnosis based on your symptoms",
+    "options":{
+       "Yes":[
+          "Lung disease",
+          "COPD"
+       ],
+       "No":[
+          "Asthma",
+          "Lung cancer"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fg43",
+    "question":"Do you experience frequent heartburn or acid reflux?",
+    "options":{
+       "Yes":"fg44",
+       "No":"fg45"
+    },
+    "level":"8"
+ },
+ {
+    "queid":"fg44",
+    "question":"Have you taken any antacids recently?",
+    "options":{
+       "Yes":"fg46",
+       "No":"fg47"
+    },
+    "level":"9"
+ },
+ {
+    "queid":"fg45",
+    "question":"Do you have any seasonal allergies?",
+    "options":{
+       "Yes":"fg48",
+       "No":"fg49"
+    },
+    "level":"9"
+ },
+ {
+    "queid":"fg46",
+    "question":"Did the antacids improve your symptoms?",
+    "options":{
+       "Yes":"fg50",
+       "No":"fg51"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fg47",
+    "question":"Is your cough worse at night or in the morning?",
+    "options":{
+       "Night":"fg52",
+       "Morning":"fg53"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fg48",
+    "question":"Do your allergy symptoms worsen after exposure to allergens?",
+    "options":{
+       "Yes":"fg54",
+       "No":"fg55"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fg49",
+    "question":"Do you have a sensation of something stuck in your throat?",
+    "options":{
+       "Yes":"fg56",
+       "No":"fg57"
+    },
+    "level":"10"
+ },
+ {
+    "queid":"fg50",
+    "question":"How long have you been taking antacids?",
+    "options":{
+       "Less than 2 weeks":[
+          "Gastroesophageal reflux disease (GERD) or Acid reflux"
+       ],
+       "2 weeks or more":[
+          "Long-term GERD or Acid reflux"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fg51",
+    "question":"Do you have difficulty swallowing?",
+    "options":{
+       "Yes":[
+          "Esophageal disorders"
+       ],
+       "No":[
+          "Possible non-GI related chest pain"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fg52",
+    "question":"Do you snore heavily at night?",
+    "options":{
+       "Yes":[
+          "Sleep-related respiratory issues"
+       ],
+       "No":[
+          "Undetermined cause of cough"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fg53",
+    "question":"Are you exposed to environmental irritants?",
+    "options":{
+       "Yes":[
+          "Work-related or environmental irritant exposure"
+       ],
+       "No":[
+          "Undetermined cause of cough"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fg54",
+    "question":"Have you tried antihistamines or nasal corticosteroids?",
+    "options":{
+       "Yes":[
+          "Allergic rhinitis, uncontrolled"
+       ],
+       "No":[
+          "Allergic rhinitis, consider allergy management"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fg55",
+    "question":"Have your symptoms improved with antihistamines or nasal corticosteroids?",
+    "options":{
+       "Yes":[
+          "Nonallergic rhinitis"
+       ],
+       "No":[
+          "Other rhinitis causes"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fg56",
+    "question":"Do you have difficulty swallowing?",
+    "options":{
+       "Yes":[
+          "Globus sensation, possible esophageal disorders"
+       ],
+       "No":[
+          "Globus sensation, non-esophageal causes"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ },
+ {
+    "queid":"fg57",
+    "question":"Does your cough produce mucus?",
+    "options":{
+       "Yes":[
+          "Productive cough, possible infection or chronic lung disease"
+       ],
+       "No":[
+          "Non-productive cough, undetermined cause"
+       ]
+    },
+    "level": "11",
+"is_diagnoisis": "1"
+ }
+]

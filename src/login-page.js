@@ -18,11 +18,12 @@ function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === staticUsername && password === staticPassword) {
-      navigate('/parchaa-cortex');
+      navigate('/instructions'); // Redirect to Instructions page
     } else {
       alert("Invalid credentials");
     }
   };
+  
 
   return (
     <div className="main">

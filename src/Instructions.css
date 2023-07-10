@@ -1,0 +1,28 @@
+.instructionsContainer {
+    background-color: #9FAFF8;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.instructionsContainer h1 {
+    color: #333;
+}
+
+.instructionsContainer p {
+    color: #666;
+}
+
+.instructionsContainer ol li {
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.instructionsContainer button {
+    padding: 10px 20px;
+    background-color: #4A68F1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

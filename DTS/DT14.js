@@ -16,15 +16,11 @@ cytoscape.use(undoRedo); // Register undoRedo extension
 cytoscape.use(panzoom);
 
 const options = [
-  {value:"data", label:"dummy"},
-  { value: "facePain", label: "Face Pain" },
-  { value: "headache", label: "Headache" },
-  {value:"cough", label: "Cough" },
+  { value: "data", label: "Fever" },
+  { value: "data1", label: "Cold" },
+  { value: "data2", label: "Headache" },
   // ...other options
 ];
-
-
-
 function DecisionTree({ data, onOptionChange }) {
   const [ur, setUr] = useState(null);
   const cyRef = useRef(null);
@@ -39,37 +35,29 @@ function DecisionTree({ data, onOptionChange }) {
   const [cy, setCy] = useState(null);
   const [, setDfsStartingNode] = useState(null);
   const [searchText, setSearchText] = useState("");
-  const [selectedComplaint, setSelectedComplaint] = useState(null);
-
-
 
   let highlightedNodes = []; // Keep track of previously highlighted nodes
   let highlightedEdges = []; // Keep track of previously highlighted edges
 
-  let pathIndex = 0; // index to keep track of current path
-let rootToLeafPaths = []; // array to store all root-to-leaf paths
   const onSearch = () => {
     // Hide all nodes
     cy.elements().hide();
 
     // Find nodes that contain the search text
-    const matchingNodes = cy.nodes().filter(node => {
-      const label = node.data('label');
-      if (label && typeof label === 'string') {
-        return label.toLowerCase().includes(searchText.toLowerCase());
-      }
-      return false;
+    const matchingNodes = cy.nodes().filter((node) => {
+      const label = node.data("label");
+      return label && label.includes(searchText);
     });
 
     // Show the matching nodes
     matchingNodes.show();
 
     // Show and highlight the path to the root for each matching node
-  matchingNodes.forEach((node) => {
-    const predecessors = node.predecessors();
-    predecessors.show(); // Show predecessors of matching nodes
-    rootToLeafPaths.push(predecessors); // Store the path in the array
-  });
+    matchingNodes.forEach((node) => {
+      const predecessors = node.predecessors();
+      predecessors.show(); // Show predecessors of matching nodes
+      highlightPathToRoot1(node);
+    });
 
     // Adjust positions of visible nodes using hierarchical layout
     const layout = cy.layout({
@@ -81,70 +69,8 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
     });
 
     layout.run();
+  };
 
-    highlightPathToRoot1(rootToLeafPaths[0]);
-  };
-  const onNext = () => {
-    // Hide all nodes and edges
-    cy.elements().hide();
-  
-    // Increment pathIndex and loop back to 0 if it exceeds the array length
-    pathIndex = (pathIndex + 1) % rootToLeafPaths.length;
-  
-    // Show the current path nodes and their predecessors
-    const currentPath = rootToLeafPaths[pathIndex];
-    currentPath.show();
-    currentPath.predecessors().show();
-  
-    // Find leaf nodes that follow the current path
-    const leafNodes = currentPath.filter(node => node.successors().length === 0);
-    leafNodes.show();
-  
-    // Highlight the current path
-    highlightPathToRoot1(currentPath);
-  
-    // Rerun the layout
-    const layout = cy.layout({
-      name: "dagre",
-      rankDir: "TD",
-      rankSep: 80, // increase this value for more vertical space between nodes
-      nodeSep: 10, // increase this value for more horizontal space between nodes
-      edgeSep: 30, // distance between nodes and their edges
-    });
-    layout.run();
-  };
-  
-  const onPrev = () => {
-    // Hide all nodes and edges
-    cy.elements().hide();
-  
-    // Decrement pathIndex and loop back to the last index if it falls below 0
-    pathIndex = (pathIndex - 1 + rootToLeafPaths.length) % rootToLeafPaths.length;
-  
-    // Show and highlight the previous path
-    const path = rootToLeafPaths[pathIndex];
-    path.show();
-    path.predecessors().show();
-  
-    // Find leaf nodes that follow the current path
-    const leafNodes = path.filter(node => node.successors().length === 0);
-    leafNodes.show();
-  
-    // Highlight the previous path
-    highlightPathToRoot1(path);
-  
-    // Adjust positions of visible nodes using hierarchical layout
-    const layout = cy.layout({
-      name: "dagre",
-      rankDir: "TD",
-      rankSep: 80,
-      nodeSep: 10,
-      edgeSep: 30,
-    });
-  
-    layout.run();
-  };
-  
   const highlightPathToRoot1 = (node) => {
     // Remove highlight from previous path
     highlightedNodes.forEach((highlightedNode) => {
@@ -153,26 +79,28 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
           "background-color": "#A7ECEE",
           color: "black", // revert to original node text color
         },
+        duration: 2000, // transition duration
       });
     });
-  
+
     highlightedEdges.forEach((highlightedEdge) => {
       highlightedEdge.animate({
         style: {
           "line-color": "#9BA4B4",
           color: "black", // revert to original edge text color
         },
+        duration: 2000, // transition duration
       });
     });
-  
+
     highlightedNodes = [];
     highlightedEdges = [];
-  
+
     // Highlight new path
     const predecessors = node.predecessors();
     const nodes = predecessors.nodes();
     const edges = predecessors.edges();
-  
+
     nodes.forEach((node, i) => {
       setTimeout(() => {
         node.animate({
@@ -181,17 +109,18 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
               node.successors().length === 0 ? "#FF3E6D" : "#F1FFAB", // Highlight leaf nodes with a different color
             color: "black", // highlight node text
           },
+          duration: 2000, // transition duration
         });
-  
+
         highlightedNodes.push(node); // Add node to highlightedNodes array
-  
+
         // Adjust view to current node
         cy.fit(node, 5000000); // fit view to current node with 50px padding
-        cy.zoom({ level: 0.2 }); // zoom in
+        cy.zoom({ level: 1.9 }); // zoom in
         cy.center(node); // center view to current node
-      }, i * 5); // Change color and view every 500ms
+      }, i * 500); // Change color and view every 500ms
     });
-  
+
     edges.forEach((edge, i) => {
       setTimeout(() => {
         edge.animate({
@@ -199,31 +128,29 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
             "line-color": "#FF3E6D",
             color: "#4C0027", // highlight edge text
           },
+          duration: 2000, // transition duration
         });
-  
+
         highlightedEdges.push(edge); // Add edge to highlightedEdges array
-      }, i * 5); // Change color every 500ms
+      }, i * 500); // Change color every 500ms
     });
-  
+
     // Highlight the leaf node (target of the search) with a different color
-    if(node.successors().length === 0) {
-      node.animate({
-        style: {
-          "background-color": "red", // change to the color you want for the leaf node
-          color: "white", // change text color as needed
-        },
-      });
-    }
+    node.animate({
+      style: {
+        "background-color": "red", // change to the color you want for the leaf node
+        color: "white", // change text color as needed
+      },
+      duration: 2000, // transition duration
+    });
   };
-  
-  
   const highlightPathToRoot = (node) => {
     // Remove highlight from previous path
     highlightedNodes.forEach((highlightedNode) => {
       highlightedNode.animate({
         style: {
-          "background-color": "rgba(75, 106, 245, 0.33)",
-          color: "white", // revert to original node text color
+          "background-color": "#A7ECEE",
+          color: "black", // revert to original node text color
         },
         duration: 2000, // transition duration
       });
@@ -232,7 +159,7 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
     highlightedEdges.forEach((highlightedEdge) => {
       highlightedEdge.animate({
         style: {
-          "line-color": "black",
+          "line-color": "#9BA4B4",
           color: "black", // revert to original edge text color
         },
         duration: 2000, // transition duration
@@ -254,8 +181,8 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
       setTimeout(() => {
         node.animate({
           style: {
-            "background-color": "#53B88B",
-            color: "#FFF;", // highlight node text
+            "background-color": "#F1FFAB",
+            color: "black", // highlight node text
           },
           duration: 2000, // transition duration
         });
@@ -386,38 +313,22 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
       // Make POST request to the backend
       const response = await axios.post(
         "http://localhost:4000/connect-react/update-json",
-        {
-          data: cytoscapeData,
-          complaint: selectedComplaint // Send the selected complaint
-        }
+        cytoscapeData
       );
       console.log("Response:", response.data);
     } catch (error) {
       console.error("Error sending data:", error);
     }
   };
-  
 
   const onAddNode = async () => {
     const id = prompt("Enter node id:");
     const label = prompt("Enter node label:");
-  
-    // Get the position of the root node
-    const rootPosition = cy.$("Q1").position();
-  
-    // Calculate the position for the new node based on the root node's position
-    const newNodePosition = {
-      x: rootPosition.x-500,
-      y: rootPosition.y+500,
-    };
-  
     // Use ur.do() to perform an undoable action
     ur.do("add", {
       group: "nodes",
       data: { id, label },
-      position: newNodePosition,
     });
-  
     await saveGraphState();
   };
 
@@ -572,7 +483,7 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
           style: {
             width: 3,
             "line-color": "black",
-            "curve-style": "taxi",//unbundled-bezier,
+            "curve-style": "taxi",
             "target-arrow-color": "black",
             "target-arrow-shape": "vee",
             "arrow-scale": 2,
@@ -617,7 +528,7 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
     const rootNode = cyInstance.$id("Q1");
     if (rootNode) {
       cyInstance.fit(rootNode, 50); // fit view to root node with 50px padding
-      cyInstance.zoom({ level: 0.4 }); // zoom in
+      cyInstance.zoom({ level: 1 }); // zoom in
       cyInstance.center(rootNode); // center view to root node
     }
     setCy(cyInstance);
@@ -702,16 +613,13 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
     setInputText("");
     setEditingNode(null);
     setEditingEdge(null);
-  
+
     const cytoscapeData = JSON.stringify(cy.json().elements); // Get the current state of the graph
     try {
       // Make POST request to the backend
       const response = await axios.post(
         "http://localhost:4000/connect-react/update-json",
-        {
-          data: cytoscapeData,
-          complaint: selectedComplaint // Send the selected complaint
-        },
+        { data: cytoscapeData },
         {
           headers: {
             "Content-Type": "application/json",
@@ -723,7 +631,6 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
       console.error("Error sending data:", error);
     }
   };
-  
   // Add undo and redo methods
   const onUndo = () => ur.undo();
   const onRedo = () => ur.redo();
@@ -761,7 +668,6 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
     }),
   };
   const handleChange = (selectedOption) => {
-    setSelectedComplaint(selectedOption.value);  // Use the label instead of the value
     onOptionChange(selectedOption.value);
   };
   return (
@@ -882,9 +788,6 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
           // border: "1px solid ",
         }}
       >
-        <button onClick={onPrev}>Prev</button>
-<button onClick={onNext}>{pathIndex}Next</button>
-
         <div className="doctor-profile">
           <div className="user-profile">
             <h3>Dr. Varis1807</h3>
@@ -922,11 +825,8 @@ function generateCytoscapeElements(data) {
   data?.forEach((item) => {
     // If item is a diagnosis, set label to first diagnosis text in options
     const label = item.is_diagnoisis
-  ? Array.isArray(Object.values(item.options)[0]) 
-    ? Object.values(item.options)[0].join(", ") 
-    : Object.values(item.options)[0] // or some other fallback behavior for when it's not an array
-  : item.question;
-
+      ? Object.values(item.options)[0].join(", ")
+      : item.question;
 
     nodes.push({
       data: {

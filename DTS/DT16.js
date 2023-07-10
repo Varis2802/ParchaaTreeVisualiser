@@ -46,8 +46,6 @@ function DecisionTree({ data, onOptionChange }) {
   let highlightedNodes = []; // Keep track of previously highlighted nodes
   let highlightedEdges = []; // Keep track of previously highlighted edges
 
-  let pathIndex = 0; // index to keep track of current path
-let rootToLeafPaths = []; // array to store all root-to-leaf paths
   const onSearch = () => {
     // Hide all nodes
     cy.elements().hide();
@@ -65,11 +63,11 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
     matchingNodes.show();
 
     // Show and highlight the path to the root for each matching node
-  matchingNodes.forEach((node) => {
-    const predecessors = node.predecessors();
-    predecessors.show(); // Show predecessors of matching nodes
-    rootToLeafPaths.push(predecessors); // Store the path in the array
-  });
+    matchingNodes.forEach((node) => {
+      const predecessors = node.predecessors();
+      predecessors.show(); // Show predecessors of matching nodes
+      highlightPathToRoot1(node);
+    });
 
     // Adjust positions of visible nodes using hierarchical layout
     const layout = cy.layout({
@@ -82,69 +80,9 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
 
     layout.run();
 
-    highlightPathToRoot1(rootToLeafPaths[0]);
+
   };
-  const onNext = () => {
-    // Hide all nodes and edges
-    cy.elements().hide();
-  
-    // Increment pathIndex and loop back to 0 if it exceeds the array length
-    pathIndex = (pathIndex + 1) % rootToLeafPaths.length;
-  
-    // Show the current path nodes and their predecessors
-    const currentPath = rootToLeafPaths[pathIndex];
-    currentPath.show();
-    currentPath.predecessors().show();
-  
-    // Find leaf nodes that follow the current path
-    const leafNodes = currentPath.filter(node => node.successors().length === 0);
-    leafNodes.show();
-  
-    // Highlight the current path
-    highlightPathToRoot1(currentPath);
-  
-    // Rerun the layout
-    const layout = cy.layout({
-      name: "dagre",
-      rankDir: "TD",
-      rankSep: 80, // increase this value for more vertical space between nodes
-      nodeSep: 10, // increase this value for more horizontal space between nodes
-      edgeSep: 30, // distance between nodes and their edges
-    });
-    layout.run();
-  };
-  
-  const onPrev = () => {
-    // Hide all nodes and edges
-    cy.elements().hide();
-  
-    // Decrement pathIndex and loop back to the last index if it falls below 0
-    pathIndex = (pathIndex - 1 + rootToLeafPaths.length) % rootToLeafPaths.length;
-  
-    // Show and highlight the previous path
-    const path = rootToLeafPaths[pathIndex];
-    path.show();
-    path.predecessors().show();
-  
-    // Find leaf nodes that follow the current path
-    const leafNodes = path.filter(node => node.successors().length === 0);
-    leafNodes.show();
-  
-    // Highlight the previous path
-    highlightPathToRoot1(path);
-  
-    // Adjust positions of visible nodes using hierarchical layout
-    const layout = cy.layout({
-      name: "dagre",
-      rankDir: "TD",
-      rankSep: 80,
-      nodeSep: 10,
-      edgeSep: 30,
-    });
-  
-    layout.run();
-  };
-  
+
   const highlightPathToRoot1 = (node) => {
     // Remove highlight from previous path
     highlightedNodes.forEach((highlightedNode) => {
@@ -153,26 +91,28 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
           "background-color": "#A7ECEE",
           color: "black", // revert to original node text color
         },
+        
       });
     });
-  
+
     highlightedEdges.forEach((highlightedEdge) => {
       highlightedEdge.animate({
         style: {
           "line-color": "#9BA4B4",
           color: "black", // revert to original edge text color
         },
+       
       });
     });
-  
+
     highlightedNodes = [];
     highlightedEdges = [];
-  
+
     // Highlight new path
     const predecessors = node.predecessors();
     const nodes = predecessors.nodes();
     const edges = predecessors.edges();
-  
+
     nodes.forEach((node, i) => {
       setTimeout(() => {
         node.animate({
@@ -181,17 +121,18 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
               node.successors().length === 0 ? "#FF3E6D" : "#F1FFAB", // Highlight leaf nodes with a different color
             color: "black", // highlight node text
           },
+         
         });
-  
+
         highlightedNodes.push(node); // Add node to highlightedNodes array
-  
+
         // Adjust view to current node
         cy.fit(node, 5000000); // fit view to current node with 50px padding
         cy.zoom({ level: 0.2 }); // zoom in
         cy.center(node); // center view to current node
       }, i * 5); // Change color and view every 500ms
     });
-  
+
     edges.forEach((edge, i) => {
       setTimeout(() => {
         edge.animate({
@@ -199,24 +140,22 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
             "line-color": "#FF3E6D",
             color: "#4C0027", // highlight edge text
           },
+         
         });
-  
+
         highlightedEdges.push(edge); // Add edge to highlightedEdges array
       }, i * 5); // Change color every 500ms
     });
-  
+
     // Highlight the leaf node (target of the search) with a different color
-    if(node.successors().length === 0) {
-      node.animate({
-        style: {
-          "background-color": "red", // change to the color you want for the leaf node
-          color: "white", // change text color as needed
-        },
-      });
-    }
+    node.animate({
+      style: {
+        "background-color": "red", // change to the color you want for the leaf node
+        color: "white", // change text color as needed
+      },
+      
+    });
   };
-  
-  
   const highlightPathToRoot = (node) => {
     // Remove highlight from previous path
     highlightedNodes.forEach((highlightedNode) => {
@@ -882,9 +821,6 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
           // border: "1px solid ",
         }}
       >
-        <button onClick={onPrev}>Prev</button>
-<button onClick={onNext}>{pathIndex}Next</button>
-
         <div className="doctor-profile">
           <div className="user-profile">
             <h3>Dr. Varis1807</h3>

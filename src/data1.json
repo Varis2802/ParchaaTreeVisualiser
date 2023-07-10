@@ -1,0 +1,19 @@
+[{"queid": "Q1", "question": "Where is the pain localized on your face?", "options": {"Around the eyes or forehead": "Q2", "Jaw or teeth": "Q3", "Generalized or cannot specify": "Q4"}, "level": 1}
+    ,
+    {"queid": "Q2", "question": "Is the pain accompanied by any of the following symptoms: nasal congestion, runny nose, reduced sense of smell, cough, or fever?", "options": {"Yes": "Q5", "No": "Q6"}, "level": 2}
+    ,
+    {"queid": "Q3", "question": "Is the pain sharp and severe, often described as a shooting pain?", "options": {"Yes": "Q7", "No": "Q8"}, "level": 2}
+    ,
+    {"queid": "Q4", "question": "Have you been experiencing stress or anxiety lately?", "options": {"Yes": "Q9", "No": "Q10"}, "level": 2}
+    ,
+    {"queid": "Q5", "question": "Have you recently had a cold, allergies, or been exposed to environmental irritants like smoke or dust?", "options": {"Yes": "Q11", "No": "Q12"}, "level": 3}
+    ,
+    {"queid": "Q6", "question": "Is the pain accompanied by visual disturbances or sensitivity to light?", "options": {"Yes": "Q13", "No": "Q14"}, "level": 3}
+    ,
+    {"queid": "Q7", "question": "Does the pain come and go in sudden bursts?", "options": {"Yes": "Q15", "No": "Q16"}, "level": 3}
+    ,
+    {"queid": "Q8", "question": "Do you feel pain when you open your mouth or chew?", "options": {"Yes": "Q17", "No": "Q18"}, "level": 3}
+    ,
+    {"queid": "Q9", "question": "Have you recently had any changes in your life that may have caused stress or anxiety?", "options": {"Yes": "Q19", "No": "Q20"}, "level": 3}
+    ,
+    {"queid": "Q10", "question": "Do you have any history of head injury or trauma?", "options": {"Yes": "Q21", "No": "Q22"}, "level": 3}]

@@ -1,0 +1,7 @@
+[{"queid": "Q1", "question": "Where is the pain localized on your face?", "options": {"Around the eyes or forehead": "Q2", "Jaw or teeth": "Q3", "Generalized or cannot specify": "Q4"}, "level": 1}
+    ,
+    {"queid": "Q2", "question": "Is the pain accompanied by any of the following symptoms: nasal congestion, runny nose, reduced sense of smell, cough, or fever?", "options": {"Yes": "Q5", "No": "Q6"}, "level": 2}
+    ,
+    {"queid": "Q3", "question": "Is the pain sharp and severe, often described as a shooting pain?", "options": {"Yes": "Q7", "No": "Q8"}, "level": 2}
+    ,
+    {"queid": "Q4", "question": "Have you been experiencing stress or anxiety lately?", "options": {"Yes": "Q9", "No": "Q10"}, "level": 2}]
