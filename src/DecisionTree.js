@@ -24,7 +24,8 @@ const options = [
 ];
 
 
-
+let pathIndex = 0; // index to keep track of current path
+let rootToLeafPaths = []; // array to store all root-to-leaf paths
 function DecisionTree({ data, onOptionChange }) {
   const [ur, setUr] = useState(null);
   const cyRef = useRef(null);
@@ -46,59 +47,80 @@ function DecisionTree({ data, onOptionChange }) {
   let highlightedNodes = []; // Keep track of previously highlighted nodes
   let highlightedEdges = []; // Keep track of previously highlighted edges
 
-  let pathIndex = 0; // index to keep track of current path
-let rootToLeafPaths = []; // array to store all root-to-leaf paths
-  const onSearch = () => {
-    // Hide all nodes
-    cy.elements().hide();
 
-    // Find nodes that contain the search text
-    const matchingNodes = cy.nodes().filter(node => {
-      const label = node.data('label');
-      if (label && typeof label === 'string') {
-        return label.toLowerCase().includes(searchText.toLowerCase());
-      }
-      return false;
-    });
+ // Initialize pathCount state
+ const [pathCount, setPathCount] = useState(0);
+ const [totalCount, setTotalCount] = useState(0);
 
-    // Show the matching nodes
-    matchingNodes.show();
 
-    // Show and highlight the path to the root for each matching node
-  matchingNodes.forEach((node) => {
+const onSearch = () => {
+  // Hide all nodes
+  cy.elements().hide();
+
+  // Find nodes that contain the search text
+  const matchingNodes = cy.nodes().filter(node => {
+    const label = node.data('label');
+    if (label && typeof label === 'string') {
+      return label.toLowerCase().includes(searchText.toLowerCase());
+    }
+    return false;
+  });
+
+  // Filter for leaf nodes (nodes with no successors)
+  const matchingLeafNodes = matchingNodes.filter(node => node.successors().length === 0);
+
+  // Show the matching leaf nodes
+  matchingLeafNodes.show();
+
+  // Show and highlight the path to the root for each matching leaf node
+  matchingLeafNodes.forEach((node) => {
     const predecessors = node.predecessors();
     predecessors.show(); // Show predecessors of matching nodes
     rootToLeafPaths.push(predecessors); // Store the path in the array
   });
 
-    // Adjust positions of visible nodes using hierarchical layout
-    const layout = cy.layout({
-      name: "dagre",
-      rankDir: "TD",
-      rankSep: 80, // increase this value for more vertical space between nodes
-      nodeSep: 10, // increase this value for more horizontal space between nodes
-      edgeSep: 30, // distance between nodes and their edges
-    });
+  // Adjust positions of visible nodes using hierarchical layout
+  const layout = cy.layout({
+    name: "dagre",
+    rankDir: "TD",
+    rankSep: 80, // increase this value for more vertical space between nodes
+    nodeSep: 10, // increase this value for more horizontal space between nodes
+    edgeSep: 30, // distance between nodes and their edges
+  });
 
-    layout.run();
+  layout.run();
 
-    highlightPathToRoot1(rootToLeafPaths[0]);
-  };
+  highlightPathToRoot1(rootToLeafPaths[0]);
+};
+
   const onNext = () => {
     // Hide all nodes and edges
     cy.elements().hide();
   
     // Increment pathIndex and loop back to 0 if it exceeds the array length
     pathIndex = (pathIndex + 1) % rootToLeafPaths.length;
+   // Update pathCount state after updating pathIndex
+   setPathCount(pathIndex);
+   setTotalCount(rootToLeafPaths.length);
+  // Check if the current path is defined
+  if (!rootToLeafPaths[pathIndex]) {
+    console.error('No paths available.');
+    return;
+  }
   
     // Show the current path nodes and their predecessors
     const currentPath = rootToLeafPaths[pathIndex];
-    currentPath.show();
-    currentPath.predecessors().show();
+    const connectedNodes = currentPath.connectedNodes(); // Get connected nodes, including the node itself
+    connectedNodes.show();
+  
+    // Show the edges connecting the nodes in the current path
+    connectedNodes.connectedEdges().show();
   
     // Find leaf nodes that follow the current path
-    const leafNodes = currentPath.filter(node => node.successors().length === 0);
+    const leafNodes = connectedNodes.filter(node => node.successors().length === 0);
     leafNodes.show();
+
+    
   
     // Highlight the current path
     highlightPathToRoot1(currentPath);
@@ -112,7 +134,11 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
       edgeSep: 30, // distance between nodes and their edges
     });
     layout.run();
+    console.log(`Current path length: ${pathIndex}`); 
+  
+      
   };
+  
   
   const onPrev = () => {
     // Hide all nodes and edges
@@ -120,18 +146,29 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
   
     // Decrement pathIndex and loop back to the last index if it falls below 0
     pathIndex = (pathIndex - 1 + rootToLeafPaths.length) % rootToLeafPaths.length;
+   // Update pathCount state after updating pathIndex
+   setPathCount(rootToLeafPaths[pathIndex].length);
+   setTotalCount(rootToLeafPaths.length);
   
-    // Show and highlight the previous path
-    const path = rootToLeafPaths[pathIndex];
-    path.show();
-    path.predecessors().show();
+    // Show the current path nodes and their predecessors
+    const currentPath = rootToLeafPaths[pathIndex];
+    const connectedNodes = currentPath.connectedNodes(); // Get connected nodes, including the node itself
+    connectedNodes.show();
+  
+    // Show the edges connecting the nodes in the current path
+    connectedNodes.connectedEdges().show();
+      // Check if the current path is defined
+  if (!rootToLeafPaths[pathIndex]) {
+    console.error('No paths available.');
+    return;
+  }
   
     // Find leaf nodes that follow the current path
-    const leafNodes = path.filter(node => node.successors().length === 0);
+    const leafNodes = connectedNodes.filter(node => node.successors().length === 0);
     leafNodes.show();
   
     // Highlight the previous path
-    highlightPathToRoot1(path);
+    highlightPathToRoot1(currentPath);
   
     // Adjust positions of visible nodes using hierarchical layout
     const layout = cy.layout({
@@ -143,7 +180,10 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
     });
   
     layout.run();
+    console.log(`Current path length: ${pathIndex}`); 
+  
   };
+  
   
   const highlightPathToRoot1 = (node) => {
     // Remove highlight from previous path
@@ -882,9 +922,9 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
           // border: "1px solid ",
         }}
       >
-        <button onClick={onPrev}>Prev</button>
-<button onClick={onNext}>{pathIndex}Next</button>
-
+       <button onClick={onPrev}>Prev ({pathCount}/{totalCount-1})</button>
+      <button onClick={onNext}>Next ({pathCount}/{totalCount-1})</button>
+   
         <div className="doctor-profile">
           <div className="user-profile">
             <h3>Dr. Varis1807</h3>

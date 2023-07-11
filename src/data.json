@@ -157,7 +157,7 @@
 ,
 {"queid": "Q79", "question": "Have you been experiencing sleep disturbances?", "options": {"Yes": "Q159", "No": "Q160"}, "level": 6}
 ,
-{"queid": "Q80", "question": "Do you often worry excessively about different things?", "options": {"Yes": "Q161", "No": "Q162"}, "level": 6}
+{"queid": "Q80", "question": "varis", "options": {"Yes": "Q161", "No": "Q162"}, "level": 6}
 ,
 {"queid": "Q81", "question": "Are these triggers related to certain activities or environments?", "options": {"Yes": "Q163", "No": "Q164"}, "level": 6}
 ,
@@ -173,7 +173,7 @@
 ,
 {"queid": "Q87", "question": "Do these symptoms affect one side of your face more than the other?", "options": {"Yes": "Q180", "No": "Q181"}, "level": 6}
 ,
-{"queid": "Q88", "question": "Have you had any recent injuries or trauma to your face?", "options": {"Yes": "Q182", "No": "Q183"}, "level": 6}
+{"queid": "Q88", "question": "varis", "options": {"Yes": "Q182", "No": "Q183"}, "level": 6}
 ,
 {"queid": "Q89", "question": "Do you have any eye redness, pain, or visual changes?", "options": {"Yes": "Q184", "No": "Q185"}, "level": 6}
 ,
@@ -187,7 +187,7 @@
 ,
 {"queid": "Q94", "question": "Do you have high blood pressure?", "options": {"Yes": "Q194", "No": "Q195"}, "level": 6}
 ,
-{"queid": "Q95", "question": "Have you noticed any change in your bowel habits?", "options": {"Yes": "ho1", "No": "hp1"}, "level": 7}
+{"queid": "Q95", "question": "varis", "options": {"Yes": "ho1", "No": "hp1"}, "level": 7}
 ,
 {"queid": "Q96", "question": "Are you experiencing any abdominal pain or discomfort?", "options": {"Yes": "hq1", "No": "hr1"}, "level": 7}
 ,
@@ -201,5 +201,5 @@
 ,
 {"queid": "Q101", "question": "Have you recently started any new medications or treatments?", "options": {"Yes": "ia1", "No": "ib1"}, "level": 7}
 ,
-{"queid": "Q102", "question": "Have you recently undergone any medical procedures or surgeries?", "options": {"Yes": "ic1", "No": "id1"}, "level": 7}
+{"queid": "Q102", "question": "varis", "options": {"Yes": "ic1", "No": "id1"}, "level": 7}
 ]
