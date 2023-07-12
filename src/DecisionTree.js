@@ -9,24 +9,43 @@ import panzoom from "cytoscape-panzoom";
 import "cytoscape-panzoom/cytoscape.js-panzoom.css";
 import Select from "react-select";
 import daddu from "./daddu.png";
+import euler from "cytoscape-euler";
+import spread from "cytoscape-spread";
+
+// Register the spread layout extension
+cytoscape.use(spread);
 
 cytoscape.use(dagre);
+cytoscape.use(euler);
 cytoscape.use(undoRedo); // Register undoRedo extension
 // don't forget to register the extension
 cytoscape.use(panzoom);
 
 const options = [
-  {value:"data", label:"dummy"},
+  { value: "data", label: "Chest Pain" },
   { value: "facePain", label: "Face Pain" },
   { value: "headache", label: "Headache" },
-  {value:"cough", label: "Cough" },
+  { value: "cough", label: "Cough" },
+  { value: "data", label: "Back Pain" },
+
+  
   // ...other options
 ];
 
-
 let pathIndex = 0; // index to keep track of current path
 let rootToLeafPaths = []; // array to store all root-to-leaf paths
+const allLeafNodes = []; // Define allLeafNodes as a global array
+function removeDuplicates(allLeafNodes) {
+  return [...new Set(allLeafNodes)];
+}
 function DecisionTree({ data, onOptionChange }) {
+  const [searchText, setSearchText] = useState("");
+ 
+
+const [leafNodes, setLeafNodes] = useState(allLeafNodes);
+  
+  const [showLeafNodes, setShowLeafNodes] = useState(false); // Whether to show the leaf node list
+  
   const [ur, setUr] = useState(null);
   const cyRef = useRef(null);
   const [editingNode, setEditingNode] = useState(null);
@@ -39,152 +58,172 @@ function DecisionTree({ data, onOptionChange }) {
   const [removingEdge, setRemovingEdge] = useState(false);
   const [cy, setCy] = useState(null);
   const [, setDfsStartingNode] = useState(null);
-  const [searchText, setSearchText] = useState("");
+
   const [selectedComplaint, setSelectedComplaint] = useState(null);
-
-
 
   let highlightedNodes = []; // Keep track of previously highlighted nodes
   let highlightedEdges = []; // Keep track of previously highlighted edges
 
+  // Initialize pathCount state
+  const [pathCount, setPathCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
 
- // Initialize pathCount state
- const [pathCount, setPathCount] = useState(0);
- const [totalCount, setTotalCount] = useState(0);
-
-
-const onSearch = () => {
-  // Hide all nodes
-  cy.elements().hide();
-
-  // Find nodes that contain the search text
-  const matchingNodes = cy.nodes().filter(node => {
-    const label = node.data('label');
-    if (label && typeof label === 'string') {
-      return label.toLowerCase().includes(searchText.toLowerCase());
-    }
-    return false;
-  });
-
-  // Filter for leaf nodes (nodes with no successors)
-  const matchingLeafNodes = matchingNodes.filter(node => node.successors().length === 0);
-
-  // Show the matching leaf nodes
-  matchingLeafNodes.show();
-
-  // Show and highlight the path to the root for each matching leaf node
-  matchingLeafNodes.forEach((node) => {
-    const predecessors = node.predecessors();
-    predecessors.show(); // Show predecessors of matching nodes
-    rootToLeafPaths.push(predecessors); // Store the path in the array
-  });
-
-  // Adjust positions of visible nodes using hierarchical layout
-  const layout = cy.layout({
-    name: "dagre",
-    rankDir: "TD",
-    rankSep: 80, // increase this value for more vertical space between nodes
-    nodeSep: 10, // increase this value for more horizontal space between nodes
-    edgeSep: 30, // distance between nodes and their edges
-  });
-
-  layout.run();
-
-  highlightPathToRoot1(rootToLeafPaths[0]);
-};
-
-  const onNext = () => {
-    // Hide all nodes and edges
+  const onSearch = () => {
+    // Hide all nodes
     cy.elements().hide();
-  
-    // Increment pathIndex and loop back to 0 if it exceeds the array length
-    pathIndex = (pathIndex + 1) % rootToLeafPaths.length;
-   // Update pathCount state after updating pathIndex
-   setPathCount(pathIndex);
-   setTotalCount(rootToLeafPaths.length);
-  // Check if the current path is defined
-  if (!rootToLeafPaths[pathIndex]) {
-    console.error('No paths available.');
-    return;
-  }
-  
-    // Show the current path nodes and their predecessors
-    const currentPath = rootToLeafPaths[pathIndex];
-    const connectedNodes = currentPath.connectedNodes(); // Get connected nodes, including the node itself
-    connectedNodes.show();
-  
-    // Show the edges connecting the nodes in the current path
-    connectedNodes.connectedEdges().show();
-  
-    // Find leaf nodes that follow the current path
-    const leafNodes = connectedNodes.filter(node => node.successors().length === 0);
-    leafNodes.show();
 
-    
-  
-    // Highlight the current path
-    highlightPathToRoot1(currentPath);
-  
-    // Rerun the layout
-    const layout = cy.layout({
-      name: "dagre",
-      rankDir: "TD",
-      rankSep: 80, // increase this value for more vertical space between nodes
-      nodeSep: 10, // increase this value for more horizontal space between nodes
-      edgeSep: 30, // distance between nodes and their edges
+    // Find nodes that contain the search text
+    const matchingNodes = cy.nodes().filter((node) => {
+      const label = node.data("label");
+      if (label && typeof label === "string") {
+        return label.toLowerCase().includes(searchText.toLowerCase());
+      }
+      return false;
     });
-    layout.run();
-    console.log(`Current path length: ${pathIndex}`); 
-  
-      
-  };
-  
-  
-  const onPrev = () => {
-    // Hide all nodes and edges
-    cy.elements().hide();
-  
-    // Decrement pathIndex and loop back to the last index if it falls below 0
-    pathIndex = (pathIndex - 1 + rootToLeafPaths.length) % rootToLeafPaths.length;
-   // Update pathCount state after updating pathIndex
-   setPathCount(rootToLeafPaths[pathIndex].length);
-   setTotalCount(rootToLeafPaths.length);
-  
-    // Show the current path nodes and their predecessors
-    const currentPath = rootToLeafPaths[pathIndex];
-    const connectedNodes = currentPath.connectedNodes(); // Get connected nodes, including the node itself
-    connectedNodes.show();
-  
-    // Show the edges connecting the nodes in the current path
-    connectedNodes.connectedEdges().show();
-      // Check if the current path is defined
-  if (!rootToLeafPaths[pathIndex]) {
-    console.error('No paths available.');
-    return;
-  }
-  
-    // Find leaf nodes that follow the current path
-    const leafNodes = connectedNodes.filter(node => node.successors().length === 0);
-    leafNodes.show();
-  
-    // Highlight the previous path
-    highlightPathToRoot1(currentPath);
-  
+
+    // Filter for leaf nodes (nodes with no successors)
+    const matchingLeafNodes = matchingNodes.filter(
+      (node) => node.successors().length === 0
+    );
+
+    // Show the matching leaf nodes
+    matchingLeafNodes.show();
+
+    // Show and highlight the path to the root for each matching leaf node
+    matchingLeafNodes.forEach((node) => {
+      const predecessors = node.predecessors();
+      predecessors.show(); // Show predecessors of matching nodes
+      rootToLeafPaths.push(predecessors); // Store the path in the array
+    });
+
     // Adjust positions of visible nodes using hierarchical layout
     const layout = cy.layout({
       name: "dagre",
       rankDir: "TD",
-      rankSep: 80,
+      rankSep: 40, // Decreased from 80 to 40
       nodeSep: 10,
       edgeSep: 30,
     });
-  
+
     layout.run();
-    console.log(`Current path length: ${pathIndex}`); 
-  
+
+    highlightPathToRoot1(rootToLeafPaths[0]);
   };
-  
-  
+
+  const onNext = () => {
+    // Hide all nodes and edges
+    cy.elements().hide();
+
+    // Increment pathIndex and loop back to 0 if it exceeds the array length
+    pathIndex = (pathIndex + 1) % rootToLeafPaths.length;
+    // Update pathCount state after updating pathIndex
+    setPathCount(pathIndex);
+    setTotalCount(rootToLeafPaths.length);
+    // Check if the current path is defined
+    if (!rootToLeafPaths[pathIndex]) {
+      console.error("No paths available.");
+      return;
+    }
+
+    // Show the current path nodes and their predecessors
+    const currentPath = rootToLeafPaths[pathIndex];
+    const connectedNodes = currentPath.connectedNodes(); // Get connected nodes, including the node itself
+    connectedNodes.show();
+
+    // Show the edges connecting the nodes in the current path
+    connectedNodes.connectedEdges().show();
+
+    // Find leaf nodes that follow the current path
+    const leafNodes = connectedNodes.filter(
+      (node) => node.successors().length === 0
+    );
+    leafNodes.show();
+
+    // Highlight the current path
+    highlightPathToRoot1(currentPath);
+
+    // Rerun the layout
+    const layout = cy.layout({
+      name: "dagre",
+      rankDir: "TD",
+      rankSep: 40, // Decreased from 80 to 40
+      nodeSep: 10,
+      edgeSep: 30,
+    });
+
+    // In the onNext function, after layout.run():
+    layout.on("layoutstop", () => {
+      const nodes = cy.nodes(":visible"); // get only visible nodes
+      nodes.forEach((node, index) => {
+        const newPosition = {
+          x: node.position("x") + (index + 1) * 2, // adjust as necessary
+          y: node.position("y") + (index + 1) * 2, // adjust as necessary
+        };
+        node.position(newPosition);
+      });
+    });
+
+    layout.run();
+  };
+
+  const onPrev = () => {
+    // Hide all nodes and edges
+    cy.elements().hide();
+
+    // Decrement pathIndex and loop back to the last index if it falls below 0
+    pathIndex =
+      (pathIndex - 1 + rootToLeafPaths.length) % rootToLeafPaths.length;
+    // Update pathCount state after updating pathIndex
+    setPathCount(rootToLeafPaths[pathIndex].length);
+    setTotalCount(rootToLeafPaths.length);
+
+    // Show the current path nodes and their predecessors
+    const currentPath = rootToLeafPaths[pathIndex];
+    const connectedNodes = currentPath.connectedNodes(); // Get connected nodes, including the node itself
+    connectedNodes.show();
+
+    // Show the edges connecting the nodes in the current path
+    connectedNodes.connectedEdges().show();
+    // Check if the current path is defined
+    if (!rootToLeafPaths[pathIndex]) {
+      console.error("No paths available.");
+      return;
+    }
+
+    // Find leaf nodes that follow the current path
+    const leafNodes = connectedNodes.filter(
+      (node) => node.successors().length === 0
+    );
+    leafNodes.show();
+
+    // Highlight the previous path
+    highlightPathToRoot1(currentPath);
+
+    // Adjust positions of visible nodes using hierarchical layout
+    // Rerun the layout
+    const layout = cy.layout({
+      name: "dagre",
+      rankDir: "TD",
+      rankSep: 40, // Decreased from 80 to 40
+      nodeSep: 10,
+      edgeSep: 30,
+    });
+
+    // In the onNext function, after layout.run():
+    layout.on("layoutstop", () => {
+      const nodes = cy.nodes(":visible"); // get only visible nodes
+      nodes.forEach((node, index) => {
+        const newPosition = {
+          x: node.position("x") + (index + 1) * 2, // adjust as necessary
+          y: node.position("y") + (index + 1) * 2, // adjust as necessary
+        };
+        node.position(newPosition);
+      });
+    });
+
+    layout.run();
+  };
+
   const highlightPathToRoot1 = (node) => {
     // Remove highlight from previous path
     highlightedNodes.forEach((highlightedNode) => {
@@ -195,7 +234,7 @@ const onSearch = () => {
         },
       });
     });
-  
+
     highlightedEdges.forEach((highlightedEdge) => {
       highlightedEdge.animate({
         style: {
@@ -204,15 +243,15 @@ const onSearch = () => {
         },
       });
     });
-  
+
     highlightedNodes = [];
     highlightedEdges = [];
-  
+
     // Highlight new path
     const predecessors = node.predecessors();
     const nodes = predecessors.nodes();
     const edges = predecessors.edges();
-  
+
     nodes.forEach((node, i) => {
       setTimeout(() => {
         node.animate({
@@ -222,16 +261,16 @@ const onSearch = () => {
             color: "black", // highlight node text
           },
         });
-  
+
         highlightedNodes.push(node); // Add node to highlightedNodes array
-  
+
         // Adjust view to current node
         cy.fit(node, 5000000); // fit view to current node with 50px padding
-        cy.zoom({ level: 0.2 }); // zoom in
+        cy.zoom({ level: 1 }); // zoom in
         cy.center(node); // center view to current node
       }, i * 5); // Change color and view every 500ms
     });
-  
+
     edges.forEach((edge, i) => {
       setTimeout(() => {
         edge.animate({
@@ -240,13 +279,13 @@ const onSearch = () => {
             color: "#4C0027", // highlight edge text
           },
         });
-  
+
         highlightedEdges.push(edge); // Add edge to highlightedEdges array
       }, i * 5); // Change color every 500ms
     });
-  
+
     // Highlight the leaf node (target of the search) with a different color
-    if(node.successors().length === 0) {
+    if (node.successors().length === 0) {
       node.animate({
         style: {
           "background-color": "red", // change to the color you want for the leaf node
@@ -255,8 +294,7 @@ const onSearch = () => {
       });
     }
   };
-  
-  
+
   const highlightPathToRoot = (node) => {
     // Remove highlight from previous path
     highlightedNodes.forEach((highlightedNode) => {
@@ -428,7 +466,7 @@ const onSearch = () => {
         "http://localhost:4000/connect-react/update-json",
         {
           data: cytoscapeData,
-          complaint: selectedComplaint // Send the selected complaint
+          complaint: selectedComplaint, // Send the selected complaint
         }
       );
       console.log("Response:", response.data);
@@ -436,28 +474,27 @@ const onSearch = () => {
       console.error("Error sending data:", error);
     }
   };
-  
 
   const onAddNode = async () => {
     const id = prompt("Enter node id:");
     const label = prompt("Enter node label:");
-  
+
     // Get the position of the root node
     const rootPosition = cy.$("Q1").position();
-  
+
     // Calculate the position for the new node based on the root node's position
     const newNodePosition = {
-      x: rootPosition.x-500,
-      y: rootPosition.y+500,
+      x: rootPosition.x - 500,
+      y: rootPosition.y + 500,
     };
-  
+
     // Use ur.do() to perform an undoable action
     ur.do("add", {
       group: "nodes",
       data: { id, label },
       position: newNodePosition,
     });
-  
+
     await saveGraphState();
   };
 
@@ -612,7 +649,7 @@ const onSearch = () => {
           style: {
             width: 3,
             "line-color": "black",
-            "curve-style": "taxi",//unbundled-bezier,
+            "curve-style": "taxi", //unbundled-bezier,
             "target-arrow-color": "black",
             "target-arrow-shape": "vee",
             "arrow-scale": 2,
@@ -742,7 +779,7 @@ const onSearch = () => {
     setInputText("");
     setEditingNode(null);
     setEditingEdge(null);
-  
+
     const cytoscapeData = JSON.stringify(cy.json().elements); // Get the current state of the graph
     try {
       // Make POST request to the backend
@@ -750,7 +787,7 @@ const onSearch = () => {
         "http://localhost:4000/connect-react/update-json",
         {
           data: cytoscapeData,
-          complaint: selectedComplaint // Send the selected complaint
+          complaint: selectedComplaint, // Send the selected complaint
         },
         {
           headers: {
@@ -763,7 +800,7 @@ const onSearch = () => {
       console.error("Error sending data:", error);
     }
   };
-  
+
   // Add undo and redo methods
   const onUndo = () => ur.undo();
   const onRedo = () => ur.redo();
@@ -801,8 +838,18 @@ const onSearch = () => {
     }),
   };
   const handleChange = (selectedOption) => {
-    setSelectedComplaint(selectedOption.value);  // Use the label instead of the value
+    setSelectedComplaint(selectedOption.value); // Use the label instead of the value
     onOptionChange(selectedOption.value);
+  };
+
+  const handleSearchBoxClick = () => {
+    setShowLeafNodes(true);
+  };
+
+  // When a leaf node is selected from the list, update searchText and hide the list
+  const handleLeafNodeSelect = (nodeText) => {
+    setSearchText(nodeText);
+    setShowLeafNodes(false);
   };
   return (
     <div>
@@ -834,16 +881,27 @@ const onSearch = () => {
             />
           </div>
 
-          <div className="search-box">
-            <input
-              type="text"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              placeholder="Search Diagnosis..."
-            />
-          </div>
-          <div className="search-button">
-            <button onClick={onSearch}>Search</button>
+          <div>
+            <div className="search-box">
+              <input
+                type="text"
+                value={searchText}
+                onClick={handleSearchBoxClick}
+                placeholder="Search Diagnosis..."
+              />
+              {showLeafNodes && (
+                <div className="leaf-node-list">
+                  {leafNodes.map((nodeText) => (
+                    <div onClick={() => handleLeafNodeSelect(nodeText)}>
+                      {nodeText}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="search-button">
+        <button onClick={onSearch}>Search</button>
+      </div>
           </div>
           <div className="line1"></div>
 
@@ -922,9 +980,6 @@ const onSearch = () => {
           // border: "1px solid ",
         }}
       >
-       <button onClick={onPrev}>Prev ({pathCount}/{totalCount-1})</button>
-      <button onClick={onNext}>Next ({pathCount}/{totalCount-1})</button>
-   
         <div className="doctor-profile">
           <div className="user-profile">
             <h3>Dr. Varis1807</h3>
@@ -932,6 +987,15 @@ const onSearch = () => {
           <div className="daddu">
             <img src={daddu}></img>
           </div>
+        </div>
+
+        <div className="twoButton">
+          <button className="prev" onClick={onPrev}>
+            ⇦ Prev ({pathCount}/{totalCount - 1})
+          </button>
+          <button className="next" onClick={onNext}>
+            Next({pathCount}/{totalCount - 1}) ⇨{" "}
+          </button>
         </div>
         <div ref={cyRef} style={{ width: "100%", height: "97vh" }} />
         {(editingNode || editingEdge) && (
@@ -946,6 +1010,7 @@ const onSearch = () => {
             <input
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
+              style={{ width:"100%", height:"auto" }}
             />
             <button type="submit">Save</button>
           </form>
@@ -958,23 +1023,21 @@ function generateCytoscapeElements(data) {
   const nodes = [];
   const edges = [];
   const nodeIds = new Set();
-
+  
   data?.forEach((item) => {
-    // If item is a diagnosis, set label to first diagnosis text in options
     const label = item.is_diagnoisis
-  ? Array.isArray(Object.values(item.options)[0]) 
-    ? Object.values(item.options)[0].join(", ") 
-    : Object.values(item.options)[0] // or some other fallback behavior for when it's not an array
-  : item.question;
-
+      ? Array.isArray(Object.values(item.options)[0])
+        ? Object.values(item.options)[0].join(", ")
+        : Object.values(item.options)[0]
+      : item.question;
 
     nodes.push({
       data: {
         id: item.queid,
         label: label,
         parent: item.parentId,
-        collapsed: item.queid === "root" ? false : true, // assuming 'root' is the id of root node
-        _children: [], // initialize _children with an empty array
+        collapsed: item.queid === "root" ? false : true,
+        _children: [],
       },
     });
     nodeIds.add(item.queid);
@@ -982,7 +1045,6 @@ function generateCytoscapeElements(data) {
 
   data?.forEach((item) => {
     if (item.options && !item.is_diagnoisis) {
-      // Only create edges if options are present and it's not a diagnosis
       Object.entries(item.options).forEach(([option, target]) => {
         if (!nodeIds.has(target)) {
           console.warn(
@@ -1000,12 +1062,21 @@ function generateCytoscapeElements(data) {
         });
         nodes
           .find((node) => node.data.id === item.queid)
-          .data._children.push(target); // add child to parent node's _children
+          .data._children.push(target);
       });
     }
   });
 
+  // Find leaf nodes and add their labels to allLeafNodes array
+  nodes.forEach((node) => {
+    if (!node.data._children.length) {
+      allLeafNodes.push(node.data.label);
+    }
+  });
   return [...nodes, ...edges];
+  
 }
+
+
 
 export default DecisionTree;
