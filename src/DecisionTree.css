@@ -34,7 +34,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1; /* Ensures the dropdown appears on top */
+  z-index: 9999; /* Ensures the dropdown appears on top */
 }
 
 .chief-complaint{
@@ -98,14 +98,17 @@
 
 .leaf-node-list {
   position: absolute;
-  width: 100%;
-  max-height: 200px;
+  width: 70%;
+  max-height: 160px;
   overflow-y: auto;
+  overflow-x: auto;
+  margin-top: 360px;
   border: 1px solid rgba(75, 106, 245, 0.33);
   border-top: none;
   border-radius: 0 0 8px 8px;
-  background: #FFF;
-  z-index: 10;
+  background: #53B88B;
+  z-index: 9999;
+  color: #fff;
 }
 
 .leaf-node-list div {
@@ -114,7 +117,7 @@
 }
 
 .leaf-node-list div:hover {
-  background: #EFF1FF;
+  background: #9FAFF8;
 }
 
 
@@ -280,3 +283,33 @@
   background-color: #4A68F1;
   color: #FFF;
 }
+
+.autosuggest-input {
+  width: 100px; /* adjust as needed */
+  height: 15px; /* adjust as needed */
+  float: right; /* this will move the input to the right side of its container */
+  text-align: center;
+  border-color: #4A68F1;
+  color: #15cb79;
+  font-weight: 900;
+  margin-right: 0px;
+}
+
+.suggestions-container {
+  position: absolute;
+  right: 220px;
+  width: 80px;
+  max-height: 150px; /* This will limit the height of the suggestion container */
+  overflow-y: auto; /* This will add a scrollbar when necessary */
+  background-color: #15cb79; /* Assuming you want a white background */
+  text-align:left;
+  color: white;
+  font-weight: 600;
+}
+
+
+
+
+
+
+

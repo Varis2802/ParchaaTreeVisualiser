@@ -11,7 +11,7 @@ import Select from "react-select";
 import daddu from "./daddu.png";
 import euler from "cytoscape-euler";
 import spread from "cytoscape-spread";
-import Autosuggest from "react-autosuggest";
+
 // Register the spread layout extension
 cytoscape.use(spread);
 
@@ -22,50 +22,30 @@ cytoscape.use(undoRedo); // Register undoRedo extension
 cytoscape.use(panzoom);
 
 const options = [
-  { value: "urination", label: "reduce urination" },
   { value: "data", label: "Chest Pain" },
   { value: "facePain", label: "Face Pain" },
   { value: "headache", label: "Headache" },
   { value: "cough", label: "Cough" },
   { value: "data", label: "Back Pain" },
 
+  
   // ...other options
 ];
 
 let pathIndex = 0; // index to keep track of current path
 let rootToLeafPaths = []; // array to store all root-to-leaf paths
 const allLeafNodes = []; // Define allLeafNodes as a global array
-
+function removeDuplicates(allLeafNodes) {
+  return [...new Set(allLeafNodes)];
+}
 function DecisionTree({ data, onOptionChange }) {
-  //get file from django
-  // const [fileContent, setFileContent] = useState('');
-
-  // useEffect(() => {
-  //   axios.get('http://127.0.0.1:8000/datagens')
-  //     .then(response => {
-  //       setFileContent(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.error('There was an error!', error);
-  //     });
-  // }, []);
-  //for Qid search
-  const [value, setValue] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-
   const [searchText, setSearchText] = useState("");
-  const [leafNodes, setLeafNodes] = useState(allLeafNodes);
+ 
 
-  // Remove duplicates from allLeafNodes array
-  const uniqueLeafNodes = Array.from(new Set(allLeafNodes));
-
-  // Update the state with uniqueLeafNodes
-  useEffect(() => {
-    setLeafNodes(uniqueLeafNodes);
-  }, [uniqueLeafNodes]);
-
+const [leafNodes, setLeafNodes] = useState(allLeafNodes);
+  
   const [showLeafNodes, setShowLeafNodes] = useState(false); // Whether to show the leaf node list
-
+  
   const [ur, setUr] = useState(null);
   const cyRef = useRef(null);
   const [editingNode, setEditingNode] = useState(null);
@@ -85,16 +65,8 @@ function DecisionTree({ data, onOptionChange }) {
   let highlightedEdges = []; // Keep track of previously highlighted edges
 
   // Initialize pathCount state
-  const [pathCount, setPathCount] = useState(1);
-  const [totalCount, setTotalCount] = useState(1);
-
-  const inputRef = useRef(null);
-  //for input editng part
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.style.width = `${getTextWidth(inputText)}px`;
-    }
-  }, [inputText]);
+  const [pathCount, setPathCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
 
   const onSearch = () => {
     // Hide all nodes
@@ -125,23 +97,12 @@ function DecisionTree({ data, onOptionChange }) {
     });
 
     // Adjust positions of visible nodes using hierarchical layout
-    const layout = cy.elements(":visible").layout({
+    const layout = cy.layout({
       name: "dagre",
       rankDir: "TD",
-      rankSep: 40,
+      rankSep: 40, // Decreased from 80 to 40
       nodeSep: 10,
       edgeSep: 30,
-    });
-    // In the onNext function, after layout.run():
-    layout.on("layoutstop", () => {
-      const nodes = cy.nodes(":visible"); // get only visible nodes
-      nodes.forEach((node, index) => {
-        const newPosition = {
-          x: node.position("x") + (index + 1) * 2, // adjust as necessary
-          y: node.position("y") + (index + 1) * 2, // adjust as necessary
-        };
-        node.position(newPosition);
-      });
     });
 
     layout.run();
@@ -182,11 +143,11 @@ function DecisionTree({ data, onOptionChange }) {
     highlightPathToRoot1(currentPath);
 
     // Rerun the layout
-    const layout = cy.elements(":visible").layout({
+    const layout = cy.layout({
       name: "dagre",
       rankDir: "TD",
-      rankSep: 50,
-      nodeSep: 20,
+      rankSep: 40, // Decreased from 80 to 40
+      nodeSep: 10,
       edgeSep: 30,
     });
 
@@ -209,16 +170,12 @@ function DecisionTree({ data, onOptionChange }) {
     // Hide all nodes and edges
     cy.elements().hide();
 
-    // Decrement pathIndex and if it falls below 0 then set it to the last index
-    pathIndex = pathIndex - 1 < 0 ? rootToLeafPaths.length - 1 : pathIndex - 1;
+    // Decrement pathIndex and loop back to the last index if it falls below 0
+    pathIndex =
+      (pathIndex - 1 + rootToLeafPaths.length) % rootToLeafPaths.length;
     // Update pathCount state after updating pathIndex
-    setPathCount(pathIndex);
+    setPathCount(rootToLeafPaths[pathIndex].length);
     setTotalCount(rootToLeafPaths.length);
-    // Check if the current path is defined
-    if (!rootToLeafPaths[pathIndex]) {
-      console.error("No paths available.");
-      return;
-    }
 
     // Show the current path nodes and their predecessors
     const currentPath = rootToLeafPaths[pathIndex];
@@ -227,6 +184,11 @@ function DecisionTree({ data, onOptionChange }) {
 
     // Show the edges connecting the nodes in the current path
     connectedNodes.connectedEdges().show();
+    // Check if the current path is defined
+    if (!rootToLeafPaths[pathIndex]) {
+      console.error("No paths available.");
+      return;
+    }
 
     // Find leaf nodes that follow the current path
     const leafNodes = connectedNodes.filter(
@@ -239,7 +201,7 @@ function DecisionTree({ data, onOptionChange }) {
 
     // Adjust positions of visible nodes using hierarchical layout
     // Rerun the layout
-    const layout = cy.elements(":visible").layout({
+    const layout = cy.layout({
       name: "dagre",
       rankDir: "TD",
       rankSep: 40, // Decreased from 80 to 40
@@ -267,7 +229,7 @@ function DecisionTree({ data, onOptionChange }) {
     highlightedNodes.forEach((highlightedNode) => {
       highlightedNode.animate({
         style: {
-          "background-color": "#4A68F1",
+          "background-color": "#A7ECEE",
           color: "black", // revert to original node text color
         },
       });
@@ -276,7 +238,7 @@ function DecisionTree({ data, onOptionChange }) {
     highlightedEdges.forEach((highlightedEdge) => {
       highlightedEdge.animate({
         style: {
-          "line-color": "black",
+          "line-color": "#9BA4B4",
           color: "black", // revert to original edge text color
         },
       });
@@ -295,8 +257,8 @@ function DecisionTree({ data, onOptionChange }) {
         node.animate({
           style: {
             "background-color":
-              node.successors().length === 0 ? "#4A68F1" : "#4A68F1", // Highlight leaf nodes with a different color
-            color: "white", // highlight node text
+              node.successors().length === 0 ? "#FF3E6D" : "#F1FFAB", // Highlight leaf nodes with a different color
+            color: "black", // highlight node text
           },
         });
 
@@ -313,8 +275,8 @@ function DecisionTree({ data, onOptionChange }) {
       setTimeout(() => {
         edge.animate({
           style: {
-            "line-color": "black",
-            color: "black", // highlight edge text
+            "line-color": "#FF3E6D",
+            color: "#4C0027", // highlight edge text
           },
         });
 
@@ -326,7 +288,7 @@ function DecisionTree({ data, onOptionChange }) {
     if (node.successors().length === 0) {
       node.animate({
         style: {
-          "background-color": "#15cb79", // change to the color you want for the leaf node
+          "background-color": "red", // change to the color you want for the leaf node
           color: "white", // change text color as needed
         },
       });
@@ -338,8 +300,8 @@ function DecisionTree({ data, onOptionChange }) {
     highlightedNodes.forEach((highlightedNode) => {
       highlightedNode.animate({
         style: {
-          "background-color": "#4A68F1",
-          color: "black", // revert to original node text color
+          "background-color": "rgba(75, 106, 245, 0.33)",
+          color: "white", // revert to original node text color
         },
         duration: 2000, // transition duration
       });
@@ -370,7 +332,7 @@ function DecisionTree({ data, onOptionChange }) {
       setTimeout(() => {
         node.animate({
           style: {
-            "background-color": "#4A68F1",
+            "background-color": "#53B88B",
             color: "#FFF;", // highlight node text
           },
           duration: 2000, // transition duration
@@ -392,8 +354,8 @@ function DecisionTree({ data, onOptionChange }) {
       setTimeout(() => {
         edge.animate({
           style: {
-            "line-color": "black",
-            color: "white", // highlight edge text
+            "line-color": "#FF3E6D",
+            color: "#4C0027", // highlight edge text
           },
           duration: 2000, // transition duration
         });
@@ -408,7 +370,7 @@ function DecisionTree({ data, onOptionChange }) {
     // Highlight the leaf node (target of the search) with a different color
     node.animate({
       style: {
-        "background-color": "#4A68F1", // change to the color you want for the leaf node
+        "background-color": "#FF0000", // change to the color you want for the leaf node
         color: "white", // change text color as needed
       },
       duration: 2000, // transition duration
@@ -889,57 +851,6 @@ function DecisionTree({ data, onOptionChange }) {
     setSearchText(nodeText);
     setShowLeafNodes(false);
   };
-  // Teach Autosuggest how to calculate suggestions for any given input value.
-  const getSuggestions = (value) => {
-    const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
-
-    let questionIDs = cy.nodes().map((node) => node.data("id"));
-
-    return inputLength === 0
-      ? []
-      : questionIDs.filter(
-          (id) => id.toLowerCase().slice(0, inputLength) === inputValue
-        );
-  };
-
-  // When suggestion is clicked, Autosuggest needs to populate the input
-  // based on the clicked suggestion.
-  const getSuggestionValue = (suggestion) => suggestion;
-
-  // Render a suggestion.
-  const renderSuggestion = (suggestion) => <div>{suggestion}</div>;
-
-  const onChange = (event, { newValue }) => {
-    setValue(newValue);
-  };
-
-  const onSuggestionsFetchRequested = ({ value }) => {
-    setSuggestions(getSuggestions(value));
-  };
-
-  const onSuggestionsClearRequested = () => {
-    setSuggestions([]);
-  };
-
-  const inputProps = {
-    placeholder: "Search existing qID",
-    value,
-    onChange: onChange,
-    className: "autosuggest-input", // Added class here
-    style: {
-      fontSize: "11px", // Adjust the font size according to your preference
-    },
-  };
-  const theme = { 
-    suggestionsContainerOpen: 'suggestions-container', 
-    input: 'autosuggest-input' 
-  };
-  const handleInputChange = (event) => {
-    const updatedSearchText = event.target.value;
-    setSearchText(updatedSearchText);
-  };
-  
   return (
     <div>
       <div class="main-container">
@@ -975,9 +886,8 @@ function DecisionTree({ data, onOptionChange }) {
               <input
                 type="text"
                 value={searchText}
-                onChange={handleInputChange} // Assuming you have an event handler for input change
                 onClick={handleSearchBoxClick}
-                placeholder="Search Diagnosis..."   
+                placeholder="Search Diagnosis..."
               />
               {showLeafNodes && (
                 <div className="leaf-node-list">
@@ -990,8 +900,8 @@ function DecisionTree({ data, onOptionChange }) {
               )}
             </div>
             <div className="search-button">
-              <button onClick={onSearch}>Search</button>
-            </div>
+        <button onClick={onSearch}>Search</button>
+      </div>
           </div>
           <div className="line1"></div>
 
@@ -1057,15 +967,6 @@ function DecisionTree({ data, onOptionChange }) {
               Save
             </button>{" "}
           </div>
-          <Autosuggest
-      suggestions={suggestions}
-      onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-      onSuggestionsClearRequested={onSuggestionsClearRequested}
-      getSuggestionValue={getSuggestionValue}
-      renderSuggestion={renderSuggestion}
-      inputProps={inputProps}
-      theme={theme} // Applied the theme here
-    />
         </div>
       </div>
       {/* Left-Side-End */}
@@ -1107,14 +1008,9 @@ function DecisionTree({ data, onOptionChange }) {
             onSubmit={onSubmit}
           >
             <input
-              ref={inputRef}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              style={{
-                height: "30px", // Set the desired height
-                textAlign: "center", // Align text to center
-                fontSize: "16px", // Set the desired font size
-              }}
+              style={{ width:"100%", height:"auto" }}
             />
             <button type="submit">Save</button>
           </form>
@@ -1123,24 +1019,11 @@ function DecisionTree({ data, onOptionChange }) {
     </div>
   );
 }
-
-function getTextWidth(text) {
-  const span = document.createElement("span");
-  span.style.visibility = "hidden";
-  span.style.whiteSpace = "nowrap";
-  span.style.position = "absolute";
-  span.style.left = "-9999px";
-  span.innerHTML = text;
-  document.body.appendChild(span);
-  const width = span.offsetWidth;
-  document.body.removeChild(span);
-  return width;
-}
 function generateCytoscapeElements(data) {
   const nodes = [];
   const edges = [];
   const nodeIds = new Set();
-
+  
   data?.forEach((item) => {
     const label = item.is_diagnoisis
       ? Array.isArray(Object.values(item.options)[0])
@@ -1191,6 +1074,9 @@ function generateCytoscapeElements(data) {
     }
   });
   return [...nodes, ...edges];
+  
 }
+
+
 
 export default DecisionTree;
