@@ -18,7 +18,7 @@ function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === staticUsername && password === staticPassword) {
-      navigate('/instructions'); // Redirect to Instructions page
+      navigate('/symptomes-checker'); // Redirect to Instructions page
     } else {
       alert("Invalid credentials");
     }

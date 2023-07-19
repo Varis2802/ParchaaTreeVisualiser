@@ -1,11 +1,14 @@
-.main {
+
+.main1 {
     display:block;
     justify-content: center;
     width: 100vw;
     height: 100vh;
   }
-  .main-container {
+  .main-container1 {
     display: flex;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
     margin-top: -100px;
     width: 100vw;
@@ -27,6 +30,7 @@
     justify-content: center;
     align-items: center;
   }
+ 
   h1 {
     text-align: center;
   }
@@ -35,37 +39,27 @@
     color: gray;
   }
   .input-grid {
-    display: grid;
-    grid-template-areas:
-      'username1 password1'
-      'username2 password2'
-      'submit submit';
-    gap: 10px;
+    
+    display: flex;
+    gap: 20px;
     padding: 10px;
     align-items: center; /* Centers items vertically in their cells */
     justify-items: center; /* Centers items horizontally in their cells */
 }
 
-.input1[name="username"]:first-of-type {
-    grid-area: username1;
+
+.file-uploader{
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    margin-left:40px;
+    color:#53B88B;
   }
-  
-  .input1[name="password"]:first-of-type {
-    grid-area: password1;
-  }
-  
-  .input1[name="username"]:last-of-type {
-    grid-area: username2;
-  }
-  
-  .input1[name="password"]:last-of-type {
-    grid-area: password2;
-  }
-  
- input[type="submit"] {
+ button[type="submit"] {
     grid-area: submit;
-    width: 299px;
-    height: 43px;
+    width: 160px;
+    height: 35px;
     background-color: #4B6AF5;
     color: white;
     font-size: 18px;
@@ -73,11 +67,25 @@
     border: none;
     cursor: pointer;
   }
-  
-  
+  .run-endpoint{
+    grid-area: submit;
+    width: 200px;
+    height: 35px;
+    background-color: #4B6AF5;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+ 
+  }
+  .log-report{
+    padding: 20px;
+  }
   .input1::placeholder {
     color: rgba(76, 106, 247, 0.63);
-    font-size: 16px;
+    font-size: 14px;
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 400;
