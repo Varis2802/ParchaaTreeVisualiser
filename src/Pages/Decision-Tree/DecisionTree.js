@@ -70,7 +70,7 @@ function DecisionTree({ data, onOptionChange }) {
 
   // Initialize pathCount state
   const [pathCount, setPathCount] = useState(1);
-  const [totalCount, setTotalCount] = useState(1);
+  const [totalCount, setTotalCount] = useState(rootToLeafPaths.length);
 
   const inputRef = useRef(null);
   //for input editng part
@@ -84,14 +84,11 @@ function DecisionTree({ data, onOptionChange }) {
   const onSearch = () => {
     // Hide all nodes
     cy.elements().hide();
-    console.log(totalCount,"count")
-    setPathCount(pathIndex);
-    setTotalCount(rootToLeafPaths.length);
     // Find nodes that contain the search text
     const matchingNodes = cy.nodes().filter((node) => {
       const label = node.data("label");
       if (label && typeof label === "string") {
-        return label.toLowerCase().includes(searchText.toLowerCase());
+        return      label.toLowerCase().includes(searchText.toLowerCase());
       }
       return false;
     });
@@ -107,7 +104,9 @@ function DecisionTree({ data, onOptionChange }) {
     // Show and highlight the path to the root for each matching leaf node
     matchingLeafNodes.forEach((node) => {
       const predecessors = node.predecessors();
-      predecessors.show(); // Show predecessors of matching nodes
+      predecessors.show();
+      // Show predecessors of matching nodes
+      // rootToLeafPaths.length = 0
       rootToLeafPaths.push(predecessors); // Store the path in the array
     });
 
@@ -135,16 +134,18 @@ function DecisionTree({ data, onOptionChange }) {
 
     highlightPathToRoot1(rootToLeafPaths[0]);
   };
+ 
   //onnext button functionality----------------------------------------------------------------
   const onNext = () => {
     // Hide all nodes and edges
     cy.elements().hide();
-
+    
     // Increment pathIndex and loop back to 0 if it exceeds the array length
     pathIndex = (pathIndex + 1) % rootToLeafPaths.length;
     // Update pathCount state after updating pathIndex
     setPathCount(pathIndex);
-    // setTotalCount(rootToLeafPaths.length);
+   
+    setTotalCount(rootToLeafPaths.length);
     // Check if the current path is defined
     if (!rootToLeafPaths[pathIndex]) {
       console.error("No paths available.");
@@ -195,11 +196,12 @@ function DecisionTree({ data, onOptionChange }) {
   const onPrev = () => {
     // Hide all nodes and edges
     cy.elements().hide();
-
+     
     // Decrement pathIndex and if it falls below 0 then set it to the last index
     pathIndex = pathIndex - 1 < 0 ? rootToLeafPaths.length - 1 : pathIndex - 1;
     // Update pathCount state after updating pathIndex
     setPathCount(pathIndex);
+   
     setTotalCount(rootToLeafPaths.length);
     // Check if the current path is defined
     if (!rootToLeafPaths[pathIndex]) {
@@ -903,6 +905,9 @@ function DecisionTree({ data, onOptionChange }) {
   // When a leaf node is selected from the list, update searchText and hide the list
   const handleLeafNodeSelect = (nodeText) => {
     setSearchText(nodeText);
+    // setTotalCount(1)
+    rootToLeafPaths.length=0;
+    
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   const getSuggestions = (value) => {
@@ -1122,10 +1127,10 @@ function DecisionTree({ data, onOptionChange }) {
 
         <div className="twoButton">
           <button className="prev" onClick={onPrev}>
-            ⇦ Prev ({pathCount}/{totalCount - 1})
+            ⇦ Prev ({pathCount}/{totalCount})
           </button>
           <button className="next" onClick={onNext}>
-            Next({pathCount}/{totalCount - 1}) ⇨{" "}
+            Next({pathCount}/{totalCount}) ⇨{" "}
           </button>
         </div>
         <div ref={cyRef} style={{ width: "100%", height: "97vh" }} />
