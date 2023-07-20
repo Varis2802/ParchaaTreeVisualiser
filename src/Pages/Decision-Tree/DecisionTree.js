@@ -9,14 +9,11 @@ import panzoom from "cytoscape-panzoom";
 import "cytoscape-panzoom/cytoscape.js-panzoom.css";
 import Select from "react-select";
 import daddu from "../../Assets/daddu.png";
-import euler from "cytoscape-euler";
-import spread from "cytoscape-spread";
 import Autosuggest from "react-autosuggest";
 // Register the spread layout extension
-cytoscape.use(spread);
 
 cytoscape.use(dagre);
-cytoscape.use(euler);
+
 cytoscape.use(undoRedo); // Register undoRedo extension
 // don't forget to register the extension
 cytoscape.use(panzoom);
@@ -37,33 +34,20 @@ let rootToLeafPaths = []; // array to store all root-to-leaf paths
 const allLeafNodes = []; // Define allLeafNodes as a global array
 
 function DecisionTree({ data, onOptionChange }) {
-  //get file from django
-  // const [fileContent, setFileContent] = useState('');
-
-  // useEffect(() => {
-  //   axios.get('http://127.0.0.1:8000/datagens')
-  //     .then(response => {
-  //       setFileContent(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.error('There was an error!', error);
-  //     });
-  // }, []);
   //for Qid search
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
   const [searchText, setSearchText] = useState("");
-  const [leafNodes, setLeafNodes] = useState(allLeafNodes);
 
+  // remove duplicacy + show leaf  nodes
+  const [leafNodes, setLeafNodes] = useState(allLeafNodes);
   // Remove duplicates from allLeafNodes array
   const uniqueLeafNodes = Array.from(new Set(allLeafNodes));
-
   // Update the state with uniqueLeafNodes
   useEffect(() => {
     setLeafNodes(uniqueLeafNodes);
   }, [uniqueLeafNodes]);
-
   const [showLeafNodes, setShowLeafNodes] = useState(false); // Whether to show the leaf node list
 
   const [ur, setUr] = useState(null);
@@ -96,6 +80,7 @@ function DecisionTree({ data, onOptionChange }) {
     }
   }, [inputText]);
 
+  //diagnosis search start--------------------------------------------------------------------------
   const onSearch = () => {
     // Hide all nodes
     cy.elements().hide();
@@ -148,7 +133,7 @@ function DecisionTree({ data, onOptionChange }) {
 
     highlightPathToRoot1(rootToLeafPaths[0]);
   };
-
+  //onnext button functionality----------------------------------------------------------------
   const onNext = () => {
     // Hide all nodes and edges
     cy.elements().hide();
@@ -204,7 +189,7 @@ function DecisionTree({ data, onOptionChange }) {
 
     layout.run();
   };
-
+  // OnPrev button functionality----------------------------------------------------------------
   const onPrev = () => {
     // Hide all nodes and edges
     cy.elements().hide();
@@ -332,7 +317,9 @@ function DecisionTree({ data, onOptionChange }) {
       });
     }
   };
+  //diagnosis search end--------------------------------------------------------------------------
 
+  //Doubble click highlight functionality--------------------------------------------------------------------------
   const highlightPathToRoot = (node) => {
     // Remove highlight from previous path
     highlightedNodes.forEach((highlightedNode) => {
@@ -419,7 +406,9 @@ function DecisionTree({ data, onOptionChange }) {
     // Show the highlighted leaf node
     node.style("display", "element");
   };
+  //Doubble click highlight functionality end--------------------------------------------------------------------------
 
+  //DFS Start----------------------------------------------------------------
   const onDFS = () => {
     const startId = prompt("Enter the start node id:");
     const dfsResults = cy.elements().depthFirstSearch({
@@ -457,7 +446,7 @@ function DecisionTree({ data, onOptionChange }) {
       }, i * 500); // Change color and view every 500ms
     });
   };
-
+  ////BFS Starts--------------------------------------------------------------------------------------------------------------------
   const onBFS = () => {
     const startId = prompt("Enter the start node id:");
     const bfsResults = cy.elements().breadthFirstSearch({
@@ -495,7 +484,7 @@ function DecisionTree({ data, onOptionChange }) {
       }, i * 1000); // Change color and view every 500ms
     });
   };
-
+  // Save in backend from this function-----------------------------------------------------------------------------------
   const saveGraphState = async () => {
     const cytoscapeData = cy.json().elements; // Get the current state of the graph
     try {
@@ -512,7 +501,8 @@ function DecisionTree({ data, onOptionChange }) {
       console.error("Error sending data:", error);
     }
   };
-
+  //^ buttons functionality start------------------------------------------------------------------------------------------------
+  //Add Node----------------------------------------------------------------------
   const onAddNode = async () => {
     const id = prompt("Enter node id:");
     const label = prompt("Enter node label:");
@@ -544,6 +534,7 @@ function DecisionTree({ data, onOptionChange }) {
     await saveGraphState();
   };
 
+  // Add Edges ----------------------------------------------------------------------------------------------
   const onAddEdge = async () => {
     const sourceId = prompt("Enter source node id:");
     const targetId = prompt("Enter target node id:");
@@ -561,7 +552,7 @@ function DecisionTree({ data, onOptionChange }) {
 
     await saveGraphState();
   };
-
+  //Remove Edge-----------  ------------------------------------------------------
   const onRemoveEdge = async () => {
     const sourceId = prompt("Enter source node id:");
     const targetId = prompt("Enter target node id:");
@@ -588,7 +579,8 @@ function DecisionTree({ data, onOptionChange }) {
       await saveGraphState();
     }
   };
-
+  //^ buttons functionality end------------------------------------------------------------------------------------------------
+  // Expand and collapse functionality start------------------------------------------------------------------------------------------
   const handleNodeClick = useCallback((evt) => {
     const node = evt.target;
     const transitionDuration = 500; // 500ms transition duration, you can adjust this value
@@ -650,7 +642,10 @@ function DecisionTree({ data, onOptionChange }) {
     }
     return descendants;
   };
+
+  // Expand and collapse functionality End------------------------------------------------------------------------------------------
   // eslint-disable-next-line
+
   useEffect(() => {
     if (!cyRef.current) return;
 
@@ -724,10 +719,12 @@ function DecisionTree({ data, onOptionChange }) {
       panningEnabled: true, // enable panning
       userPanningEnabled: true, // enable user panning
     });
+
     // After registering event handlers and other setup, add the following lines:
     // Initialize undoRedo extension
     const urInstance = cyInstance.undoRedo();
     setUr(urInstance);
+
     // Assuming your root node has id 'root'
     const rootNode = cyInstance.$id("Q1");
     if (rootNode) {
@@ -738,6 +735,7 @@ function DecisionTree({ data, onOptionChange }) {
     setCy(cyInstance);
 
     // Register event handlers
+    //Node/Edges edit functionality-------------start------------
     cyInstance.on("taphold", "node", function (evt) {
       const node = evt.target;
       setFormPosition(node.renderedPosition());
@@ -751,8 +749,12 @@ function DecisionTree({ data, onOptionChange }) {
       setInputText(edge.data("label"));
       setEditingEdge(edge);
     });
+    //Node/Edges edit functionality-------------End------------
+
+    //Expand and collapse functionality-------------
     cyInstance.on("cxttap", "node", handleNodeClick); // Register new click handler for nodes
 
+    //DFS-BFS node----------------------------------------------------------------
     cyInstance.on("select", "node", function (evt) {
       const node = evt.target;
       setRemovingNode(node);
@@ -763,14 +765,21 @@ function DecisionTree({ data, onOptionChange }) {
       const edge = evt.target;
       setRemovingEdge(edge);
     });
+    //Select color-------------------------
     cyInstance.on("select", "edge", function (evt) {
       const edge = evt.target;
       edge.style({
         "line-color": "red", // or any color you want
       });
     });
+    cyInstance.on("select", "node", function (evt) {
+      const node = evt.target;
+      node.style({
+        "background-color": "red", // or any color you want
+      });
+    });
 
-    //hover Qid
+    //hover Qid--------------------------------------------------------
     // Register event handlers
     cyInstance.on("mouseover", "node", function (evt) {
       const node = evt.target;
@@ -793,6 +802,7 @@ function DecisionTree({ data, onOptionChange }) {
       }
     });
 
+    // Double click high light paths----------------------------------------------------------------
     cyInstance.on("dblclick", "node", function (evt) {
       const node = evt.target;
       highlightPathToRoot(node);
@@ -804,9 +814,11 @@ function DecisionTree({ data, onOptionChange }) {
       zoomerPosition: "bottom-right", // Default is 'top-left'
       zoomerSize: 150, // Default is 75
     });
-  }, [cyRef, data, handleNodeClick]);
+  },
+   [cyRef, data, handleNodeClick]);
   // Create an instance of undoRedo
 
+  //Call to backend-------------------------------  -------------------------
   const onSubmit = async (e) => {
     e.preventDefault();
     if (editingNode) {
@@ -839,7 +851,7 @@ function DecisionTree({ data, onOptionChange }) {
     }
   };
 
-  // Add undo and redo methods
+  // Add undo and redo methods-------------------------------------------------------
   const onUndo = () => ur.undo();
   const onRedo = () => ur.redo();
 
@@ -931,15 +943,15 @@ function DecisionTree({ data, onOptionChange }) {
       fontSize: "11px", // Adjust the font size according to your preference
     },
   };
-  const theme = { 
-    suggestionsContainerOpen: 'suggestions-container', 
-    input: 'autosuggest-input' 
+  const theme = {
+    suggestionsContainerOpen: "suggestions-container",
+    input: "autosuggest-input",
   };
   const handleInputChange = (event) => {
     const updatedSearchText = event.target.value;
     setSearchText(updatedSearchText);
   };
-  
+
   return (
     <div>
       <div class="main-container">
@@ -977,7 +989,7 @@ function DecisionTree({ data, onOptionChange }) {
                 value={searchText}
                 onChange={handleInputChange} // Assuming you have an event handler for input change
                 onClick={handleSearchBoxClick}
-                placeholder="Search Diagnosis..."   
+                placeholder="Search Diagnosis..."
               />
               {showLeafNodes && (
                 <div className="leaf-node-list">
@@ -1058,14 +1070,14 @@ function DecisionTree({ data, onOptionChange }) {
             </button>{" "}
           </div>
           <Autosuggest
-      suggestions={suggestions}
-      onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-      onSuggestionsClearRequested={onSuggestionsClearRequested}
-      getSuggestionValue={getSuggestionValue}
-      renderSuggestion={renderSuggestion}
-      inputProps={inputProps}
-      theme={theme} // Applied the theme here
-    />
+            suggestions={suggestions}
+            onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={onSuggestionsClearRequested}
+            getSuggestionValue={getSuggestionValue}
+            renderSuggestion={renderSuggestion}
+            inputProps={inputProps}
+            theme={theme} // Applied the theme here
+          />
         </div>
       </div>
       {/* Left-Side-End */}
