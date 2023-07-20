@@ -31,7 +31,7 @@ const options = [
 
 let pathIndex = 0; // index to keep track of current path
 let rootToLeafPaths = []; // array to store all root-to-leaf paths
-const allLeafNodes = []; // Define allLeafNodes as a global array
+let allLeafNodes = []; // Define allLeafNodes as a global array
 
 function DecisionTree({ data, onOptionChange }) {
   //for Qid search
@@ -84,7 +84,9 @@ function DecisionTree({ data, onOptionChange }) {
   const onSearch = () => {
     // Hide all nodes
     cy.elements().hide();
-
+    console.log(totalCount,"count")
+    setPathCount(pathIndex);
+    setTotalCount(rootToLeafPaths.length);
     // Find nodes that contain the search text
     const matchingNodes = cy.nodes().filter((node) => {
       const label = node.data("label");
@@ -142,7 +144,7 @@ function DecisionTree({ data, onOptionChange }) {
     pathIndex = (pathIndex + 1) % rootToLeafPaths.length;
     // Update pathCount state after updating pathIndex
     setPathCount(pathIndex);
-    setTotalCount(rootToLeafPaths.length);
+    // setTotalCount(rootToLeafPaths.length);
     // Check if the current path is defined
     if (!rootToLeafPaths[pathIndex]) {
       console.error("No paths available.");
@@ -814,8 +816,7 @@ function DecisionTree({ data, onOptionChange }) {
       zoomerPosition: "bottom-right", // Default is 'top-left'
       zoomerSize: 150, // Default is 75
     });
-  },
-   [cyRef, data, handleNodeClick]);
+  }, [cyRef, data, handleNodeClick]);
   // Create an instance of undoRedo
 
   //Call to backend-------------------------------  -------------------------
@@ -860,6 +861,7 @@ function DecisionTree({ data, onOptionChange }) {
       ...defaultStyles,
       color: state.isSelected ? "#4A68F1" : "#4A68F1",
       backgroundColor: state.isSelected ? "#EFF1FF" : "#EFF1FF",
+      cursor: "pointer",
     }),
 
     control: (defaultStyles) => ({
@@ -890,6 +892,8 @@ function DecisionTree({ data, onOptionChange }) {
   const handleChange = (selectedOption) => {
     setSelectedComplaint(selectedOption.value); // Use the label instead of the value
     onOptionChange(selectedOption.value);
+    setShowLeafNodes(true);
+    allLeafNodes = [];
   };
 
   const handleSearchBoxClick = () => {
@@ -899,7 +903,6 @@ function DecisionTree({ data, onOptionChange }) {
   // When a leaf node is selected from the list, update searchText and hide the list
   const handleLeafNodeSelect = (nodeText) => {
     setSearchText(nodeText);
-    setShowLeafNodes(false);
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   const getSuggestions = (value) => {
@@ -982,16 +985,16 @@ function DecisionTree({ data, onOptionChange }) {
             />
           </div>
 
-          <div>
-            <div className="search-box">
-              <input
+          {showLeafNodes && (<div>
+           {/* <div className="search-box">
+             <input
                 type="text"
                 value={searchText}
                 onChange={handleInputChange} // Assuming you have an event handler for input change
                 onClick={handleSearchBoxClick}
                 placeholder="Search Diagnosis..."
-              />
-              {showLeafNodes && (
+              /> */}
+              {/* {showLeafNodes && (
                 <div className="leaf-node-list">
                   {leafNodes.map((nodeText) => (
                     <div onClick={() => handleLeafNodeSelect(nodeText)}>
@@ -1000,11 +1003,28 @@ function DecisionTree({ data, onOptionChange }) {
                   ))}
                 </div>
               )}
-            </div>
+            </div> */}
+            <select className="search-box">
+              {leafNodes.map((nodeText) => (
+                <option
+                  value={nodeText}
+                  onClick={() => handleLeafNodeSelect(nodeText)}
+                  className="leaf-node-list"
+                >
+                  {nodeText}
+                </option>
+                // <div onClick={() => handleLeafNodeSelect(nodeText)}>
+                //   {nodeText}
+                // </div>
+              ))}
+            </select>
             <div className="search-button">
               <button onClick={onSearch}>Search</button>
             </div>
-          </div>
+          </div>)}
+
+
+
           <div className="line1"></div>
 
           <div
