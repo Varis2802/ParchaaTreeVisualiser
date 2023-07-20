@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import loginpageimg from "./sing-up-logo.png";
-import logo from "./data.png";
-import "./singup-page.css";
+import loginpageimg from "../../Assets/sing-up-logo.png";
+import logo from "../../Assets/data.png";
+// import "./singup-page.css";
 
 function Enter_CC() {
     const [cc, setCC] = useState('');

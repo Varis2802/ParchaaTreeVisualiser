@@ -9,10 +9,10 @@ function SymptomesChecker() {
     <div className="symptomes-page-wrapper">
       <h1 className="heading">Symptoms Checker</h1>
       <div className="button-wrapper">
-        <button onClick={() => navigate("/instructions")} className="btn-class">
+        <button onClick={() => navigate("/data-generation")} className="btn-class">
           Data Generation
         </button>
-        <button onClick={() => navigate("/parchaa-cortex")} className="btn-class">
+        <button onClick={() => navigate("/instructions ")} className="btn-class">
           Decision Tree
         </button>
       </div>

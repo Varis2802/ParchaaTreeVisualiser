@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import loginpageimg from "./loginPageAI.png";
-import logo from "./data.png";
+import loginpageimg from "../../Assets/loginPageAI.png";
+import logo from "../../Assets/data.png";
 import "./login-page.css";
 import { useNavigate } from "react-router";
 

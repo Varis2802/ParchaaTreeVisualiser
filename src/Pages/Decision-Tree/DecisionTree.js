@@ -4,11 +4,11 @@ import dagre from "cytoscape-dagre";
 import undoRedo from "cytoscape-undo-redo";
 import axios from "axios";
 import "./DecisionTree.css";
-import logo from "./data.png"; // Adjust path as needed
+import logo from "../../Assets/data.png"; // Adjust path as needed
 import panzoom from "cytoscape-panzoom";
 import "cytoscape-panzoom/cytoscape.js-panzoom.css";
 import Select from "react-select";
-import daddu from "./daddu.png";
+import daddu from "../../Assets/daddu.png";
 import euler from "cytoscape-euler";
 import spread from "cytoscape-spread";
 import Autosuggest from "react-autosuggest";

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import logo from "./parchaa-ai-service.png";
+import logo from "../../Assets/parchaa-ai-service.png";
 import "./data-generation.css";
-import myGif from "./giphy.webp";
+import myGif from "../../Assets/giphy.webp";
 
 function DataGeneration() {
   const [cc, setCC] = useState("");

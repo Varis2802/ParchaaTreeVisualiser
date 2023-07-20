@@ -1,6 +1,6 @@
 import React from "react";
-import loginpageimg from "./sing-up-logo.png";
-import logo from "./data.png";
+import loginpageimg from "../../Assets/sing-up-logo.png";
+import logo from "../../Assets/data.png";
 import "./singup-page.css";
 
 function SingupPage() {
