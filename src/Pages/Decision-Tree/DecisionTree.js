@@ -139,6 +139,7 @@ function DecisionTree({ data, onOptionChange }) {
     highlightPathToRoot1(rootToLeafPaths[0]);
   };
 
+  
   //onnext button functionality----------------------------------------------------------------
   const onNext = () => {
     // Hide all nodes and edges
