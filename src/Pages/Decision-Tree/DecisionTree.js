@@ -84,7 +84,6 @@ function DecisionTree({ data, onOptionChange }) {
   //diagnosis search start--------------------------------------------------------------------------
   const onSearch = () => {
     // Hide all nodes
-    console.log(searchText,"search text");
     cy.elements().hide();
     // Find nodes that contain the search text
     const matchingNodes = cy.nodes().filter((node) => {
@@ -917,7 +916,6 @@ function DecisionTree({ data, onOptionChange }) {
 
   // When a leaf node is selected from the list, update searchText and hide the list
   const handleLeafNodeSelect = (nodeText) => {
-    console.log("hola")
     setSearchText(nodeText);
     // setTotalCount(1)
     rootToLeafPaths.length = 0;
