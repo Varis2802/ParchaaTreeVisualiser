@@ -80,22 +80,16 @@
   flex-shrink: 0;
   border-radius: 12px;
   background: #4A68F1;
-  box-shadow: -2px 0px 3px 0px rgba(0, 0, 0, 0.24);
   margin-top: 25px;
   margin-left: 60px;
   cursor: pointer;
-}
-
-
-.search-button button {
-  /* Remove width and height so the button takes the full dimensions of its parent */
   border: none;
   border-radius: 12px;
-  background: none;
   color: #FFF;
   font-size: 16px;
   font-weight: bold;
 }
+
 
 .leaf-node-list {
   position: absolute;

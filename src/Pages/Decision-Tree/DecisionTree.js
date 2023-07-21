@@ -13,7 +13,6 @@ import Autosuggest from "react-autosuggest";
 // Register the spread layout extension
 
 cytoscape.use(dagre);
-
 cytoscape.use(undoRedo); // Register undoRedo extension
 // don't forget to register the extension
 cytoscape.use(panzoom);
@@ -37,19 +36,18 @@ function DecisionTree({ data, onOptionChange }) {
   //for Qid search
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-
   const [searchText, setSearchText] = useState("");
-
   // remove duplicacy + show leaf  nodes
   const [leafNodes, setLeafNodes] = useState(allLeafNodes);
   // Remove duplicates from allLeafNodes array
   const uniqueLeafNodes = Array.from(new Set(allLeafNodes));
   // Update the state with uniqueLeafNodes
+
   useEffect(() => {
     setLeafNodes(uniqueLeafNodes);
   }, [uniqueLeafNodes]);
-  const [showLeafNodes, setShowLeafNodes] = useState(false); // Whether to show the leaf node list
 
+  const [showLeafNodes, setShowLeafNodes] = useState(false); // Whether to show the leaf node list
   const [ur, setUr] = useState(null);
   const cyRef = useRef(null);
   const [editingNode, setEditingNode] = useState(null);
@@ -66,7 +64,6 @@ function DecisionTree({ data, onOptionChange }) {
   const [removenodepopup, setremovenodepopup] = useState(false);
   const [addedge, setaddedgepopup] = useState(false);
   const [removeedge, setremoveedgepopup] = useState(false);
-
   const [selectedComplaint, setSelectedComplaint] = useState(null);
 
   let highlightedNodes = []; // Keep track of previously highlighted nodes
@@ -87,6 +84,7 @@ function DecisionTree({ data, onOptionChange }) {
   //diagnosis search start--------------------------------------------------------------------------
   const onSearch = () => {
     // Hide all nodes
+    console.log(searchText,"search text");
     cy.elements().hide();
     // Find nodes that contain the search text
     const matchingNodes = cy.nodes().filter((node) => {
@@ -96,15 +94,12 @@ function DecisionTree({ data, onOptionChange }) {
       }
       return false;
     });
-
     // Filter for leaf nodes (nodes with no successors)
     const matchingLeafNodes = matchingNodes.filter(
       (node) => node.successors().length === 0
     );
-
     // Show the matching leaf nodes
     matchingLeafNodes.show();
-
     // Show and highlight the path to the root for each matching leaf node
     matchingLeafNodes.forEach((node) => {
       const predecessors = node.predecessors();
@@ -113,7 +108,6 @@ function DecisionTree({ data, onOptionChange }) {
       // rootToLeafPaths.length = 0
       rootToLeafPaths.push(predecessors); // Store the path in the array
     });
-
     // Adjust positions of visible nodes using hierarchical layout
     const layout = cy.elements(":visible").layout({
       name: "dagre",
@@ -123,6 +117,7 @@ function DecisionTree({ data, onOptionChange }) {
       edgeSep: 30,
     });
     // In the onNext function, after layout.run():
+
     layout.on("layoutstop", () => {
       const nodes = cy.nodes(":visible"); // get only visible nodes
       nodes.forEach((node, index) => {
@@ -922,6 +917,7 @@ function DecisionTree({ data, onOptionChange }) {
 
   // When a leaf node is selected from the list, update searchText and hide the list
   const handleLeafNodeSelect = (nodeText) => {
+    console.log("hola")
     setSearchText(nodeText);
     // setTotalCount(1)
     rootToLeafPaths.length = 0;
@@ -1275,11 +1271,10 @@ function DecisionTree({ data, onOptionChange }) {
                 </div>
               )}
             </div> */}
-              <select className="search-box">
+              <select className="search-box" onChange={(event) => handleLeafNodeSelect(event.target.value)}>
                 {leafNodes.map((nodeText) => (
                   <option
                     value={nodeText}
-                    onClick={() => handleLeafNodeSelect(nodeText)}
                     className="leaf-node-list"
                   >
                     {nodeText}
@@ -1289,9 +1284,9 @@ function DecisionTree({ data, onOptionChange }) {
                   // </div>
                 ))}
               </select>
-              <div className="search-button">
-                <button onClick={onSearch}>Search</button>
-              </div>
+              
+                <button onClick={onSearch} className="search-button" >Search</button>
+          
             </div>
           )}
 
