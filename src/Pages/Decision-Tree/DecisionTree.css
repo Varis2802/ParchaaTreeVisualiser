@@ -83,6 +83,7 @@
   box-shadow: -2px 0px 3px 0px rgba(0, 0, 0, 0.24);
   margin-top: 25px;
   margin-left: 60px;
+  cursor: pointer;
 }
 
 
@@ -203,6 +204,7 @@
   border-radius: 8px;
   background: #53B88B;
   box-shadow: -2px 0px 3px 0px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
 }
 
 .save-button .save {
@@ -248,10 +250,11 @@
     font-size: 16px;
     font-weight: bold;
     box-shadow: none;
+    cursor: pointer;
 }
 .next{
   margin-left: 50rem;
-
+    cursor: pointer;
     width: 123px;
     height: 43px;
     flex-shrink: 0;
@@ -276,6 +279,7 @@
 .save-button  {
     background-color: #53B88B;
     color: #FFF;
+    cursor: pointer;
 }
 
 .save:hover,
@@ -283,6 +287,7 @@
 .next:hover{
   background-color: #4A68F1;
   color: #FFF;
+  cursor: pointer;
 }
 
 .autosuggest-input {
@@ -309,8 +314,41 @@
 }
 
 
+.popup{
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-out;
 
+}
+.form-wrapper{
+  position: relative;
+  top :20px;
+}
+.addNodeForm{
+  width: 400px;
+  display: flex;
+  align-items: center;
+  background-color: #e9f3f3;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.label{
+   font-size: 20px;
+}
 
+.input {
+  font-size: 20px;
 
+}
 
-
+.btn-close{
+  position : absolute;
+  top : 15px;
+  right: 20px;
+  cursor: pointer;
+}

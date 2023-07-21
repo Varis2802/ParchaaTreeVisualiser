@@ -62,6 +62,10 @@ function DecisionTree({ data, onOptionChange }) {
   const [removingEdge, setRemovingEdge] = useState(false);
   const [cy, setCy] = useState(null);
   const [, setDfsStartingNode] = useState(null);
+  const [addnodepopup, setaddnodepopup] = useState(false);
+  const [removenodepopup, setremovenodepopup] = useState(false);
+  const [addedge, setaddedgepopup] = useState(false);
+  const [removeedge, setremoveedgepopup] = useState(false);
 
   const [selectedComplaint, setSelectedComplaint] = useState(null);
 
@@ -88,7 +92,7 @@ function DecisionTree({ data, onOptionChange }) {
     const matchingNodes = cy.nodes().filter((node) => {
       const label = node.data("label");
       if (label && typeof label === "string") {
-        return      label.toLowerCase().includes(searchText.toLowerCase());
+        return label.toLowerCase().includes(searchText.toLowerCase());
       }
       return false;
     });
@@ -134,17 +138,17 @@ function DecisionTree({ data, onOptionChange }) {
 
     highlightPathToRoot1(rootToLeafPaths[0]);
   };
- 
+
   //onnext button functionality----------------------------------------------------------------
   const onNext = () => {
     // Hide all nodes and edges
     cy.elements().hide();
-    
+
     // Increment pathIndex and loop back to 0 if it exceeds the array length
     pathIndex = (pathIndex + 1) % rootToLeafPaths.length;
     // Update pathCount state after updating pathIndex
     setPathCount(pathIndex);
-   
+
     setTotalCount(rootToLeafPaths.length);
     // Check if the current path is defined
     if (!rootToLeafPaths[pathIndex]) {
@@ -196,12 +200,12 @@ function DecisionTree({ data, onOptionChange }) {
   const onPrev = () => {
     // Hide all nodes and edges
     cy.elements().hide();
-     
+
     // Decrement pathIndex and if it falls below 0 then set it to the last index
     pathIndex = pathIndex - 1 < 0 ? rootToLeafPaths.length - 1 : pathIndex - 1;
     // Update pathCount state after updating pathIndex
     setPathCount(pathIndex);
-   
+
     setTotalCount(rootToLeafPaths.length);
     // Check if the current path is defined
     if (!rootToLeafPaths[pathIndex]) {
@@ -278,7 +282,6 @@ function DecisionTree({ data, onOptionChange }) {
     const predecessors = node.predecessors();
     const nodes = predecessors.nodes();
     const edges = predecessors.edges();
-
     nodes.forEach((node, i) => {
       setTimeout(() => {
         node.animate({
@@ -507,9 +510,15 @@ function DecisionTree({ data, onOptionChange }) {
   };
   //^ buttons functionality start------------------------------------------------------------------------------------------------
   //Add Node----------------------------------------------------------------------
-  const onAddNode = async () => {
-    const id = prompt("Enter node id:");
-    const label = prompt("Enter node label:");
+  const onAddNode = async (e) => {
+    e.preventDefault();
+    setaddnodepopup(false);
+    setremovenodepopup(false);
+    setaddedgepopup(false);
+    setremoveedgepopup(false);
+
+    const id = document.getElementById("nodeId").value;
+    const label = document.getElementById("nodeLabel").value;
 
     // Get the position of the root node
     const rootPosition = cy.$("Q1").position();
@@ -530,8 +539,13 @@ function DecisionTree({ data, onOptionChange }) {
     await saveGraphState();
   };
 
-  const onRemoveNode = async () => {
-    const id = prompt("Enter node id to remove:");
+  const onRemoveNode = async (e) => {
+    e.preventDefault();
+    setaddnodepopup(false);
+    setremovenodepopup(false);
+    setaddedgepopup(false);
+    setremoveedgepopup(false);
+    const id = document.getElementById("remove-nodeId").value;
     const nodeToRemove = cy.$id(id);
     // Use ur.do() to perform an undoable action
     ur.do("remove", nodeToRemove);
@@ -540,10 +554,13 @@ function DecisionTree({ data, onOptionChange }) {
 
   // Add Edges ----------------------------------------------------------------------------------------------
   const onAddEdge = async () => {
-    const sourceId = prompt("Enter source node id:");
-    const targetId = prompt("Enter target node id:");
-    const label = prompt("Enter edge label:");
-
+    const sourceId = document.getElementById("source-nodeId").value;
+    const targetId = document.getElementById("target-nodeId").value;
+    const label = document.getElementById("add-edge-node-label").value;
+    setaddnodepopup(false);
+    setremovenodepopup(false);
+    setaddedgepopup(false);
+    setremoveedgepopup(false);
     ur.do("add", {
       group: "edges",
       data: {
@@ -906,8 +923,7 @@ function DecisionTree({ data, onOptionChange }) {
   const handleLeafNodeSelect = (nodeText) => {
     setSearchText(nodeText);
     // setTotalCount(1)
-    rootToLeafPaths.length=0;
-    
+    rootToLeafPaths.length = 0;
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   const getSuggestions = (value) => {
@@ -955,13 +971,261 @@ function DecisionTree({ data, onOptionChange }) {
     suggestionsContainerOpen: "suggestions-container",
     input: "autosuggest-input",
   };
+  function getTextWidth(text) {
+    const span = document.createElement("span");
+    span.style.visibility = "hidden";
+    span.style.whiteSpace = "nowrap";
+    span.style.position = "absolute";
+    span.style.left = "-9999px";
+    span.innerHTML = text;
+    document.body.appendChild(span);
+    const width = span.offsetWidth;
+    document.body.removeChild(span);
+    return width;
+  }
+  function generateCytoscapeElements(data) {
+    const nodes = [];
+    const edges = [];
+    const nodeIds = new Set();
+
+    data?.forEach((item) => {
+      const label = item.is_diagnoisis
+        ? Array.isArray(Object.values(item.options)[0])
+          ? Object.values(item.options)[0].join(", ")
+          : Object.values(item.options)[0]
+        : item.question;
+
+      nodes.push({
+        data: {
+          id: item.queid,
+          label: label,
+          parent: item.parentId,
+          collapsed: item.queid === "root" ? false : true,
+          _children: [],
+        },
+      });
+      nodeIds.add(item.queid);
+    });
+
+    data?.forEach((item) => {
+      if (item.options && !item.is_diagnoisis) {
+        Object.entries(item.options).forEach(([option, target]) => {
+          if (!nodeIds.has(target)) {
+            console.warn(
+              `Skipping edge from ${item.queid} to non-existent target ${target}`
+            );
+            return;
+          }
+          edges.push({
+            data: {
+              id: `${item.queid}${target}`,
+              source: item.queid,
+              target,
+              label: option,
+            },
+          });
+          nodes
+            .find((node) => node.data.id === item.queid)
+            .data._children.push(target);
+        });
+      }
+    });
+
+    // Find leaf nodes and add their labels to allLeafNodes array
+    nodes.forEach((node) => {
+      if (!node.data._children.length) {
+        allLeafNodes.push(node.data.label);
+      }
+    });
+    return [...nodes, ...edges];
+  }
+
   const handleInputChange = (event) => {
     const updatedSearchText = event.target.value;
     setSearchText(updatedSearchText);
   };
 
+  const handleAddnode = () => {
+    setaddnodepopup(true);
+    setAddingNode(true);
+    setremovenodepopup(false);
+    setaddedgepopup(false);
+    setremoveedgepopup(false);
+  };
+
+  const handleRemovenode = () => {
+    setremovenodepopup(true);
+    setaddnodepopup(false);
+    setaddedgepopup(false);
+    setremoveedgepopup(false);
+  };
+
+  const handleAddEdge = () => {
+    setaddedgepopup(true);
+    setaddnodepopup(false);
+    setremovenodepopup(false);
+    setremoveedgepopup(false);
+  };
+
   return (
     <div>
+      {addnodepopup && (
+        <div className="popup">
+          <div className="form-wrapper">
+            <form className="addNodeForm">
+              <label for="nodeId" className="label">
+                Enter node id:
+              </label>
+              <input
+                type="text"
+                name="nodeId"
+                id="nodeId"
+                placeholder="Q1"
+                className="input"
+                required
+              />
+              <label for="nodeLabel" className="label">
+                Enter Node Label
+              </label>
+              <input
+                type="text"
+                name="nodeLabel"
+                id="nodeLabel"
+                className="input"
+                placeholder="Enter Node Label"
+                required
+              />
+              <button type="submit" onClick={(e) => onAddNode(e)}>
+                Add Node
+              </button>
+            </form>
+            <button
+              className="btn-close"
+              onClick={() => setaddnodepopup(false)}
+            >
+              X
+            </button>
+          </div>
+        </div>
+      )}
+      {removenodepopup && (
+        <div className="popup">
+          <div className="form-wrapper">
+            <form className="addNodeForm">
+              <label for="remove-nodeId" className="label">
+                Enter node id:
+              </label>
+              <input
+                type="text"
+                name="nodeId"
+                id="remove-nodeId"
+                placeholder="Q1"
+                className="input"
+                required
+              />
+
+              <button type="submit" onClick={(e) => onRemoveNode(e)}>
+                Remove Node
+              </button>
+            </form>
+            <button
+              className="btn-close"
+              onClick={() => setremovenodepopup(false)}
+            >
+              X
+            </button>
+          </div>
+        </div>
+      )}
+      {addedge && (
+        <div className="popup">
+          <div className="form-wrapper">
+            <form className="addNodeForm">
+              <label for="nodeId" className="label">
+                Enter source node id:
+              </label>
+              <input
+                type="text"
+                name="nodeId"
+                id="source-nodeId"
+                placeholder="Q1"
+                className="input"
+                required
+              />
+              <label for="nodeId" className="label">
+                Enter target node id:
+              </label>
+              <input
+                type="text"
+                name="nodeId"
+                id="target-nodeId"
+                placeholder="Q1"
+                className="input"
+                required
+              />
+              <label for="nodeId" className="label">
+                Enter Label:
+              </label>
+              <input
+                type="text"
+                name="nodeId"
+                id="add-edge-node-label"
+                placeholder="label"
+                className="input"
+                required
+              />
+              <button type="submit" onClick={(e) => onRemoveEdge(e)}>
+                Remove Edge
+              </button>
+            </form>
+            <button
+              className="btn-close"
+              onClick={() => setaddedgepopup(false)}
+            >
+              X
+            </button>
+          </div>
+        </div>
+      )}
+      {removeedge && (
+        <div className="popup">
+          <div className="form-wrapper">
+            <form className="addNodeForm">
+              <label for="nodeId" className="label">
+                Enter node id:
+              </label>
+              <input
+                type="text"
+                name="nodeId"
+                id="nodeId"
+                placeholder="Q1"
+                className="input"
+                required
+              />
+              <label for="nodeLabel" className="label">
+                Enter Node Label
+              </label>
+              <input
+                type="text"
+                name="nodeLabel"
+                id="nodeLabel"
+                className="input"
+                placeholder="Enter Node Label"
+                required
+              />
+              <button type="submit" onClick={(e) => onAddNode(e)}>
+                Add Node
+              </button>
+            </form>
+            <button
+              className="btn-close"
+              onClick={() => setremovenodepopup(false)}
+            >
+              X
+            </button>
+          </div>
+        </div>
+      )}
       <div class="main-container">
         <div
           style={{
@@ -990,8 +1254,9 @@ function DecisionTree({ data, onOptionChange }) {
             />
           </div>
 
-          {showLeafNodes && (<div>
-           {/* <div className="search-box">
+          {showLeafNodes && (
+            <div>
+              {/* <div className="search-box">
              <input
                 type="text"
                 value={searchText}
@@ -1009,26 +1274,25 @@ function DecisionTree({ data, onOptionChange }) {
                 </div>
               )}
             </div> */}
-            <select className="search-box">
-              {leafNodes.map((nodeText) => (
-                <option
-                  value={nodeText}
-                  onClick={() => handleLeafNodeSelect(nodeText)}
-                  className="leaf-node-list"
-                >
-                  {nodeText}
-                </option>
-                // <div onClick={() => handleLeafNodeSelect(nodeText)}>
-                //   {nodeText}
-                // </div>
-              ))}
-            </select>
-            <div className="search-button">
-              <button onClick={onSearch}>Search</button>
+              <select className="search-box">
+                {leafNodes.map((nodeText) => (
+                  <option
+                    value={nodeText}
+                    onClick={() => handleLeafNodeSelect(nodeText)}
+                    className="leaf-node-list"
+                  >
+                    {nodeText}
+                  </option>
+                  // <div onClick={() => handleLeafNodeSelect(nodeText)}>
+                  //   {nodeText}
+                  // </div>
+                ))}
+              </select>
+              <div className="search-button">
+                <button onClick={onSearch}>Search</button>
+              </div>
             </div>
-          </div>)}
-
-
+          )}
 
           <div className="line1"></div>
 
@@ -1036,21 +1300,17 @@ function DecisionTree({ data, onOptionChange }) {
             className="section1-button-container"
             style={{ position: "relative", zIndex: 2 }}
           >
-            {addingNode ? (
-              <button onClick={onAddNode}>Submit Node</button>
-            ) : (
-              <button onClick={() => setAddingNode(true)}>Add Node</button>
-            )}
-            {removingNode ? (
-              <button onClick={onRemoveNode}>Submit Remove Node</button>
-            ) : (
-              <button onClick={() => setRemovingNode(true)}>Remove Node</button>
-            )}
-            {addingEdge ? (
-              <button onClick={onAddEdge}>Submit Edge</button>
-            ) : (
-              <button onClick={() => setAddingEdge(true)}>Add Edge</button>
-            )}
+            <button
+              onClick={() => {
+                handleAddnode();
+              }}
+            >
+              Add Node
+            </button>
+
+            <button onClick={() => handleRemovenode()}>Remove Node</button>
+
+            <button onClick={() => handleAddEdge()}>Add Edge</button>
             {removingEdge ? (
               <button onClick={onRemoveEdge}>Submit Remove Edge</button>
             ) : (
@@ -1159,75 +1419,6 @@ function DecisionTree({ data, onOptionChange }) {
       </div>
     </div>
   );
-}
-
-function getTextWidth(text) {
-  const span = document.createElement("span");
-  span.style.visibility = "hidden";
-  span.style.whiteSpace = "nowrap";
-  span.style.position = "absolute";
-  span.style.left = "-9999px";
-  span.innerHTML = text;
-  document.body.appendChild(span);
-  const width = span.offsetWidth;
-  document.body.removeChild(span);
-  return width;
-}
-function generateCytoscapeElements(data) {
-  const nodes = [];
-  const edges = [];
-  const nodeIds = new Set();
-
-  data?.forEach((item) => {
-    const label = item.is_diagnoisis
-      ? Array.isArray(Object.values(item.options)[0])
-        ? Object.values(item.options)[0].join(", ")
-        : Object.values(item.options)[0]
-      : item.question;
-
-    nodes.push({
-      data: {
-        id: item.queid,
-        label: label,
-        parent: item.parentId,
-        collapsed: item.queid === "root" ? false : true,
-        _children: [],
-      },
-    });
-    nodeIds.add(item.queid);
-  });
-
-  data?.forEach((item) => {
-    if (item.options && !item.is_diagnoisis) {
-      Object.entries(item.options).forEach(([option, target]) => {
-        if (!nodeIds.has(target)) {
-          console.warn(
-            `Skipping edge from ${item.queid} to non-existent target ${target}`
-          );
-          return;
-        }
-        edges.push({
-          data: {
-            id: `${item.queid}${target}`,
-            source: item.queid,
-            target,
-            label: option,
-          },
-        });
-        nodes
-          .find((node) => node.data.id === item.queid)
-          .data._children.push(target);
-      });
-    }
-  });
-
-  // Find leaf nodes and add their labels to allLeafNodes array
-  nodes.forEach((node) => {
-    if (!node.data._children.length) {
-      allLeafNodes.push(node.data.label);
-    }
-  });
-  return [...nodes, ...edges];
 }
 
 export default DecisionTree;
