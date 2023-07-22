@@ -31,23 +31,13 @@ const options = [
 
 let pathIndex = 0; // index to keep track of current path
 let rootToLeafPaths = []; // array to store all root-to-leaf paths
-let allLeafNodes = []; // Define allLeafNodes as a global array
+// let allLeafNodes = []; // Define allLeafNodes as a global array
 
 function DecisionTree({ data, onOptionChange }) {
   //for Qid search
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [searchText, setSearchText] = useState("");
-  // remove duplicacy + show leaf  nodes
-  const [leafNodes, setLeafNodes] = useState(allLeafNodes);
-  // Remove duplicates from allLeafNodes array
-  const uniqueLeafNodes = Array.from(new Set(allLeafNodes));
-  // Update the state with uniqueLeafNodes
-
-  useEffect(() => {
-    setLeafNodes(uniqueLeafNodes);
-  }, [uniqueLeafNodes]);
-
   const [showLeafNodes, setShowLeafNodes] = useState(false); // Whether to show the leaf node list
   const [ur, setUr] = useState(null);
   const cyRef = useRef(null);
@@ -65,9 +55,22 @@ function DecisionTree({ data, onOptionChange }) {
   const [removeedge, setremoveedgepopup] = useState(false);
   const [selectedComplaint, setSelectedComplaint] = useState(null);
   const [searchInput, setSearchInput] = useState("");
+  const [showDfsPopup, setShowDfsPopup] = useState(false);
+  const [allLeafNodes, setallLeafNodes] =useState([]);
+  const [leafNodes, setLeafNodes] = useState(allLeafNodes);
 
   let highlightedNodes = []; // Keep track of previously highlighted nodes
   let highlightedEdges = []; // Keep track of previously highlighted edges
+  // remove duplicacy + show leaf  nodes
+  // Remove duplicates from allLeafNodes array
+  const uniqueLeafNodes = Array.from(new Set(allLeafNodes));
+  // Update the state with uniqueLeafNodes
+
+  useEffect(() => {
+    setLeafNodes(uniqueLeafNodes);
+  }, [allLeafNodes]);
+
+
 
   // Initialize pathCount state
   const [pathCount, setPathCount] = useState(1);
@@ -411,7 +414,7 @@ function DecisionTree({ data, onOptionChange }) {
 
   //DFS Start----------------------------------------------------------------
   const onDFS = () => {
-    const startId = prompt("Enter the start node id:");
+    const startId = document.getElementById("start-nodeId").value;
     const dfsResults = cy.elements().depthFirstSearch({
       root: `#${startId}`,
       visit: function (v, e, u, i, depth) {
@@ -931,7 +934,7 @@ function DecisionTree({ data, onOptionChange }) {
     setSelectedComplaint(selectedOption.value); // Use the label instead of the value
     onOptionChange(selectedOption.value);
     setShowLeafNodes(true);
-    allLeafNodes = [];
+    setallLeafNodes([])
   };
 
   // When a leaf node is selected from the list, update searchText and hide the list
@@ -1049,7 +1052,8 @@ function DecisionTree({ data, onOptionChange }) {
     // Find leaf nodes and add their labels to allLeafNodes array
     nodes.forEach((node) => {
       if (!node.data._children.length) {
-        allLeafNodes.push(node.data.label);
+        // allLeafNodes.push(node.data.label);
+        setallLeafNodes(prevLeafNodes => [...prevLeafNodes, node.data.label]);
       }
     });
     return [...nodes, ...edges];
@@ -1076,17 +1080,26 @@ function DecisionTree({ data, onOptionChange }) {
     setremoveedgepopup(false);
   };
 
+  const handleDFSbutton = () => {
+    setShowDfsPopup(true);
+    setaddnodepopup(false);
+    setremovenodepopup(false);
+    setaddedgepopup(false);
+    setremoveedgepopup(false);
+  };
   // Search functionality ----------------------------------------------------------------
 
   useEffect(() => {
     // If there's a search input, highlight the corresponding node
-    if (searchInput !== '') {
-      cy.elements(`node[id = "${searchInput}"], node[label = "${searchInput}"]`).forEach(node => {
-        node.style('background-color', 'red'); // replace 'highlightColor' with your highlight color
+    if (searchInput !== "") {
+      cy.elements(
+        `node[id = "${searchInput}"], node[label = "${searchInput}"]`
+      ).forEach((node) => {
+        node.style("background-color", "red"); // replace 'highlightColor' with your highlight color
       });
     }
   }, [searchInput]); // Re-run whenever searchInput changes
-  
+
   return (
     <div>
       <PopupComponent
@@ -1178,6 +1191,23 @@ function DecisionTree({ data, onOptionChange }) {
         ]}
         onSubmit={onRemoveEdge}
       />
+      {showDfsPopup && (
+        <PopupComponent
+          isOpen={showDfsPopup}
+          handleToggle={setShowDfsPopup}
+          title="Start DFS"
+          inputs={[
+            {
+              id: "start-nodeId",
+              name: "nodeId",
+              label: "Start node id",
+              placeholder: "Q1",
+            },
+          ]}
+          onSubmit={onDFS}
+        />
+      )}
+
       <input
         type="text"
         placeholder="Search by Node ID or Node Label"
@@ -1216,24 +1246,6 @@ function DecisionTree({ data, onOptionChange }) {
 
           {showLeafNodes && (
             <div>
-              {/* <div className="search-box">
-             <input
-                type="text"
-                value={searchText}
-                onChange={handleInputChange} // Assuming you have an event handler for input change
-                onClick={handleSearchBoxClick}
-                placeholder="Search Diagnosis..."
-              /> */}
-              {/* {showLeafNodes && (
-                <div className="leaf-node-list">
-                  {leafNodes.map((nodeText) => (
-                    <div onClick={() => handleLeafNodeSelect(nodeText)}>
-                      {nodeText}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div> */}
               <select
                 className="search-box"
                 onChange={(event) => handleLeafNodeSelect(event.target.value)}
@@ -1242,9 +1254,6 @@ function DecisionTree({ data, onOptionChange }) {
                   <option value={nodeText} className="leaf-node-list">
                     {nodeText}
                   </option>
-                  // <div onClick={() => handleLeafNodeSelect(nodeText)}>
-                  //   {nodeText}
-                  // </div>
                 ))}
               </select>
 
@@ -1271,15 +1280,13 @@ function DecisionTree({ data, onOptionChange }) {
             <button onClick={() => handleRemovenode()}>Remove Node</button>
 
             <button onClick={() => handleAddEdge()}>Add Edge</button>
-            {removingEdge ? (
-              <button onClick={onRemoveEdge}>Submit Remove Edge</button>
-            ) : (
-              <button onClick={() => setRemovingEdge(true)}>Remove Edge</button>
-            )}
+
+            <button onClick={() => setRemovingEdge(true)}>Remove Edge</button>
             <button
-              onClick={onRemoveSelectedNode}
               style={{ height: "76px", lineHeight: "19px" }}
+              onClick={onRemoveSelectedNode}
             >
+              {" "}
               Remove Selected <br></br>Node
             </button>
             <button
@@ -1294,9 +1301,10 @@ function DecisionTree({ data, onOptionChange }) {
             className="section2-button-container"
             style={{ position: "relative", zIndex: 2 }}
           >
-            <button className="dfs" onClick={onDFS}>
+            <button className="dfs" onClick={() => handleDFSbutton()}>
               D-F-S
             </button>
+
             <button className="bfs" onClick={onBFS}>
               B-F-S
             </button>
@@ -1341,7 +1349,7 @@ function DecisionTree({ data, onOptionChange }) {
             <h3>Dr. Varis1807</h3>
           </div>
           <div className="daddu">
-            <img src={daddu}></img>
+            <img src={daddu} alt="daddu"></img>
           </div>
         </div>
 
