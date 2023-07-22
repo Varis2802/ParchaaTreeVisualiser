@@ -307,42 +307,15 @@
   font-weight: 600;
 }
 
-
-.popup{
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.2s ease-out;
-
-}
-.form-wrapper{
-  position: relative;
-  top :20px;
-}
-.addNodeForm{
-  width: 400px;
-  display: flex;
-  align-items: center;
-  background-color: #e9f3f3;
-  padding: 20px;
+.serach-box{
+  position:absolute;
+  z-index: 15;
+  top:10px;
+  right: 200px;
+  width: 250px;
+  height: 40px;
   border-radius: 10px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-.label{
-   font-size: 20px;
-}
-
-.input {
-  font-size: 20px;
-
-}
-
-.btn-close{
-  position : absolute;
-  top : 15px;
-  right: 20px;
-  cursor: pointer;
+  background: #cededf75;
+  padding: 0px 10px;
+  border: none;
 }

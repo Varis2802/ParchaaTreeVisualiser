@@ -1,0 +1,50 @@
+.popup{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease-out;
+  
+  }
+  .form-wrapper{
+    position: relative;
+    top :20px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9f3f3;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .label{
+     font-size: 20px;
+  }
+  
+  .input {
+    font-size: 20px;
+  
+  }
+  
+  .btn-close{
+    position : absolute;
+    top : 15px;
+    right: 20px;
+    cursor: pointer;
+  }
+  .input-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+  }
