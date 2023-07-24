@@ -7,6 +7,12 @@ import Instructions from './Pages/Instruction/Instructions'; // Import the Instr
 import Enter_CC from './Pages/Chief-complaints/chief_complaint';
 import DataGeneration from './Pages/Data-Genration/data-generation';
 import SymptomesChecker from './Pages/Symptoms-Page/Symptoms';
+import Status from './Pages/Dashboard Pages/Status';
+import Befor7levelPage from './Pages/Dashboard Pages/Befor7level-page';
+// import DataGenrationPage from './Pages/Dashboard Pages/Data-Genration-page'
+import After7levelPage from './Pages/Dashboard Pages/After7Level-page';
+import DataGenerationPage from './Pages/Dashboard Pages/Data-Genration-page';
+// import Dashboard from './Pages/Dashboard';
 
 
 function App() {
@@ -31,6 +37,10 @@ function App() {
         <Route path="/call-to-openai" element={<Enter_CC/>}></Route>
         <Route path="/instructions" element={<Instructions/>}></Route>
         <Route path="/parchaa-cortex" element={<DecisionTree data={data} onOptionChange={handleDataChange} />}></Route>
+        <Route path="/status" element={<Status/>}></Route>
+        <Route path="/before7level" element={<Befor7levelPage/>}></Route>
+        <Route path="/after7level" element={<After7levelPage/>}></Route>
+        <Route path="/datagenration" element={<DataGenerationPage/>}></Route>
       </Routes>
     </BrowserRouter>
   );

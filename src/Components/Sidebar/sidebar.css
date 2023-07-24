@@ -1,0 +1,61 @@
+/* Base styles */
+.sidebar-wrapper {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+}
+
+.dashboard-btn {
+    width: 300px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: none;
+    background-color: rgb(75 106 245);
+    color: antiquewhite;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.logo {
+    width: 250px;
+    margin: 50px 0 100px 0;
+}
+
+/* Media Queries for responsiveness */
+
+/* For screens smaller than 600px */
+@media (max-width: 600px) {
+    .sidebar-wrapper {
+        width: 100%;
+    }
+
+    .dashboard-btn {
+        width: 100%;
+    }
+
+    .logo {
+        width: 200px;
+        margin: 20px 0 50px 0;
+    }
+}
+
+/* For screens between 601px and 900px */
+@media (min-width: 601px) and (max-width: 900px) {
+    .sidebar-wrapper {
+        width: 300px;
+    }
+
+    .dashboard-btn {
+        width: 250px;
+    }
+
+    .logo {
+        width: 180px;
+        margin: 30px 0 80px 0;
+    }
+}

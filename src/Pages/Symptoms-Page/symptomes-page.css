@@ -12,9 +12,9 @@
 }
 .button-wrapper{
     margin-top: 3vh;
-    width: 400px;
     display: flex;
     justify-content: space-between;
+    gap : 15px;
 }
 .btn-class{
     padding: 10px 15px;

@@ -43,7 +43,6 @@ function DecisionTree({ data, onOptionChange }) {
   const cyRef = useRef(null);
   const [editingNode, setEditingNode] = useState(null);
   const [editingEdge, setEditingEdge] = useState(null);
-  const [formPosition, setFormPosition] = useState({ x: 0, y: 0 });
   const [inputText, setInputText] = useState("");
   const [removingNode, setRemovingNode] = useState(false);
   const [removingEdge, setRemovingEdge] = useState(false);
@@ -1388,5 +1387,4 @@ function DecisionTree({ data, onOptionChange }) {
     </div>
   );
 }
-
 export default DecisionTree;

@@ -15,6 +15,9 @@ function SymptomesChecker() {
         <button onClick={() => navigate("/instructions ")} className="btn-class">
           Decision Tree
         </button>
+        <button onClick={() => navigate("/before7level")} className="btn-class">
+          Dashboard
+        </button>
       </div>
     </div>
   );

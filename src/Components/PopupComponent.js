@@ -3,14 +3,20 @@ import "./popup.css"
 
 function PopupComponent({ isOpen, handleToggle, title, inputs, onSubmit }) {
   if (!isOpen) return null;
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevents the default form submission behavior
+    onSubmit(e); // Handle form submission manually
+  };
+
   return (
     <div className="popup">
       <div className="form-wrapper">
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}> {/* Attach the handleSubmit function to the form onSubmit event */}
           <h3>{title}</h3>
           {inputs.map((input, index) => (
             <div key={index} className="input-wrapper">
-              <label for={input.id} className="label">
+              <label htmlFor={input.id} className="label"> {/* Use "htmlFor" instead of "for" to associate the label with the input */}
                 {input.label}:
               </label>
               <input
@@ -23,7 +29,7 @@ function PopupComponent({ isOpen, handleToggle, title, inputs, onSubmit }) {
               />
             </div>
           ))}
-          <button type="submit" onClick={(e) => onSubmit(e)}>
+          <button type="submit">
             {title}
           </button>
         </form>
