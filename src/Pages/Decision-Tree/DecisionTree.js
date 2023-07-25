@@ -1021,8 +1021,29 @@ function DecisionTree({ data, onOptionChange }) {
     },
   };
   const theme = {
-    suggestionsContainerOpen: "suggestions-container",
-    input: "autosuggest-input",
+     container: {
+    position: 'relative',
+  },
+  suggestionsContainerOpen: {
+    position: 'absolute',
+    zIndex: 1,
+    marginTop: '10px',
+    left: 0,
+    right: 0,
+    maxHeight: '200px', // Set the maximum height for the suggestions container
+    overflowY: 'auto',  // Enable vertical scrollbar if the suggestions overflow the container
+    backgroundColor: '#fff', // Optionally add background color for the suggestions container
+    border: '1px solid #ccc', // Optionally add a border for the suggestions container
+    borderRadius: '4px', // Optionally add border radius for the suggestions container
+  },
+  suggestion: {
+    cursor: 'pointer',
+    padding: '10px',
+    borderBottom: '1px solid #ccc',
+  },
+  suggestionHighlighted: {
+    backgroundColor: '#ddd',
+  },
   };
   function getTextWidth(text) {
     const span = document.createElement("span");

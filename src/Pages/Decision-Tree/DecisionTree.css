@@ -294,6 +294,12 @@
   font-weight: 900;
   margin-right: 0px;
 }
+.react-autosuggest__input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
 
 .suggestions-container {
   position: absolute;
