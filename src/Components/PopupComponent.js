@@ -1,22 +1,46 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import "./popup.css" 
 
 function PopupComponent({ isOpen, handleToggle, title, inputs, onSubmit }) {
+  const popupRef = useRef(null);
+  let offsetX, offsetY, isDragging = false;
+
+  const handleMouseDown = (e) => {
+    if (e.target.tagName === "INPUT") return; // Disable dragging when clicking on an input field
+    e.preventDefault();
+    isDragging = true;
+    offsetX = e.clientX - popupRef.current.getBoundingClientRect().left;
+    offsetY = e.clientY - popupRef.current.getBoundingClientRect().top;
+  };
+
+  const handleMouseMove = (e) => {
+    e.preventDefault();
+    if (!isDragging) return;
+    const x = e.clientX - offsetX;
+    const y = e.clientY - offsetY;
+    popupRef.current.style.left = `${x}px`;
+    popupRef.current.style.top = `${y}px`;
+  };
+
+  const handleMouseUp = () => {
+    isDragging = false;
+  };
+
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents the default form submission behavior
-    onSubmit(e); // Handle form submission manually
+    e.preventDefault();
+    onSubmit(e);
   };
 
   return (
-    <div className="popup">
+    <div className="popup" ref={popupRef} onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
       <div className="form-wrapper">
-        <form className="form" onSubmit={handleSubmit}> {/* Attach the handleSubmit function to the form onSubmit event */}
+        <form className="form" onSubmit={handleSubmit}>
           <h3>{title}</h3>
           {inputs.map((input, index) => (
             <div key={index} className="input-wrapper">
-              <label htmlFor={input.id} className="label"> {/* Use "htmlFor" instead of "for" to associate the label with the input */}
+              <label htmlFor={input.id} className="label">
                 {input.label}:
               </label>
               <input

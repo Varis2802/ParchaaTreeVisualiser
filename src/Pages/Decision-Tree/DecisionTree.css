@@ -34,7 +34,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Ensures the dropdown appears on top */
+  z-index: 10; /* Ensures the dropdown appears on top */
 }
 
 .chief-complaint{
@@ -137,7 +137,7 @@
 
 .section1-button-container button {
   width: 116px;
-  height: 42px;
+  height: 50px;
   flex-shrink: 0;
   border-radius: 12px;
   border: 1.3px solid #9FAFF8;

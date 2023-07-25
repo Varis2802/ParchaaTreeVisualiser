@@ -55,7 +55,7 @@ function DecisionTree({ data, onOptionChange }) {
   const [selectedComplaint, setSelectedComplaint] = useState(null);
   const [searchInput, setSearchInput] = useState("");
   const [showDfsPopup, setShowDfsPopup] = useState(false);
-  const [allLeafNodes, setallLeafNodes] =useState([]);
+  const [allLeafNodes, setallLeafNodes] = useState([]);
   const [leafNodes, setLeafNodes] = useState(allLeafNodes);
   const [formPosition, setFormPosition] = useState(false);
 
@@ -69,8 +69,6 @@ function DecisionTree({ data, onOptionChange }) {
   useEffect(() => {
     setLeafNodes(uniqueLeafNodes);
   }, [allLeafNodes]);
-
-
 
   // Initialize pathCount state
   const [pathCount, setPathCount] = useState(1);
@@ -193,6 +191,7 @@ function DecisionTree({ data, onOptionChange }) {
 
     layout.run();
   };
+
   // OnPrev button functionality----------------------------------------------------------------
   const onPrev = () => {
     // Hide all nodes and edges
@@ -525,7 +524,7 @@ function DecisionTree({ data, onOptionChange }) {
       nodePositionTemp.push(combinedObject);
     });
 
-    console.log(nodePositionTemp, "nodePositionTemp");
+    // console.log(nodePositionTemp, "nodePositionTemp");
 
     // Get the position of the reference node
 
@@ -540,7 +539,7 @@ function DecisionTree({ data, onOptionChange }) {
       x: rootPositionx - 100,
       y: rootPositiony + 200,
     };
-    console.log("New Node Position:", newNodePosition);
+    // console.log("New Node Position:", newNodePosition);
 
     // Add the new node to the graph with the calculated position
     cy.add({
@@ -808,18 +807,54 @@ function DecisionTree({ data, onOptionChange }) {
       const edge = evt.target;
       setRemovingEdge(edge);
     });
+
     //Select color-------------------------
+    // cyInstance.on("select", "edge", function (evt) {
+    //   const edge = evt.target;
+    //   edge.style({
+    //     "line-color": "red", // or any color you want
+    //   });
+    // });
+    // cyInstance.on("select", "node", function (evt) {
+    //   const node = evt.target;
+    //   node.style({
+    //     "background-color": "red", // or any color you want
+    //   });
+    // });
+
+    // Define the default styles for nodes and edges (change these values to your desired defaults)
+    const defaultNodeStyle = {
+      "background-color": " rgb(74, 104, 241)",
+    };
+
+    const defaultEdgeStyle = {
+      "line-color": "#000", // black color
+    };
+
+    // Set the styles for selected nodes and edges
     cyInstance.on("select", "edge", function (evt) {
       const edge = evt.target;
       edge.style({
-        "line-color": "red", // or any color you want
+        "line-color": "red", // or any color you want for selected edges
       });
     });
+
     cyInstance.on("select", "node", function (evt) {
       const node = evt.target;
       node.style({
-        "background-color": "red", // or any color you want
+        "background-color": "red", // or any color you want for selected nodes
       });
+    });
+
+    // Set the styles for unselected nodes and edges
+    cyInstance.on("unselect", "edge", function (evt) {
+      const edge = evt.target;
+      edge.style(defaultEdgeStyle); // Apply the default edge style
+    });
+
+    cyInstance.on("unselect", "node", function (evt) {
+      const node = evt.target;
+      node.style(defaultNodeStyle); // Apply the default node style
     });
 
     //hover Qid--------------------------------------------------------
@@ -934,7 +969,7 @@ function DecisionTree({ data, onOptionChange }) {
     setSelectedComplaint(selectedOption.value); // Use the label instead of the value
     onOptionChange(selectedOption.value);
     setShowLeafNodes(true);
-    setallLeafNodes([])
+    setallLeafNodes([]);
   };
 
   // When a leaf node is selected from the list, update searchText and hide the list
@@ -1053,7 +1088,7 @@ function DecisionTree({ data, onOptionChange }) {
     nodes.forEach((node) => {
       if (!node.data._children.length) {
         // allLeafNodes.push(node.data.label);
-        setallLeafNodes(prevLeafNodes => [...prevLeafNodes, node.data.label]);
+        setallLeafNodes((prevLeafNodes) => [...prevLeafNodes, node.data.label]);
       }
     });
     return [...nodes, ...edges];
@@ -1090,12 +1125,25 @@ function DecisionTree({ data, onOptionChange }) {
   // Search functionality ----------------------------------------------------------------
 
   useEffect(() => {
-    // If there's a search input, highlight the corresponding node
+    // Default color for unmatched nodes
+    const defaultColor = " rgb(74, 104, 241)"; // Replace 'blue' with your desired default color
+
+    // Reset the color of all nodes to the default color first
+    cy?.elements().forEach((node) => {
+      node.style("background-color", defaultColor);
+    });
+
     if (searchInput !== "") {
-      cy.elements(
-        `node[id = "${searchInput}"], node[label = "${searchInput}"]`
-      ).forEach((node) => {
-        node.style("background-color", "red"); // replace 'highlightColor' with your highlight color
+      const partialMatchNodes = cy.elements().filter((node) => {
+        // Check if the search input is included in the node's id or label
+        return (
+          node.data("id")?.includes(searchInput) ||
+          node.data("label")?.includes(searchInput)
+        );
+      });
+
+      partialMatchNodes.forEach((node) => {
+        node.style("background-color", "red"); // Replace 'red' with your highlight color
       });
     }
   }, [searchInput]); // Re-run whenever searchInput changes
@@ -1269,23 +1317,14 @@ function DecisionTree({ data, onOptionChange }) {
             className="section1-button-container"
             style={{ position: "relative", zIndex: 2 }}
           >
-            <button
-              onClick={() => {
-                handleAddnode();
-              }}
-            >
-              Add Node
-            </button>
+            <button onClick={() => {handleAddnode()}}> Add Node</button>
 
             <button onClick={() => handleRemovenode()}>Remove Node</button>
 
             <button onClick={() => handleAddEdge()}>Add Edge</button>
 
             <button onClick={() => setRemovingEdge(true)}>Remove Edge</button>
-            <button
-              style={{ height: "76px", lineHeight: "19px" }}
-              onClick={onRemoveSelectedNode}
-            >
+            <button style={{ height: "76px", lineHeight: "19px" }}onClick={onRemoveSelectedNode}>
               {" "}
               Remove Selected <br></br>Node
             </button>

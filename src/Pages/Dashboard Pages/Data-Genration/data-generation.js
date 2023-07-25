@@ -94,7 +94,7 @@ function DataGeneration() {
                   name="docfile"
                   onChange={onFileChange}
                 />
-                <button type="submit">Upload</button>
+                <button type="submit" className="upload-btn">Upload</button>
               </form>
             </div>
           )}
