@@ -57,6 +57,7 @@ function DecisionTree({ data, onOptionChange }) {
   const [showDfsPopup, setShowDfsPopup] = useState(false);
   const [allLeafNodes, setallLeafNodes] =useState([]);
   const [leafNodes, setLeafNodes] = useState(allLeafNodes);
+  const [formPosition, setFormPosition] = useState(false);
 
   let highlightedNodes = []; // Keep track of previously highlighted nodes
   let highlightedEdges = []; // Keep track of previously highlighted edges

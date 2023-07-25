@@ -10,8 +10,8 @@ import SymptomesChecker from './Pages/Symptoms-Page/Symptoms';
 import Status from './Pages/Dashboard Pages/Status';
 import Befor7levelPage from './Pages/Dashboard Pages/Befor7level-page';
 // import DataGenrationPage from './Pages/Dashboard Pages/Data-Genration-page'
-import After7levelPage from './Pages/Dashboard Pages/After7Level-page';
-import DataGenerationPage from './Pages/Dashboard Pages/Data-Genration-page';
+import DataGenerationPage from './Pages/Dashboard Pages/After7level-page';
+import DataUploadDB from './Pages/Dashboard Pages/data-upload-db';
 // import Dashboard from './Pages/Dashboard';
 
 
@@ -39,8 +39,8 @@ function App() {
         <Route path="/parchaa-cortex" element={<DecisionTree data={data} onOptionChange={handleDataChange} />}></Route>
         <Route path="/status" element={<Status/>}></Route>
         <Route path="/before7level" element={<Befor7levelPage/>}></Route>
-        <Route path="/after7level" element={<After7levelPage/>}></Route>
-        <Route path="/datagenration" element={<DataGenerationPage/>}></Route>
+        <Route path="/after7level" element={<DataGenerationPage/>}></Route>
+        <Route path="/data-upload" element={<DataUploadDB/>}></Route>
       </Routes>
     </BrowserRouter>
   );

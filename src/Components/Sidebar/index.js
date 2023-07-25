@@ -10,7 +10,7 @@ function Sidebar() {
          <button onClick={()=> navigate("/before7level")} className="dashboard-btn">Before 7 Level</button>
          <button onClick={()=> navigate("/after7level")} className="dashboard-btn">After 7 Level</button>
         <button onClick={()=> navigate("/status")}  className="dashboard-btn">CC Status</button>
-        <button onClick={()=> navigate("/datagenration")}  className="dashboard-btn">Data Upload</button>
+        <button onClick={()=> navigate("/data-upload")}  className="dashboard-btn">Data Upload To DB</button>
     </div>
   )
 }

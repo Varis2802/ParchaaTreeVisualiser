@@ -9,15 +9,15 @@ function SymptomesChecker() {
     <div className="symptomes-page-wrapper">
       <h1 className="heading">Symptoms Checker</h1>
       <div className="button-wrapper">
-        <button onClick={() => navigate("/data-generation")} className="btn-class">
+      <button onClick={() => navigate("/before7level")} className="btn-class">
           Data Generation
         </button>
         <button onClick={() => navigate("/instructions ")} className="btn-class">
-          Decision Tree
+          Parchaa Cortex
         </button>
-        <button onClick={() => navigate("/before7level")} className="btn-class">
+        {/* <button onClick={() => navigate("/before7level")} className="btn-class">
           Dashboard
-        </button>
+        </button> */}
       </div>
     </div>
   );
