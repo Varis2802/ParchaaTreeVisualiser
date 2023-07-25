@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../Assets/parchaa-ai-service.png";
+import logo from "../../../Assets/parchaa-ai-service.png";
 import "./data-generation.css";
-import myGif from "../../Assets/giphy.webp";
+import myGif from "../../../Assets/giphy.webp";
+import Sidebar from "../../../Components/Sidebar";
 
 function DataGeneration() {
   const [cc, setCC] = useState("");
@@ -69,8 +70,9 @@ function DataGeneration() {
   
 
   return (
-    <div className="main1">
-      <div className="main-container1">
+    <div style={{display:'flex'}}>
+      <Sidebar/>
+      <div className="dashboard-page-right-container">
         <div className="login-container">
           <div className="logo">
             <img src={logo} alt="Parchaa-Cortex-IMG" />
@@ -113,9 +115,10 @@ function DataGeneration() {
       )}
     </>
         </div>
-      </div>
       <div className="copyright">© Design By Varis. All Rights Reserved.</div>
     </div>
+    </div>
+    
   );
 }
 
