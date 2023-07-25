@@ -8,9 +8,7 @@ function DataGeneration() {
   const [cc, setCC] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadSubmitted, setUploadSubmitted] = useState(false);
-  const [showProgress, setShowProgress] = useState(false);
-
-
+  const [showProgress, setShowProgress] = useState(false)
   const handleSubmit = async (event) => {
     event.preventDefault();
 

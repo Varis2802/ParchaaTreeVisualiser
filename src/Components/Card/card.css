@@ -1,0 +1,17 @@
+.card{
+    width:200px;
+    height: 300px;
+    display: block;
+    border-radius:11px;
+    box-sizing: border-box;
+    padding:20px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+}
+.cards-wrapper{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
