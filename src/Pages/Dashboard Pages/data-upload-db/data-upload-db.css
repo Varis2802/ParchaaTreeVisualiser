@@ -1,0 +1,33 @@
+/* index.css */
+.container {
+    display: flex;
+     align-items: center;
+    justify-content: space-around;
+  }
+  
+  .buttons-column {
+    flex: 1;
+    padding: 16px;
+  }
+  .button-wrapper-2{
+    display: flex;
+    flex-direction: column;
+    gap:50px
+  }
+.button-wrapper-2 button{
+     width: 250px;
+     padding: 20px;
+     font-size:18px;
+     font-weight: 600;
+     letter-spacing: 0.025em;
+  }
+  .json-column {
+    width: 50vw;
+    height: 80vh;
+    flex: 1;
+    padding: 16px;
+    background-color: #f0f0f0;
+  }
+  
+  /* Add any other styles as needed */
+  

@@ -40,8 +40,10 @@ function Card({ data }) {
           className="card"
           style={key === "status" ? getBorderStyle(status) : status ? boderfortrue : boderforfalse}
         >
-          {keyNameMapping[key]}
+          <h3>{keyNameMapping[key]}</h3>
+          
           {/* <img src ={} alt ="logo"/> */}
+           <h5>{status}</h5>
         </div>
       ))}
     </div>

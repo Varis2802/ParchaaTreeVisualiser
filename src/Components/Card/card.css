@@ -1,17 +1,28 @@
-.card{
-    width:200px;
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    width: 200px;
     height: 300px;
     display: block;
-    border-radius:11px;
+    border-radius: 11px;
     box-sizing: border-box;
-    padding:20px;
+    padding: 20px;
     text-align: center;
     cursor: pointer;
     font-size: 20px;
     font-weight: 500;
-}
-.cards-wrapper{
-    display:flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d; /* Add 3D perspective to the card */
+    perspective: 1000px; /* Set the perspective distance */
+  }
+  
+  .card:hover {
+    transform: scale(1.1); /* Scale the card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Update the box shadow on hover */
+  }
+  
