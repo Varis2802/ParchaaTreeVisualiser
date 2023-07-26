@@ -15,7 +15,7 @@ function DataGeneration() {
   const [progress, setProgress] = useState(0); // State to control the progress value
   const [animationStarted, setAnimationStarted] = useState(false); // State to control the animation start
   const [allCC, setAllcc] = useState(["fever", "Cough", "cold"]);
-  const [ccpresent, setccpresent] = useState(true);
+   const [error ,setError] =useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -71,10 +71,37 @@ function DataGeneration() {
       // Here you could handle the response froa the server
       toast.success("Data generation started successfully!");
       console.log(data);
-    } catch (error) {
+    //   const updatedData = {
+    //     status: "Running"
+    //   };
+    
+    //   // Send the PATCH request using Axios
+    //   axios.patch(`${CCAPI}${cc}`, updatedData)
+    //     .then(response => {
+    //       toast.success('Successfully updated');
+    //     })
+    //     .catch(error => {
+    //       toast.error('Error updating')
+    //     });
+    } 
+    
+    catch (error) {
       toast.error("Error starting data generation!");
       // console.error("There was an error with the fetch operation: ", error);
       setAnimationStarted(false);
+      setError(true)
+      // const updatedData = {
+      //   status: "failed"
+      // };
+    
+      // // Send the PATCH request using Axios
+      // axios.patch(`${CCAPI}${cc}`, updatedData)
+      //   .then(response => {
+      //     toast.success('Successfully updated');
+      //   })
+      //   .catch(error => {
+      //     toast.error('Error updating')
+      //   });
     } 
   };
 
@@ -186,7 +213,7 @@ function DataGeneration() {
               {uploadSubmitted && (
                 <>
                   <button className="run-endpoint" onClick={runEndpoints}>
-                    Start Generating Data
+                    {error?"Restart Genrating Data":"Start Generating Data"}
                   </button>
                   {animationStarted && (
                     <AnimatedCanvas
