@@ -1,0 +1,17 @@
+/* AnimatedCanvas.css */
+.canvas-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+canvas {
+  /* border: 1px solid #ccc; */
+  margin-bottom: 10px;
+}
+
+.progress-bar-label {
+  font-size: 18px;
+  font-weight: bold;
+}

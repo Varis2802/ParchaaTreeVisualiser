@@ -1,22 +1,12 @@
 
-.main1 {
-  display:block;
+.main1{
+  width: 80vw;
+  display:flex;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
-}
-.main-container1 {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: -100px;
-  width: 100vw;
-  height: 100vh;
+  align-items: center; 
 }
 .logo img {
   width: 250px;
-  margin-bottom: 50px;
 }
 
 .input1 {
@@ -56,17 +46,7 @@ h4 {
   margin-left:40px;
   color:#53B88B;
 }
-button[type="submit"] {
-  grid-area: submit;
-  width: 160px;
-  height: 35px;
-  background-color: #4B6AF5;
-  color: white;
-  font-size: 18px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
+
 .run-endpoint{
   grid-area: submit;
   width: 200px;
