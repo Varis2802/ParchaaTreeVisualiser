@@ -10,9 +10,9 @@ function Status() {
       chief_complaint: "Fever",
       data: {
         status: "Running",
-        after_7_level: false,
+        after_7_level: true,
         before_7_level: true,
-        data_upload_to_db: true,
+        data_upload_to_db: false,
         data_completion_time: "2 hours",
       },
       message: "Progress bar",
@@ -22,12 +22,36 @@ function Status() {
       chief_complaint: "Cough",
       data: {
         status: "Start Now",
-        after_7_level: true,
+        after_7_level: false,
         before_7_level: false,
         data_upload_to_db: false,
         data_completion_time: "2 hours",
       },
       message: "Start Now message",
+    },
+    {
+      id: 3,
+      chief_complaint: "Back Pain",
+      data: {
+        status: "Stopped",
+        after_7_level: false,
+        before_7_level: true,
+        data_upload_to_db: false,
+        data_completion_time: "2 hours",
+      },
+      message: "Blocker",
+    },
+    {
+      id: 4,
+      chief_complaint: "Chest Pain",
+      data: {
+        status: "Success",
+        after_7_level: true,
+        before_7_level: true,
+        data_upload_to_db: true,
+        data_completion_time: "2 hours",
+      },
+      message: "Data Generation Completed",
     },
   ];
 

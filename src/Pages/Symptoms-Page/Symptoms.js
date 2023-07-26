@@ -10,7 +10,7 @@ function SymptomesChecker() {
       <h1 className="heading">Symptoms Checker</h1>
       <div className="button-wrapper">
       <button onClick={() => navigate("/status")} className="btn-class">
-          Data Generation Dashboard
+          Data Generation
         </button>
         <button onClick={() => navigate("/instructions ")} className="btn-class">
           Parchaa Cortex
