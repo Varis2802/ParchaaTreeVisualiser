@@ -11,7 +11,7 @@ import axios from "axios";
 function DataGeneration() {
   const [cc, setCC] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const [uploadSubmitted, setUploadSubmitted] = useState(true);
+  const [uploadSubmitted, setUploadSubmitted] = useState(false);
   const [progress, setProgress] = useState(0); // State to control the progress value
   const [animationStarted, setAnimationStarted] = useState(false); // State to control the animation start
   const [allCC, setAllcc] = useState(["fever", "Cough", "cold"]);
