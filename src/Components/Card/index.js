@@ -2,6 +2,7 @@ import React from "react";
 import "./card.css";
 
 function Card({ data }) {
+  // console.log(data)
   const statusColors = {
     Running: "#4b6af5",
     Stopped: "#f57242",
@@ -26,24 +27,32 @@ function Card({ data }) {
   // Mapping to display user-friendly labels for keys
   const keyNameMapping = {
     status: "Status",
-    after_7_level: "After 7 Level",
-    before_7_level: "Before 7 Level",
-    data_upload_to_db: "Data Upload to DB",
-    data_completion_time: "Data Completion Time",
+    initial_levels: "Initial levels",
+    final_levels: "Final levels",
+    upload_db: "Data Upload to DB",
+    time_taken: "Data Completion Time",
   };
 
   return (
     <div className="cards-wrapper">
-      {Object.entries(data).map(([key, status], index) => (
+      {Object.entries(data?.data).map(([key, value], index) => (
         <div
           key={index}
           className="card"
-          style={key === "status" ? getBorderStyle(status) : status ? boderfortrue : boderforfalse}
+          style={
+            key === "status"
+              ? getBorderStyle(value)
+              : value === true
+              ? boderfortrue
+              : boderforfalse
+          }
         >
           <h3>{keyNameMapping[key]}</h3>
-          
-          {/* <img src ={} alt ="logo"/> */}
-           <h5>{status}</h5>
+          {typeof value === "boolean" ? (
+            <h5>{value ? "True" : "False"}</h5>
+          ) : (
+            <h5>{value}</h5>
+          )}
         </div>
       ))}
     </div>

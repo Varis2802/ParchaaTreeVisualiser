@@ -1,69 +1,71 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../../Components/Sidebar";
 import Card from "../../../Components/Card";
 import "./status.css";
+import { CCAPI } from "../../../APIS";
+import axios from "axios";
 
 function Status() {
-  var Apidata = [
-    {
-      id: 1,
-      chief_complaint: "Fever",
-      data: {
-        status: "Running",
-        after_7_level: true,
-        before_7_level: true,
-        data_upload_to_db: false,
-        data_completion_time: "2 hours",
-      },
-      message: "Progress bar",
+  var Apidata = {
+    "id": 2,
+    "chief_complaint": "Cough",
+    "data": {
+        "status": "Start Now",
+        "initial_levels": true,
+        "final_levels": false,
+        "upload_db": false,
+        "time_taken": "2 hours"
     },
-    {
-      id: 2,
-      chief_complaint: "Cough",
-      data: {
-        status: "Start Now",
-        after_7_level: false,
-        before_7_level: false,
-        data_upload_to_db: false,
-        data_completion_time: "2 hours",
-      },
-      message: "Start Now message",
-    },
-    {
-      id: 3,
-      chief_complaint: "Back Pain",
-      data: {
-        status: "Stopped",
-        after_7_level: false,
-        before_7_level: true,
-        data_upload_to_db: false,
-        data_completion_time: "2 hours",
-      },
-      message: "Blocker",
-    },
-    {
-      id: 4,
-      chief_complaint: "Chest Pain",
-      data: {
-        status: "Success",
-        after_7_level: true,
-        before_7_level: true,
-        data_upload_to_db: true,
-        data_completion_time: "2 hours",
-      },
-      message: "Data Generation Completed",
-    },
-  ];
+    "message": "Start Now message"
+}
 
-  const [cc, setCC] = useState(Apidata[0]?.chief_complaint);
-  const selectedData = Apidata.find(
-    (item) => item.chief_complaint === cc
-  )?.data;
+  const [cc, setCC] = useState();
+  const [data,setData] = useState(Apidata)
+  
+  const [allCC,setAllcc] =useState(["fever","Cough","cold"])
+
+  // useEffect (()=>{
+  //     const url = `${CCAPI}${cc}`;
+  //     axios.get(url)
+  //       .then(response => {
+  //         console.log('Data received:', response.data);
+  //         setCC(response.chief_complaint)
+  //         setCC("Cough")
+  //         setData(response)
+  //       })
+  //       .catch(error => {
+  //         // Handle errors
+  //         console.error('Error fetching data:', error);
+  //       });
+  // },[cc])
+
+  
+  // logic for allcc
+  
+  // useEffect (()=>{
+  //     const url = `allapi`;
+  //     axios.get(url)
+  //       .then(response => {
+  //         console.log('Data received:', response.data);
+  //        setAllcc(response)
+  //       })
+  //       .catch(error => {
+  //         // Handle errors
+  //         console.error('Error fetching data:', error);
+  //       });
+  // },[])
+
+
+
+
+
 
   // const cardData = selectedData ? Object.entries(selectedData) : [];
   const handleSelectCC = (cc) => {
     setCC(cc);
   };
+
+
 
   return (
     <div style={{ display: "flex" }}>
@@ -75,13 +77,13 @@ function Status() {
           value={cc}
           onChange={(e) => handleSelectCC(e.target.value)}
         >
-          {Apidata.map((data) => (
-            <option key={data.id} value={data.chief_complaint}>
-              {data.chief_complaint}
+          {allCC?.map((data,i) => (
+            <option key={i} value={data}>
+              {data}
             </option>
           ))}
         </select>
-        <Card data={selectedData} />
+        <Card data={data} />
       </div>
     </div>
   );

@@ -50,14 +50,12 @@ h4 {
 .run-endpoint{
   grid-area: submit;
   width: 200px;
-  height: 35px;
   background-color: #4B6AF5;
   color: white;
   font-size: 18px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-
 }
 .log-report{
   padding: 20px;

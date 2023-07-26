@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../../Assets/parchaa-ai-service.png";
 import "./data-generation.css";
-// import myGif from "../../../Assets/giphy.webp";
-// import Sidebar from "../../../Components/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AnimatedCanvas from "../../../Components/progress";
 import Sidebar from "../../../Components/Sidebar";
+import { CCAPI } from "../../../APIS";
+import axios from "axios";
 
 function DataGeneration() {
   const [cc, setCC] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const [uploadSubmitted, setUploadSubmitted] = useState(false);
+  const [uploadSubmitted, setUploadSubmitted] = useState(true);
   const [progress, setProgress] = useState(0); // State to control the progress value
   const [animationStarted, setAnimationStarted] = useState(false); // State to control the animation start
+  const [allCC, setAllcc] = useState(["fever", "Cough", "cold"]);
+  const [ccpresent, setccpresent] = useState(true);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     // create a FormData object
     const formData = new FormData();
 
@@ -37,8 +39,6 @@ function DataGeneration() {
         console.log(data);
         setUploadSubmitted(true);
         toast.success("File uploaded successfully!");
-      } else {
-        toast.error("Error uploading file!");
       }
     } catch (error) {
       // Handle any errors that might occur during the fetch call
@@ -55,6 +55,7 @@ function DataGeneration() {
 
   const runEndpoints = async () => {
     setProgress(0);
+    setAnimationStarted(true)
     try {
       // Run the endpoints script
       const response = await fetch(`http://127.0.0.1:8000/run-endpoints/`, {
@@ -74,9 +75,7 @@ function DataGeneration() {
       toast.error("Error starting data generation!");
       // console.error("There was an error with the fetch operation: ", error);
       setAnimationStarted(false);
-    } finally {
-      // setDisplayProgress(false); // Hide the progress bar after data generation completes
-    }
+    } 
   };
 
   const [logs, setLogs] = useState([]);
@@ -94,9 +93,63 @@ function DataGeneration() {
     };
   }, []);
 
+  // useEffect (()=>{
+  //     const url = `${CCAPI}${cc}`;
+  //     axios.get(url)
+  //       .then(response => {
+  //         console.log('Data received:', response.data);
+  //         setCC(response.chief_complaint)
+  //         setCC("Cough")
+  //         setData(response)
+  //       })
+  //       .catch(error => {
+  //         // Handle errors
+  //         console.error('Error fetching data:', error);
+  //       });
+  // },[cc])
+
+  // logic for allcc
+
+  // useEffect (()=>{
+  //     const url = `allapi`;
+  //     axios.get(url)
+  //       .then(response => {
+  //         console.log('Data received:', response.data);
+  //        setAllcc(response)
+  //       })
+  //       .catch(error => {
+  //         // Handle errors
+  //         console.error('Error fetching data:', error);
+  //       });
+  // },[])
+
+  const handleCCChange = (cc) => {
+    // console.log(cc)
+    setCC(cc);
+    const isCCPresent = allCC.includes(cc);
+    if (isCCPresent) {
+      toast.error("This Chief Complent allready Present!");
+      const cheif_complete = allCC.find((cc1) => cc1 == cc);
+      const url = `${CCAPI}${cheif_complete}`;
+      axios
+        .get(url)
+        .then((response) => {
+          console.log("Data received:", response.data);
+          if (response.data.final_levels) {
+            toast.error("For this Chief Complaint Final Level is Genrated!");
+          } 
+        })
+        .catch((error) => {
+          // Handle errors
+          toast.error("Something Went Wrong!");
+          console.error("Error fetching data:", error);
+        });
+    }
+  };
+
   return (
-    <div style={{display:"flex"}}>
-      <Sidebar/>
+    <div style={{ display: "flex" }}>
+      <Sidebar />
       <div className="main1">
         <ToastContainer />
         <div className="main-container1">
@@ -112,13 +165,18 @@ function DataGeneration() {
                     placeholder="Enter Chief Complaint"
                     className="input1"
                     value={cc}
-                    onChange={(event) => setCC(event.target.value)}
+                    onChange={(event) => {
+                      handleCCChange(event.target.value);
+                    }}
+                    required
                   />
+
                   <input
                     className="file-uploader"
                     type="file"
                     name="docfile"
                     onChange={onFileChange}
+                    required
                   />
                   <button type="submit">Upload</button>
                 </form>

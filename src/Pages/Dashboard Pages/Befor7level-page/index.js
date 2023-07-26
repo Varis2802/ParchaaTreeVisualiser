@@ -4,6 +4,8 @@ import "./before7level.css";
 import "../index.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { CCAPI } from "../../../APIS";
 function Before7levelPage() {
   const [cc, setCC] = useState("");
   const [digo, setDign] = useState("");
@@ -45,7 +47,24 @@ function Before7levelPage() {
       a.click();
       URL.revokeObjectURL(url);
       document.body.removeChild(a);
+      
+      const updatedData = {
+        initial_levels : true
+      };
+    
+      // Send the PATCH request using Axios
+      axios.patch(`${CCAPI}${cc}`, updatedData)
+        .then(response => {
+          toast.success('Successfully updated');
+        })
+        .catch(error => {
+          toast.error('Error updating')
+        });
+
+
     }
+
+
   };
 
   // Event handler for cc dropdown change
@@ -84,6 +103,23 @@ function Before7levelPage() {
     "Gastrointestinal bleeding",
     "Celiac disease",
   ];
+
+            
+  const handlegptBtn  = ()=>{
+    // Data you want to update
+  const updatedData = {
+    status: "Running"
+  };
+
+  // Send the PATCH request using Axios
+  axios.patch(`${CCAPI}${cc}`, updatedData)
+    .then(response => {
+      toast.success('Successfully updated');
+    })
+    .catch(error => {
+      toast.error('Error updating')
+    });
+  }
 
   return (
     <div style={{ display: "flex" }}>
@@ -131,6 +167,7 @@ function Before7levelPage() {
               href="https://chat.openai.com/"
               target="_blank"
               className="gpt-btn"
+              onClick={handlegptBtn}
             >
               Go to ChatGpt
             </a>
