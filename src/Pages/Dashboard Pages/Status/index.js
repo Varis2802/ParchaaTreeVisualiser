@@ -24,20 +24,20 @@ function Status() {
   
   const [allCC,setAllcc] =useState(["fever","Cough","cold"])
 
-  // useEffect (()=>{
-  //     const url = `${CCAPI}${cc}`;
-  //     axios.get(url)
-  //       .then(response => {
-  //         console.log('Data received:', response.data);
-  //         setCC(response.chief_complaint)
-  //         setCC("Cough")
-  //         setData(response)
-  //       })
-  //       .catch(error => {
-  //         // Handle errors
-  //         console.error('Error fetching data:', error);
-  //       });
-  // },[cc])
+  useEffect(() => {
+    const url = `${CCAPI}${cc}`;
+    axios.get(url)
+      .then(response => {
+        console.log('Data received::', response.data);
+        setCC(response.data.cc)
+        // setData(response.data)
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('Error fetching data:', error);
+      });
+  }, [cc]);
+  
 
   
   // logic for allcc
@@ -56,7 +56,20 @@ function Status() {
   // },[])
 
 
-
+ useEffect(() => {
+    const url = `http://localhost:7000/cc-status/get-all-cc`;
+    axios
+      .get(url)
+      .then((response) => {
+     //   console.log("Data received:", response.data);
+        setAllcc(response.data);
+       // console.log(allCC);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
 
 

@@ -26,11 +26,12 @@ function Card({ data }) {
 
   // Mapping to display user-friendly labels for keys
   const keyNameMapping = {
-    status: "Status",
-    initial_levels: "Initial levels",
     final_levels: "Final levels",
-    upload_db: "Data Upload to DB",
+    initial_levels: "Initial levels",
+    status: "Status",
     time_taken: "Data Completion Time",
+    upload_db: "Data Upload to DB",
+    
   };
 
   return (
