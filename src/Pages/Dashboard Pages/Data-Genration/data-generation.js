@@ -16,6 +16,8 @@ function DataGeneration() {
   const [animationStarted, setAnimationStarted] = useState(false); // State to control the animation start
   const [allCC, setAllcc] = useState([]);
   const [error, setError] = useState(false);
+  const [logss, setLogs] = useState([]);
+  const [generationCompleted, setGenerationCompleted] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,7 +38,6 @@ function DataGeneration() {
         });
 
         const data = await response.json();
-
         if (response.ok) {
           console.log(data);
           setUploadSubmitted(true);
@@ -73,35 +74,6 @@ function DataGeneration() {
           toast.error("Something Went Wrong!");
           console.error("Error fetching data:", error);
         });
-
-      async function createFormData() {
-        const formData = new FormData();
-
-        // append the data
-        formData.append("file", selectedFile);
-        formData.append("cc", cc);
-
-        try {
-          // Here is the fetch call to your backend
-
-          const response = await fetch(`http://127.0.0.1:8000/upload-file/`, {
-            method: "POST",
-            body: formData,
-          });
-
-          const data = await response.json();
-
-          if (response.ok) {
-            console.log(data);
-            setUploadSubmitted(true);
-            toast.success("File uploaded successfully!");
-          }
-        } catch (error) {
-          // Handle any errors that might occur during the fetch call
-          toast.error("An error occurred while uploading the file.");
-          // console.error("Error uploading file:", error);
-        }
-      }
     } else {
       toast.error("Cheif Compplaint is not present in our Data  Base");
     }
@@ -115,10 +87,6 @@ function DataGeneration() {
     setProgress(0);
     setAnimationStarted(true);
 
-
-   
-
-
     try {
       // Run the endpoints script
       const response = await fetch(`http://127.0.0.1:8000/run-endpoints/`, {
@@ -126,15 +94,11 @@ function DataGeneration() {
       });
 
       if (!response.ok) {
+        toast.error("Data Genration Failed");
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-
-
       const data = await response.json();
-
-      // Here you could handle the response froa the server
-      toast.success("Data generation Completed!");
 
       console.log(data);
       const updatedData = {
@@ -171,8 +135,6 @@ function DataGeneration() {
     }
   };
 
-  const [logss, setLogs] = useState([]);
-
   useEffect(() => {
     const socket = new WebSocket("ws://localhost:8080");
 
@@ -181,13 +143,28 @@ function DataGeneration() {
     };
 
     socket.onmessage = (message) => {
-      // console.log("Received message:", message.data); // Log received messages
-      setLogs((logss) => [...logss, JSON.parse(message.data)]);
-      console.log(logss, "logss");
+      const payload = JSON.parse(message.data);
+      console.log("Received payload:", payload);
 
-      logss?.forEach((logss) =>{
-          console.log(logss.data.message,"hgfjgcfcgc");
-      })
+      // Update the logs state
+      setLogs((logss) => [...logss, payload]);
+
+      // Extract the progress from the "Done" message and update the state
+      const doneMessageRegex = /Done (\d+)/;
+      const match = payload.data.message.match(doneMessageRegex);
+
+      
+      
+      if (match) {
+        const progressValue = parseInt(match[1]);
+        setProgress(progressValue);
+      }
+
+      // Check if generation is completed and trigger the toast message
+      if (payload.data.message.includes("Generation Completed!")) {
+        setGenerationCompleted(true);
+        toast.success("Generation success!");
+      }
     };
   }, []);
 
@@ -252,10 +229,12 @@ function DataGeneration() {
               </div>
             )}
             <>
-              {uploadSubmitted && (
+              {uploadSubmitted && !generationCompleted && (
                 <>
                   <button className="run-endpoint" onClick={runEndpoints}>
-                    {error ? "Restart Genrating Data" : "Start Generating Data"}
+                    {error
+                      ? "Restart Generating Data"
+                      : "Start Generating Data"}
                   </button>
                   {animationStarted && (
                     <AnimatedCanvas
