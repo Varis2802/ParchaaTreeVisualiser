@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ProgressBar.css'; // Create a CSS file for styling the progress bar
 
-const ProgressBar = ({ percentage }) => {
+const ProgressBar = ({ percentage}) => {
   const [animationValue, setAnimationValue] = useState(0);
 
   // Update the animationValue whenever the percentage prop changes
