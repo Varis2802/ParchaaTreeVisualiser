@@ -16,8 +16,12 @@ function DataGeneration() {
   const [animationStarted, setAnimationStarted] = useState(false); // State to control the animation start
   const [allCC, setAllcc] = useState([]);
   const [error, setError] = useState(false);
+<<<<<<< HEAD
   const [logss, setLogs] = useState([]);
   const [generationCompleted, setGenerationCompleted] = useState(false);
+=======
+  const [totalNumber,setTotalNumber] = useState(0)
+>>>>>>> e54a207b71c90187d3d3aa450f3badecdaeea509
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -119,6 +123,7 @@ function DataGeneration() {
       // console.error("There was an error with the fetch operation: ", error);
       setAnimationStarted(false);
       setError(true);
+      setLogs([])
       const updatedData = {
         status: "failed",
       };
@@ -135,13 +140,92 @@ function DataGeneration() {
     }
   };
 
+<<<<<<< HEAD
   useEffect(() => {
     const socket = new WebSocket("ws://localhost:8080");
+=======
+  const [logss, setLogs] = useState([]);
 
-    socket.onopen = () => {
-      console.log("WebSocket Client Connected");
-    };
+  // websokets functionality
+// useEffect(() => {
+//   const socket = new WebSocket("ws://localhost:8080");
+>>>>>>> e54a207b71c90187d3d3aa450f3badecdaeea509
 
+//   socket.onopen = () => {
+//     console.log("WebSocket Client Connected");
+//   };
+
+//   socket.onmessage = (message) => {
+//     // Log received messages
+//     console.log("Received message:", message.data);
+
+//     const payload = JSON.parse(message.data);
+//     console.log("Received payload:", payload);
+
+//     // Check if the payload message contains "Done"
+//     if (payload.data.message.includes("Done")) {
+//       // Extract the number from the "Done" message
+//       const doneNumber = parseInt(payload.data.message.match(/\d+/)[0]);
+
+//       // Update the progress and totalNumber state based on the "Done" message
+//       setProgress(doneNumber);
+//       setTotalNumber(doneNumber + 1); // Since it's 0-indexed, the next task will be doneNumber + 1
+
+//       // Show toast message when "Generation Completed!" is received
+//       if (payload.data.message.includes("Generation Completed!")) {
+//         toast.success("Generation Success!");
+//       }
+//     }
+
+//     // Update the logss state
+//     setLogs((logss) => [...logss, payload]);
+//   };
+// }, []);
+
+
+useEffect(() => {
+  const socket = new WebSocket("ws://localhost:8080");
+
+  socket.onopen = () => {
+    console.log("WebSocket Client Connected");
+  };
+
+  socket.onmessage = (message) => {
+    const payload = JSON.parse(message.data);
+    console.log("Received payload:", payload);
+
+    setLogs((logss) => [...logss, payload]);
+
+    // Process the "Done" messages to update progress and display generation success toast
+
+
+
+        // Extract the total number from the "message" field in the payload
+        const totalNumRegex = /"Total_number: (\d+)"/;
+        const totalNumMatch = payload.data.message.match(totalNumRegex);
+        const totalNum = totalNumMatch ? parseInt(totalNumMatch[1]) : 0;
+    
+        // Extract the "Done" messages from the "message" field in the payload
+        const doneRegex = /"Done (\d+)"/g;
+        const doneMatches = payload.data.message.match(doneRegex);
+    
+        // Calculate the progress based on the number of "Done" messages
+        const doneCount = doneMatches ? doneMatches.length : 0;
+        const newProgress = doneCount / totalNum * 100;
+    // const doneMessages = payload.data.message.match(/Done \d+/g);
+    if (doneMatches) {
+      // const progress = doneMessages.length / totalTasks; // Assuming you have a state variable totalTasks that holds the total number of tasks
+      setProgress(newProgress);
+    }
+
+    if (payload.data.message.includes("Generation Completed!")) {
+      toast.success(`Generation success for ${payload?.data?.chief_complaint}!`);
+      setProgress(100)
+    }
+  };
+}, []);
+
+<<<<<<< HEAD
     socket.onmessage = (message) => {
       const payload = JSON.parse(message.data);
       console.log("Received payload:", payload);
@@ -167,9 +251,12 @@ function DataGeneration() {
       }
     };
   }, []);
+=======
+
+>>>>>>> e54a207b71c90187d3d3aa450f3badecdaeea509
 
   useEffect(() => {
-    const url = `http://localhost:7000/cc-status/get-all-cc`;
+    const url = `https://bb87-2401-4900-1f37-eeba-d58a-5b5e-3fbd-a8cf.ngrok-free.app/cc-status/get-all-cc`;
     axios
       .get(url)
       .then((response) => {

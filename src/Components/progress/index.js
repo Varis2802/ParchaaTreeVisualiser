@@ -5,7 +5,7 @@ import ProgressBar from '../ProgressBar';
 import errorimage from '../../Assets/sad-emoji.jpg'
 
 
-const AnimatedCanvas = ({ percentage, startAnimation, errorOccurred }) => {
+const AnimatedCanvas = ({ percentage, startAnimation, errorOccurred ,totalNumber}) => {
   const canvasRef = useRef(null);
 
   // Function to draw the animated image on the canvas
@@ -60,7 +60,7 @@ const AnimatedCanvas = ({ percentage, startAnimation, errorOccurred }) => {
           width={250} // Set the canvas width (adjust as needed)
           height={250} // Set the canvas height (adjust as needed)
         />
-      <ProgressBar percentage={percentage} />
+      <ProgressBar percentage={percentage} totalNumber={totalNumber} />
     </div>
   );
 };

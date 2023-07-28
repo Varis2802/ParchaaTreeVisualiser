@@ -13,7 +13,7 @@ function Before7levelPage() {
   // logic for allcc
 
   useEffect(() => {
-    const url = `http://localhost:7000/cc_diag/get-all`;
+    const url = `https://bb87-2401-4900-1f37-eeba-d58a-5b5e-3fbd-a8cf.ngrok-free.app/cc-status/get-all-cc`;
     axios
       .get(url)
       .then((response) => {
