@@ -19,7 +19,7 @@ cytoscape.use(undoRedo); // Register undoRedo extension
 cytoscape.use(panzoom);
 
 const options = [
-  { value: "urination", label: "reduce urination" },
+  { value: "reduce_urination", label: "reduce urination" },
   { value: "data", label: "Chest Pain" },
   { value: "facePain", label: "Face Pain" },
   { value: "headache", label: "Headache" },

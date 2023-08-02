@@ -10,20 +10,25 @@ function Before7levelPage() {
   const [cc, setCC] = useState("");
   const [allCC, setAllcc] = useState([]);
   const [diagnosis, setDiagnosis] = useState([]);
-  // logic for allcc
+  
+
+  
+  
+  // allcc WITH Dignosis
 
   useEffect(() => {
-    const url = `https://bb87-2401-4900-1f37-eeba-d58a-5b5e-3fbd-a8cf.ngrok-free.app/cc-status/get-all-cc`;
+    const url = `http://localhost:7000/cc_diag/get-all`;
     axios
       .get(url)
       .then((response) => {
-        console.log("Data received:", response.data);
+        // console.log("Data received:", response.data);
         setAllcc(response.data);
-        console.log(allCC);
+        // console.log(allCC);
       })
       .catch((error) => {
         // Handle errors
         console.error("Error fetching data:", error);
+
       });
   }, []);
 
@@ -87,7 +92,7 @@ function Before7levelPage() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "text_file.txt";
+      a.download = `${cc}_initial_levels.txt`;
       document.body.appendChild(a);
       a.click();
       URL.revokeObjectURL(url);
@@ -116,9 +121,9 @@ function Before7levelPage() {
     const filtereddiagnosis = allCC.filter(
       (data) => data.chief_complaint == cc
     );
-    console.log(filtereddiagnosis, "filtereddiagnosis ");
+    // console.log(filtereddiagnosis, "filtereddiagnosis ");
     setDiagnosis(filtereddiagnosis[0]?.diagnosis_list);
-    console.log(diagnosis, "diagnosis");
+    // console.log(diagnosis, "diagnosis");
   };
 
 

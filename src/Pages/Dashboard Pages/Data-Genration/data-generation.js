@@ -16,13 +16,10 @@ function DataGeneration() {
   const [animationStarted, setAnimationStarted] = useState(false); // State to control the animation start
   const [allCC, setAllcc] = useState([]);
   const [error, setError] = useState(false);
-<<<<<<< HEAD
   const [logss, setLogs] = useState([]);
   const [generationCompleted, setGenerationCompleted] = useState(false);
-=======
-  const [totalNumber,setTotalNumber] = useState(0)
->>>>>>> e54a207b71c90187d3d3aa450f3badecdaeea509
 
+  //  Handle Submitt
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -57,9 +54,9 @@ function DataGeneration() {
     var isCCPresent = allCC?.includes(cc);
 
     if (isCCPresent) {
-      const cheif_complete = allCC.filter((cc1) => cc1 == cc);
+      var cheif_complete = allCC.filter((cc1) => cc1 == cc);
       // console.log(cheif_complete,"cheif")
-      const url = `${CCAPI}${cheif_complete[0]}`;
+      var url = `${CCAPI}${cheif_complete[0]}`;
       axios
         .get(url)
         .then((response) => {
@@ -86,6 +83,8 @@ function DataGeneration() {
   const onFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
+
+  // Run Endpoints
 
   const runEndpoints = async () => {
     setProgress(0);
@@ -123,7 +122,7 @@ function DataGeneration() {
       // console.error("There was an error with the fetch operation: ", error);
       setAnimationStarted(false);
       setError(true);
-      setLogs([])
+      setLogs([]);
       const updatedData = {
         status: "failed",
       };
@@ -140,123 +139,65 @@ function DataGeneration() {
     }
   };
 
-<<<<<<< HEAD
+  // webSocket connection
+
   useEffect(() => {
     const socket = new WebSocket("ws://localhost:8080");
-=======
-  const [logss, setLogs] = useState([]);
 
-  // websokets functionality
-// useEffect(() => {
-//   const socket = new WebSocket("ws://localhost:8080");
->>>>>>> e54a207b71c90187d3d3aa450f3badecdaeea509
+    socket.onopen = () => {
+      console.log("WebSocket Client Connected");
+    };
 
-//   socket.onopen = () => {
-//     console.log("WebSocket Client Connected");
-//   };
-
-//   socket.onmessage = (message) => {
-//     // Log received messages
-//     console.log("Received message:", message.data);
-
-//     const payload = JSON.parse(message.data);
-//     console.log("Received payload:", payload);
-
-//     // Check if the payload message contains "Done"
-//     if (payload.data.message.includes("Done")) {
-//       // Extract the number from the "Done" message
-//       const doneNumber = parseInt(payload.data.message.match(/\d+/)[0]);
-
-//       // Update the progress and totalNumber state based on the "Done" message
-//       setProgress(doneNumber);
-//       setTotalNumber(doneNumber + 1); // Since it's 0-indexed, the next task will be doneNumber + 1
-
-//       // Show toast message when "Generation Completed!" is received
-//       if (payload.data.message.includes("Generation Completed!")) {
-//         toast.success("Generation Success!");
-//       }
-//     }
-
-//     // Update the logss state
-//     setLogs((logss) => [...logss, payload]);
-//   };
-// }, []);
-
-
-useEffect(() => {
-  const socket = new WebSocket("ws://localhost:8080");
-
-  socket.onopen = () => {
-    console.log("WebSocket Client Connected");
-  };
-
-  socket.onmessage = (message) => {
-    const payload = JSON.parse(message.data);
-    console.log("Received payload:", payload);
-
-    setLogs((logss) => [...logss, payload]);
-
-    // Process the "Done" messages to update progress and display generation success toast
-
-
-
-        // Extract the total number from the "message" field in the payload
-        const totalNumRegex = /"Total_number: (\d+)"/;
-        const totalNumMatch = payload.data.message.match(totalNumRegex);
-        const totalNum = totalNumMatch ? parseInt(totalNumMatch[1]) : 0;
-    
-        // Extract the "Done" messages from the "message" field in the payload
-        const doneRegex = /"Done (\d+)"/g;
-        const doneMatches = payload.data.message.match(doneRegex);
-    
-        // Calculate the progress based on the number of "Done" messages
-        const doneCount = doneMatches ? doneMatches.length : 0;
-        const newProgress = doneCount / totalNum * 100;
-    // const doneMessages = payload.data.message.match(/Done \d+/g);
-    if (doneMatches) {
-      // const progress = doneMessages.length / totalTasks; // Assuming you have a state variable totalTasks that holds the total number of tasks
-      setProgress(newProgress);
-    }
-
-    if (payload.data.message.includes("Generation Completed!")) {
-      toast.success(`Generation success for ${payload?.data?.chief_complaint}!`);
-      setProgress(100)
-    }
-  };
-}, []);
-
-<<<<<<< HEAD
     socket.onmessage = (message) => {
       const payload = JSON.parse(message.data);
       console.log("Received payload:", payload);
 
-      // Update the logs state
       setLogs((logss) => [...logss, payload]);
+      const totalNumRegex = /"Total_number: (\d+)"/;
+      const totalNumMatch = payload.data.message.match(totalNumRegex);
+      const totalNum = totalNumMatch ? parseInt(totalNumMatch[1]) : 0;
 
-      // Extract the progress from the "Done" message and update the state
-      const doneMessageRegex = /Done (\d+)/;
-      const match = payload.data.message.match(doneMessageRegex);
+      // Extract the "Done" messages from the "message" field in the payload
+      const doneRegex = /"Done (\d+)"/g;
+      const doneMatches = payload.data.message.match(doneRegex);
 
-      
-      
-      if (match) {
-        const progressValue = parseInt(match[1]);
-        setProgress(progressValue);
+      // Calculate the progress based on the number of "Done" messages
+      const doneCount = doneMatches ? doneMatches.length : 0;
+      const newProgress = (doneCount / totalNum) * 100;
+      // const doneMessages = payload.data.message.match(/Done \d+/g);
+      const roundedProgress = Math.round(newProgress);
+      if (doneMatches) {
+        // const progress = doneMessages.length / totalTasks; // Assuming you have a state variable totalTasks that holds the total number of tasks
+        setProgress(roundedProgress);
       }
 
-      // Check if generation is completed and trigger the toast message
       if (payload.data.message.includes("Generation Completed!")) {
+        // toast.success(`Generation success for ${payload?.data?.chief_complaint}!`);
+        setProgress(100);
         setGenerationCompleted(true);
-        toast.success("Generation success!");
+        const updatedData = {
+          status: "Success",
+          final_levels: true,
+        };
+
+        // Send the PATCH request using Axios to update the status
+        axios
+          .patch(`${CCAPI}${payload.data.chief_complaint}`, updatedData)
+          .then((response) => {
+            toast.success(
+              `Generation success for ${payload.data.chief_complaint}!`
+            );
+          })
+          .catch((error) => {
+            toast.error("Error updating");
+          });
       }
     };
   }, []);
-=======
 
->>>>>>> e54a207b71c90187d3d3aa450f3badecdaeea509
-
+  // getting all CC
   useEffect(() => {
-    const url = `https://bb87-2401-4900-1f37-eeba-d58a-5b5e-3fbd-a8cf.ngrok-free.app/cc-status/get-all-cc`;
+    const url = `http://localhost:7000/cc-status/get-all-cc`;
     axios
       .get(url)
       .then((response) => {
@@ -273,12 +214,29 @@ useEffect(() => {
 
   const handleCCChange = (event) => {
     // console.log(cc)
-    setCC(event.target.value);
+    let CC2 = event.target.value;
+    setCC(CC2);
+
+    var url = `${CCAPI}${CC2}`;
+    axios
+      .get(url)
+      .then((response) => {
+        if (response.data?.data.final_levels) {
+          setGenerationCompleted(true);
+          toast.success("Data Already generated");
+        }
+      })
+      .catch((error) => {
+        // Handle errors
+        toast.error("Something Went Wrong!");
+        console.error("Error Getting Status of Cheif Complaint:", error);
+      });
   };
 
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
+
       <div className="main1">
         <ToastContainer />
         <div className="main-container1">
@@ -296,12 +254,13 @@ useEffect(() => {
                     value={cc}
                     onChange={handleCCChange}
                   >
-                    {allCC?.map((cc) => {
-                      return <option value={cc}>{cc}</option>;
+                    {allCC?.map((cc, i) => {
+                      return (
+                        <option value={cc} key={i}>
+                          {cc}
+                        </option>
+                      );
                     })}
-
-                    {/* <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option> */}
                   </select>
 
                   <input
@@ -329,20 +288,19 @@ useEffect(() => {
                       startAnimation={animationStarted}
                     />
                   )}
+                  <div>
+                    <h2>Logs:</h2>
+                    <ul>
+                      {logss.map((log, index) => (
+                        <li key={index}>{JSON.stringify(log)}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </>
               )}
             </>
           </div>
-          <div>
-            <h2>Logs:</h2>
-            <ul>
-              {logss.map((log, index) => (
-                <li key={index}>{JSON.stringify(log)}</li>
-              ))}
-            </ul>
-          </div>
         </div>
-
         <div className="copyright">© Design By Varis. All Rights Reserved.</div>
       </div>
     </div>
